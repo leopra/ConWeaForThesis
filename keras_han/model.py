@@ -131,7 +131,7 @@ class HAN(Model):
         doc_summary = AttentionLayer(name='sentence_attention')(doc_rep)
 
         out_tensor = Dense(
-            self.output_size, activation='softmax', name='class_prediction'
+            self.output_size, activation='sigmoid', name='class_prediction'
         )(doc_summary)
 
         return in_tensor, out_tensor

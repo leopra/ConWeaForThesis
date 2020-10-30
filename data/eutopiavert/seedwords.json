@@ -1,17 +1,81 @@
-{"Forestry": [],
+{
+  "Forestry": [
+  ""
+],
   "Public administration": [],
   "Healthcare":  [],
   "Food & beverage":  [],
   "Telecommunications & ICT":  [],
-  "Building":  [],
-  "Transportation": [],
-  "Constructions": [],
-  "Other activities": [],
-  "Manufacturing":  [],
-  "Utilities (electricity, water, waste)":  [],
-  "Energy":  [],
-  "Mining":  [],
-  "Financial services":  [],
-  "Agriculture":  [],
-  "Logistics":  []
+  "Building":  [
+    "real estate",
+    "properties",
+    "Internet of Things",
+    "Iot",
+    ""
+  ],
+  "Transportation": [
+    "carriers",
+    "driving",
+    "car",
+    "bus",
+    "vehicle"
+  ],
+  "Constructions": [
+    "constructions",
+    "roofing",
+    "demolition",
+    "builder",
+    "architecture"
+  ],
+  "Other activities": [
+  ],
+  "Manufacturing":  [
+    "instruments",
+    "products",
+    "manufacturer",
+    "manufacturing",
+    "production"
+  ],
+  "Utilities (electricity, water, waste)":  [
+    "water",
+    "electrical",
+    "waste",
+    "recycling",
+    "disposal"
+  ],
+  "Energy":  [
+    "solar",
+    "energy",
+    "renewable",
+    "wind",
+    "thermal"
+  ],
+  "Mining":  [
+    "mining",
+    "mineral",
+    "gas",
+    "metal",
+    "ores"
+  ],
+  "Financial services":  [
+    "asset",
+    "portfolio",
+    "finance",
+    "invest",
+    "bank"
+  ],
+  "Agriculture":  [
+    "farm",
+    "agriculture",
+    "seeds",
+    "greenhouse",
+    "plants"
+  ],
+  "Logistics":  [
+    "delivery",
+    "connect",
+    "mobility",
+    "ligistics",
+    "transport"
+  ]
 }
