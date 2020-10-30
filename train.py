@@ -1,4 +1,3 @@
-#test
 import pickle
 import argparse
 import json
