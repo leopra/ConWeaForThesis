@@ -2,6 +2,8 @@ import os
 import re
 import sys
 import pickle
+with open('./data/20news/coarse/df.pkl', 'rb') as handle:
+    b = pickle.load(handle)
 
 import nltk
 import pandas as pd
@@ -29,6 +31,7 @@ data = data[data['description'] != '—']
 # CREATES COLUMN 'LISTLABEL'
 data = cp.assign_eutop_labelsV2(data)
 
+
 #CREATE 1HOT encode for categories
 mlb = MultiLabelBinarizer()
 categories_1hot = mlb.fit_transform(data.listlabel)
@@ -41,3 +44,10 @@ dataready = pd.concat([data[['id', 'description','listlabel']],pd.DataFrame(cate
 def clean_and_tokenize(text):
     text = re.sub('[;,:\!\?\.\(\)\n]', ' ', text).replace('[\s+]', ' ')
     return nltk.word_tokenize(text)
+
+#create single label dataframe compatible with conwea
+datasinglelabel = dataready[dataready['listlabel'].map(len) == 1]
+dataforconwea = datasinglelabel[['description', 'listlabel']]
+dataforconwea['listlabel'] = dataforconwea['listlabel'].apply(lambda x: x[0])
+dataforconwea.columns= ['sentence','label']
+dataforconwea.to_pickle('./data/eutopiavert/df.pkl')

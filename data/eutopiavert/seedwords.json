@@ -1,17 +1,51 @@
 {
   "Forestry": [
-  ""
+    "tree",
+    "wildfire",
+    "forest",
+    "flora",
+    "fauna"
 ],
-  "Public administration": [],
-  "Healthcare":  [],
-  "Food & beverage":  [],
-  "Telecommunications & ICT":  [],
+  "Public administration": [
+    "education",
+    "government",
+    "administration",
+    "regulation",
+    "administration"
+  ],
+  "Healthcare":  [
+    "health",
+    "diseases",
+    "blood",
+    "healthcare",
+    "dental",
+    "pharmaceutical",
+    "death",
+    "cancer",
+    "therapeutic"
+  ],
+  "Food & beverage":  [
+    "food",
+    "beverages",
+    "eat",
+    "drink",
+    "restaurant",
+    "ingredients"
+  ],
+  "Telecommunications & ICT":  [
+    "software",
+    "Saas",
+    "ICT",
+    "communications",
+    "IT",
+    "app"
+  ],
   "Building":  [
     "real estate",
     "properties",
     "Internet of Things",
     "Iot",
-    ""
+    "rent"
   ],
   "Transportation": [
     "carriers",
@@ -26,8 +60,6 @@
     "demolition",
     "builder",
     "architecture"
-  ],
-  "Other activities": [
   ],
   "Manufacturing":  [
     "instruments",
@@ -75,7 +107,7 @@
     "delivery",
     "connect",
     "mobility",
-    "ligistics",
+    "logistics",
     "transport"
   ]
 }
