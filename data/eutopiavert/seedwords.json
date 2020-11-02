@@ -5,8 +5,8 @@
     "forest",
     "flora",
     "fauna"
-],
-  "Public administration": [
+  ],
+    "Public Administration": [
     "education",
     "government",
     "administration",
@@ -24,7 +24,7 @@
     "cancer",
     "therapeutic"
   ],
-  "Food & beverage":  [
+  "Food & Beverage":  [
     "food",
     "beverages",
     "eat",
@@ -40,7 +40,7 @@
     "IT",
     "app"
   ],
-  "Building":  [
+  "Buildings":  [
     "real estate",
     "properties",
     "Internet of Things",
