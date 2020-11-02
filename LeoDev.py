@@ -50,4 +50,8 @@ datasinglelabel = dataready[dataready['listlabel'].map(len) == 1]
 dataforconwea = datasinglelabel[['description', 'listlabel']]
 dataforconwea['listlabel'] = dataforconwea['listlabel'].apply(lambda x: x[0])
 dataforconwea.columns= ['sentence','label']
-dataforconwea.to_pickle('./data/eutopiavert/df.pkl', protocol=3)
+k = dataforconwea[dataforconwea['label'] == 'Telecommunications & ICT'].sample(6000)
+z = dataforconwea[dataforconwea['label'] != 'Telecommunications & ICT']
+
+out = pd.concat([k,z])
+out.to_pickle('./data/eutopiavert/df.pkl', protocol=3)
