@@ -2,8 +2,6 @@ import os
 import re
 import sys
 import pickle
-with open('./data/20news/coarse/df.pkl', 'rb') as handle:
-    b = pickle.load(handle)
 
 import nltk
 import pandas as pd
