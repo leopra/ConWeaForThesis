@@ -55,4 +55,4 @@ z = dataforconwea[dataforconwea['label'] != 'Telecommunications & ICT']
 
 out = pd.concat([k,z])
 out = out.sample(frac=1).reset_index().drop('index', axis=1)
-out.to_pickle('./data/eutopiavert/df.pkl')
+out.to_pickle('./data/eutopiavert/df.pkl', protocol=3)
