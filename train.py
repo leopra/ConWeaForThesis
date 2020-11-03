@@ -145,6 +145,7 @@ def main(dataset_path, print_flag=True):
         os.makedirs(dump_dir, exist_ok=True)
         os.makedirs(tmp_dir, exist_ok=True)
         max_sentence_length = 100
+        #TODO what is max sentences???
         max_sentences = 15
         max_words = 20000
         tokenizer = pickle.load(open(dataset_path + "tokenizer.pkl", "rb"))

@@ -3,15 +3,37 @@
     "tree",
     "wildfire",
     "forest",
-    "flora",
-    "fauna"
+    "timber",
+    "reforestation",
+    "planting",
+    "silviculture",
+    "woodland",
+    "forest management",
+    "woods",
+    "logging",
+    "afforestation",
+    "forest industry",
+    "rainforest",
+    "lumber",
+    "forest resources",
+    "ecosystem services",
+    "LULUCF",
+    "restoration"
+
   ],
     "Public Administration": [
     "education",
     "government",
     "administration",
     "regulation",
-    "administration"
+    "public service",
+    "governance",
+    "public authority",
+    "public office",
+    "government agency",
+    "department",
+    "public affairs",
+    "legislation"
   ],
   "Healthcare":  [
     "health",
@@ -22,7 +44,9 @@
     "pharmaceutical",
     "death",
     "cancer",
-    "therapeutic"
+    "therapeutic",
+    "medical"
+
   ],
   "Food & Beverage":  [
     "food",
@@ -30,7 +54,21 @@
     "eat",
     "drink",
     "restaurant",
-    "ingredients"
+    "ingredients",
+    "food production",
+    "food industry",
+    "beverage industry",
+    "food retail",
+    "food and drink",
+    "beverage production",
+    "catering",
+    "food delivery",
+    "plant-based",
+    "meat",
+    "cheese",
+    "insects",
+    "protein",
+    "vegan"
   ],
   "Telecommunications & ICT":  [
     "software",
@@ -38,76 +76,169 @@
     "ict",
     "communications",
     "it",
-    "app"
+    "app",
+    "telecom",
+    "telecommunication",
+    "information technology"
   ],
   "Buildings":  [
     "real estate",
     "properties",
-    "internet of things",
-    "iot",
-    "rent"
+    "rent",
+    "residential",
+    "commercial building",
+    "industrial building",
+    "green building",
+    "sustainable building",
+    "apartment",
+    "housing",
+    "HVAC",
+    "air condition",
+    "smart appliances",
+    "indoor",
+    "district heating"
   ],
   "Transportation": [
-    "carriers",
     "driving",
     "car",
     "bus",
-    "vehicle"
+    "vehicle",
+    "passengers",
+    "mobility",
+    "transit",
+    "urban mobility",
+    "mode of transportation",
+    "travel",
+    "traffic",
+    "city transport",
+    "electric mobility",
+    "shared mobility",
+    "MAAS",
+    "micromobility",
+    "scooter",
+    "e-bike"
+
+
   ],
   "Constructions": [
-    "constructions",
-    "roofing",
+    "construction",
+    "construction process",
     "demolition",
     "builder",
-    "architecture"
+    "architecture",
+    "construction & demolition",
+    "deconstruction",
+    "infrastructure",
+    "concrete",
+    "building materials",
+    "construction site"
   ],
   "Manufacturing":  [
-    "instruments",
-    "products",
+    "production",
     "manufacturer",
+    "manufacture",
+    "production",
+    "fabrication",
+    "industry",
+    "industry 4.0",
     "manufacturing",
-    "production"
+    "production process",
+    "value chain"
+
   ],
   "Utilities (electricity, water, waste)":  [
     "water",
     "electrical",
     "waste",
     "recycling",
-    "disposal"
+    "disposal",
+    "water management",
+    "waste management",
+    "electrical supply",
+    "power supply",
+    "public utility",
+    "electricity",
+    "wastewater"
   ],
   "Energy":  [
     "solar",
     "energy",
     "renewable",
     "wind",
-    "thermal"
+    "thermal",
+    "power",
+    "smart grid",
+    "energy storage",
+    "photovoltaic",
+    "kinetic",
+    "tidal",
+    "wave energy",
+    "hybrid",
+    "fuel cell",
+    "nuclear",
+    "offshore",
+    "onshore"
   ],
   "Mining":  [
     "mining",
     "mineral",
-    "gas",
+    "excavation",
     "metal",
-    "ores"
+    "ores",
+    "extraction",
+    "quarry",
+    "coalmining",
+    "drilling",
+    "mineral exploitation"
+
   ],
   "Financial services":  [
     "asset",
     "portfolio",
     "finance",
     "invest",
-    "bank"
+    "bank",
+    "credit",
+    "online banking",
+    "banking",
+    "insurance",
+    "crowdfunding",
+    "financial",
+    "cryptocurrency"
   ],
   "Agriculture":  [
+    "agribusiness",
     "farm",
-    "agriculture",
-    "seeds",
-    "greenhouse",
-    "plants"
+    "farming",
+    "plants",
+    "cultivation",
+    "agronomy",
+    "tillage",
+    "horticulture",
+    "hydroponics",
+    "Aeroponics",
+    "fishing",
+    "pest",
+    "soil",
+    "nutrient",
+    "precision farming",
+    "fertilizer",
+    "smart agriculture",
+    "Algae Cultivation"
+
+
   ],
   "Logistics":  [
     "delivery",
-    "connect",
-    "mobility",
+    "shipping",
+    "overhaul",
+    "freight",
+    "shipment",
+    "transporter",
+    "supply",
+    "supply chain",
+    "distribution network",
     "logistics",
-    "transport"
+    "distribution"
   ]
 }
