@@ -128,8 +128,9 @@ def create_train_dev(texts, labels, tokenizer, max_sentences=15, max_sentence_le
     return X_train, y_train, X_test, y_test
 
 
+#function modified to handle multilabels
 def get_from_one_hot(pred, index_to_label):
-    pred_labels = np.argmax(pred, axis=-1)
+    pred_labels = np.where(pred == 1)
     ans = []
     for l in pred_labels:
         ans.append(index_to_label[l])
@@ -227,7 +228,8 @@ def get_label_docs_dict(df, label_term_dict, pred_labels):
         label_docs_dict[l] = []
     for index, row in df.iterrows():
         line = row["sentence"]
-        label_docs_dict[pred_labels[index]].append(line)
+        for lab in pred_labels[index]:
+            label_docs_dict[lab].append(line)
     return label_docs_dict
 
 

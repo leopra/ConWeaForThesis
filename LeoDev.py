@@ -54,3 +54,11 @@ z = dataforconwea[dataforconwea['label'] != 'Telecommunications & ICT']
 out = pd.concat([k,z])
 out = out.sample(frac=1).reset_index().drop('index', axis=1)
 out.to_pickle('./data/eutopiavert/df.pkl', protocol=3)
+
+
+with open('./data/eutopiavert/df.pkl', 'rb') as handle:
+    b = pickle.load(handle)
+
+smaller = b.groupby('label', as_index=False).apply(lambda x: x.sample(20))
+smaller = smaller.reset_index().drop('level_0', axis=1).drop('level_1', axis=1).sample(frac=1).reset_index()
+smaller.to_pickle('./data/eutopiaverttest/df.pkl', protocol=3)

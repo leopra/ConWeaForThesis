@@ -13,9 +13,10 @@ from gensim.models import word2vec
 from keras_han.model import HAN
 from nltk.corpus import stopwords
 import os
-
+import numpy as np
 
 def main(dataset_path, print_flag=True):
+    dataset_path = './data/eutopiaverttest/'
     def train_word2vec(df, dataset_path):
         def get_embeddings(inp_data, vocabulary_inv, size_features=100,
                            mode='skipgram',
@@ -94,6 +95,39 @@ def main(dataset_path, print_flag=True):
                     max_label = l
             return max_label
 
+        #this an implementation for multilabel, returns a one-hot-encoded array
+        def argmax_multilabel(count_dict, percentage=0.2):
+            total = 0
+            labcounts = []
+            for l in labels:
+                count = 0
+                try:
+                    for t in count_dict[l]:
+                        count += count_dict[l][t]
+                except:
+                    pass
+                labcounts.append((l,count))
+                total += count
+
+            current = np.zeros(len(labels))
+
+            #add 1 to labels over the threshold
+            for i in range(len(current)):
+                if (labcounts[i][1] / total ) >= percentage:
+                    current[i] = 1.0
+
+            #if there was no label over the threshold give the best one
+            if np.sum(current) == 0:
+                labcounts = [x[1] for x in labcounts]
+                index_max = max(range(len(labcounts)), key=labcounts.__getitem__)
+                current[index_max] = 1.0
+
+            return current
+
+            #TODO DEBUG
+            # x = {'a': {'pane':3, 'riso':2}, 'b': {'pesce':10, 'carne':22}, 'c': {'papate': 99, 'gamb': 101}}
+            # argmax_multilabel(x, 0.2)
+
         y = []
         X = []
         y_true = []
@@ -128,8 +162,10 @@ def main(dataset_path, print_flag=True):
                         except:
                             count_dict[l][word] = 1
             if flag:
-                lbl = argmax_label(count_dict)
-                if not lbl:
+                lbl = argmax_multilabel(count_dict)
+                print(lbl)
+                #TODO currently is impossible that there is no label, in the future maybe this should be possible
+                if np.sum(lbl) == 0:
                     continue
                 y.append(lbl)
                 X.append(line)
@@ -151,7 +187,8 @@ def main(dataset_path, print_flag=True):
         tokenizer = pickle.load(open(dataset_path + "tokenizer.pkl", "rb"))
 
         X, y, y_true = generate_pseudo_labels(df, labels, label_term_dict, tokenizer)
-        y_one_hot = make_one_hot(y, label_to_index)
+        #y_one_hot = make_one_hot(y, label_to_index)
+        y_one_hot = np.array(y)
         print("Fitting tokenizer...")
         print("Splitting into train, dev...")
         X_train, y_train, X_val, y_val = create_train_dev(X, labels=y_one_hot, tokenizer=tokenizer,
@@ -174,10 +211,11 @@ def main(dataset_path, print_flag=True):
         print("****************** CLASSIFICATION REPORT FOR All DOCUMENTS ********************")
         X_all = prep_data(texts=df["sentence"], max_sentences=max_sentences, max_sentence_length=max_sentence_length,
                           tokenizer=tokenizer)
+
         y_true_all = df["label"]
         pred = model.predict(X_all)
         pred_labels = get_from_one_hot(pred, index_to_label)
-        print(classification_report(y_true_all, pred_labels))
+        #print(classification_report(y_true_all, pred_labels))
         print("Dumping the model...")
         model.save_weights(dump_dir + "model_weights_" + model_name + ".h5")
         model.save(dump_dir + "model_" + model_name + ".h5")
