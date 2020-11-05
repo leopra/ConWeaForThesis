@@ -217,19 +217,10 @@ def main(dataset_path, print_flag=True):
         pred = model.predict(X_all)
         pred_labels = get_from_one_hot(pred, index_to_label)
 
-        prednp = np.array(pred)
-        print(prednp)
-        print(type(prednp))
-        print(type(prednp[0]))
-        print(prednp.shape)
-
+        prednp = np.array(pred_labels)
         y_true_allnp = np.array(y_true_all)
         #this is to fix the error of different dimensions
         y_true_allnp = np.array([np.array(x) for x in y_true_allnp])
-        print(y_true_allnp)
-        print(type(y_true_allnp))
-        print(type(y_true_allnp[0]))
-        print(y_true_allnp.shape)
 
 
         from sklearn.metrics import confusion_matrix
