@@ -2,10 +2,11 @@ import os
 import re
 import sys
 import pickle
-
 import nltk
 import pandas as pd
 from sklearn.preprocessing import MultiLabelBinarizer
+from langdetect import detect
+
 
 PATH = os.path.dirname(os.__file__)
 sys.path.append(os.path.join(PATH,'Libraries-GP'))
@@ -37,15 +38,30 @@ dfcon = dfcon[dfcon['listlabel'].map(len) > 0]
 dfcon['todrop'] = ['Telecommunications & ICT' in r for r in dfcon['listlabel']]
 dfcon = dfcon[dfcon['todrop'] == False]
 
-mlb = MultiLabelBinarizer()
-categories_1hot = mlb.fit_transform(dfcon.listlabel)
-categories_cols = mlb.classes_
-dfcon['label'] = list(categories_1hot)
-#this is the final dataset onehotencoded
-dfcon = dfcon[['description','label']]
-dfcon.columns= ['sentence','label']
+#drop empty sentences
+dfcon = dfcon[dfcon['description'].map(len) > 20]
 
-out = dfcon.sample(frac=1).reset_index().drop('index', axis=1)
+def detectcatcherror(stringa):
+    try:
+        language = detect(stringa)
+    except:
+        language = "error"
+        print("This row throws and error:", stringa)
+    return language
+
+#detect description not in english
+dfcon['lang'] = dfcon['description'].apply(lambda x: detectcatcherror(x))
+
+dfconengl = dfcon[dfcon['lang'] == 'en']
+mlb = MultiLabelBinarizer()
+categories_1hot = mlb.fit_transform(dfconengl.listlabel)
+categories_cols = mlb.classes_
+dfconengl['label'] = list(categories_1hot)
+#this is the final dataset onehotencoded
+dfconengl = dfconengl[['description','label']]
+dfconengl.columns= ['sentence','label']
+
+out = dfcon.reset_index().drop('index', axis=1)
 out.to_pickle('./data/eutopiavert/df.pkl', protocol=3)
 
 #
