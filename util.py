@@ -142,14 +142,17 @@ def get_from_one_hot(pred, index_to_label):
     ans = []
     for pr in pred:
         onesamplelabels = []
-        pred_labels = np.where(pr > 0.6) #TODO choose this threshold better maybe
+        #TODO choose this threshold better maybe
+        pred_labels = np.where(pr > 0.6, pr, pr)[0]
+
         #TODO this is very bad, if the result is less that 0.5 for everything i don't think i should return the highest label
         # where returns a tuple but argmax returns integer, that is the reason for indexing [0]
-        if len(pred_labels[0]) == 0:
+        if pred_labels.size == 0:
             pred_label = np.argmax(pred, axis=-1)
-            ans.append([index_to_label[pred_label]])
+            onesamplelabels.append(index_to_label[pred_label])
+            ans.append(onesamplelabels)
         else:
-            for l in pred_labels[0]:
+            for l in pred_labels:
                 onesamplelabels.append(index_to_label[l])
             ans.append(onesamplelabels)
     return ans
