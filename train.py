@@ -211,13 +211,21 @@ def main(dataset_path, print_flag=True):
                           tokenizer=tokenizer)
 
         y_true_all = df["label"]
+        #pred now is an array as long as the classes
         pred = model.predict(X_all)
-        pred_labels = get_from_one_hot(pred, index_to_label)
+        #pred_labels = get_from_one_hot(pred, index_to_label)
+
+        # from sklearn.metrics import confusion_matrix
+        # for i,l in enumerate(labels):
+        #     tn, fp, fn, tp = confusion_matrix(y_true_all[:,i], pred[:,i]).ravel()
+        #
+        # tn, fp, fn, tp = confusion_matrix(y_true_all, pred).ravel()
+
         #print(classification_report(y_true_all, pred_labels))
         print("Dumping the model...")
         model.save_weights(dump_dir + "model_weights_" + model_name + ".h5")
         model.save(dump_dir + "model_" + model_name + ".h5")
-        return pred_labels
+        return pred
 
     def expand_seeds(df, label_term_dict, pred_labels, label_to_index, index_to_label, word_to_index, index_to_word,
                      inv_docfreq, docfreq, it, n1, doc_freq_thresh=5):
@@ -341,11 +349,14 @@ def main(dataset_path, print_flag=True):
     inv_docfreq = calculate_inv_doc_freq(df, docfreq)
 
     train_word2vec(df, dataset_path)
+
+    from sklearn.metrics import confusion_matrix
     for i in range(6):
         print("ITERATION: ", i)
         pred_labels = train_classifier(df, labels, label_term_dict, label_to_index, index_to_label, dataset_path)
         label_term_dict, components = expand_seeds(df, label_term_dict, pred_labels, label_to_index, index_to_label,
                                                    word_to_index, index_to_word, inv_docfreq, docfreq, i, n1=5)
+
         if print_flag:
             print_label_term_dict(label_term_dict, components)
         print("#" * 80)
