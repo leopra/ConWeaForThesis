@@ -1,5 +1,7 @@
 import argparse
 import json
+import re
+
 import numpy as np
 import flair, torch
 from collections import defaultdict
@@ -10,7 +12,7 @@ from flair.embeddings import BertEmbeddings
 from nltk import sent_tokenize
 from nltk.corpus import stopwords
 from util import *
-
+import json
 
 def main(dataset_path, temp_dir):
     def dump_bert_vecs(df, dump_dir):
@@ -177,12 +179,42 @@ def main(dataset_path, temp_dir):
             df["sentence"][index] = " . ".join(sentences)
         return df, word_cluster
 
+    # dataset_path = './data/eutopiavert/'
+    # temp_dir = './temp'
     pkl_dump_dir = dataset_path
     bert_dump_dir = temp_dir + "bert/"
     cluster_dump_dir = temp_dir + "clusters/"
     df = pickle.load(open(pkl_dump_dir + "df.pkl", "rb"))
     with open(pkl_dump_dir + "seedwords.json") as fp:
         label_seedwords_dict = json.load(fp)
+
+    def smallclean(k):
+        x = k.casefold()
+        x = re.sub("\S*\d\S*", "", x).strip()
+        x = re.sub(' +', ' ', x)
+        return x
+
+    df['sentence'] = df['sentence'].apply(lambda x: smallclean(x))
+    #this code substitutes bigrams in the text and seedwords with fake monograms and saves them
+    bigrams = []
+    #mapping from bigrams to fake monograms
+    bigtomon = {}
+
+    for vert in label_seedwords_dict.keys():
+        for i,seed in enumerate(label_seedwords_dict[vert]):
+            x = seed.split(' ')
+            if len(x) == 2:
+                bigrams.append(seed)
+                bigtomon[seed] = "jj" + str(i)
+
+    for bigr in bigrams:
+        df['sentence'] = df['sentence'].apply(lambda x: re.sub(bigr, bigtomon[bigr], x))
+
+    jso = json.dumps(bigtomon)
+    f = open("./data/eutopiavert/bigtomon.json", "w")
+    f.write(jso)
+    f.close()
+
     dump_bert_vecs(df, bert_dump_dir)
     tau = compute_tau(label_seedwords_dict, bert_dump_dir)
     print("Cluster Similarity Threshold: ", tau)

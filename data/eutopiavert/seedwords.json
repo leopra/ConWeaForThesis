@@ -17,7 +17,7 @@
     "lumber",
     "forest resources",
     "ecosystem services",
-    "LULUCF",
+    "lulucf",
     "restoration"
 
   ],
@@ -92,7 +92,7 @@
     "sustainable building",
     "apartment",
     "housing",
-    "HVAC",
+    "hvac",
     "air condition",
     "smart appliances",
     "indoor",
@@ -113,7 +113,7 @@
     "city transport",
     "electric mobility",
     "shared mobility",
-    "MAAS",
+    "maas",
     "micromobility",
     "scooter",
     "e-bike"
@@ -216,7 +216,7 @@
     "tillage",
     "horticulture",
     "hydroponics",
-    "Aeroponics",
+    "aeroponics",
     "fishing",
     "pest",
     "soil",
@@ -224,7 +224,7 @@
     "precision farming",
     "fertilizer",
     "smart agriculture",
-    "Algae Cultivation"
+    "algae cultivation"
 
 
   ],

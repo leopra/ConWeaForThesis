@@ -16,7 +16,6 @@ import os
 import numpy as np
 
 def main(dataset_path, print_flag=True):
-    dataset_path = './data/eutopiaverttest/'
     def train_word2vec(df, dataset_path):
         def get_embeddings(inp_data, vocabulary_inv, size_features=100,
                            mode='skipgram',
@@ -163,7 +162,6 @@ def main(dataset_path, print_flag=True):
                             count_dict[l][word] = 1
             if flag:
                 lbl = argmax_multilabel(count_dict)
-                print(lbl)
                 #TODO currently is impossible that there is no label, in the future maybe this should be possible
                 if np.sum(lbl) == 0:
                     continue

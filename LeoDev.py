@@ -30,35 +30,34 @@ data = data[data['description'] != '—']
 data = cp.assign_eutop_labelsV2(data)
 
 
-#CREATE 1HOT encode for categories
-mlb = MultiLabelBinarizer()
-categories_1hot = mlb.fit_transform(data.listlabel)
-categories_cols = mlb.classes_
-
-#this is the final dataset onehotencoded
-dataready = pd.concat([data[['id', 'description','listlabel']],pd.DataFrame(categories_1hot, columns=categories_cols, index=data.index)],axis=1)
-
-#see descriptions length
-def clean_and_tokenize(text):
-    text = re.sub('[;,:\!\?\.\(\)\n]', ' ', text).replace('[\s+]', ' ')
-    return nltk.word_tokenize(text)
-
 #create single label dataframe compatible with conwea
-datasinglelabel = dataready[dataready['listlabel'].map(len) == 1]
-dataforconwea = datasinglelabel[['description', 'listlabel']]
-dataforconwea['listlabel'] = dataforconwea['listlabel'].apply(lambda x: x[0])
-dataforconwea.columns= ['sentence','label']
-k = dataforconwea[dataforconwea['label'] == 'Telecommunications & ICT'].sample(6000)
-z = dataforconwea[dataforconwea['label'] != 'Telecommunications & ICT']
+dfcon = data[['description', 'listlabel']]
+dfcon = dfcon[dfcon['listlabel'].map(len) > 0]
 
-out = pd.concat([k,z])
-out = out.sample(frac=1).reset_index().drop('index', axis=1)
+dfcon['todrop'] = ['Telecommunications & ICT' in r for r in dfcon['listlabel']]
+dfcon = dfcon[dfcon['todrop'] == False]
+
+mlb = MultiLabelBinarizer()
+categories_1hot = mlb.fit_transform(dfcon.listlabel)
+categories_cols = mlb.classes_
+dfcon['label'] = list(categories_1hot)
+#this is the final dataset onehotencoded
+dfcon = dfcon[['description','label']]
+dfcon.columns= ['sentence','label']
+
+out = dfcon.sample(frac=1).reset_index().drop('index', axis=1)
 out.to_pickle('./data/eutopiavert/df.pkl', protocol=3)
 
-
-with open('./data/eutopiavert/df.pkl', 'rb') as handle:
-    b = pickle.load(handle)
-
-smaller = b.groupby('label', as_index=False).apply(lambda x: x.sample(20))
-smaller = smaller.reset_index().drop('level_0', axis=1).drop('level_1', axis=1).sample(frac=1).reset_index()
-smaller.to_pickle('./data/eutopiaverttest/df.pkl', protocol=3)
+#
+# #see descriptions length
+# def clean_and_tokenize(text):
+#     text = re.sub('[;,:\!\?\.\(\)\n]', ' ', text).replace('[\s+]', ' ')
+#     return nltk.word_tokenize(text)
+#
+#
+# with open('./data/eutopiavert/df.pkl', 'rb') as handle:
+#     b = pickle.load(handle)
+#
+# smaller = b.groupby('label', as_index=False).apply(lambda x: x.sample(20))
+# smaller = smaller.reset_index().drop('level_0', axis=1).drop('level_1', axis=1).sample(frac=1).reset_index()
+# smaller.to_pickle('./data/eutopiaverttest/df.pkl', protocol=3)
