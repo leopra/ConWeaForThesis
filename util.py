@@ -8,6 +8,7 @@ from nltk import tokenize
 from sklearn.model_selection import train_test_split
 from keras.preprocessing.sequence import pad_sequences
 from keras.preprocessing.text import Tokenizer
+from sklearn.preprocessing import MultiLabelBinarizer
 
 
 def cosine_similarity(a, b):
@@ -71,11 +72,19 @@ def to_tokenized_string(sentence):
     tokenized = " ".join([t.text for t in sentence.tokens])
     return tokenized
 
-
+#this function creates a mapping for one-hot-encoding
 def create_label_index_maps(labels):
+    #as i want the order of clases to be consistent
+    # i use the multilabel binarizer (only sort class alphabetically)
+    # (requires an array of array)
+    labels = [labels]
+    mlb = MultiLabelBinarizer()
+    mlb.fit_transform(labels)
+    categories_cols = mlb.classes_
+
     label_to_index = {}
     index_to_label = {}
-    for i, label in enumerate(labels):
+    for i, label in enumerate(categories_cols):
         label_to_index[label] = i
         index_to_label[i] = label
     return label_to_index, index_to_label
@@ -131,7 +140,7 @@ def create_train_dev(texts, labels, tokenizer, max_sentences=15, max_sentence_le
 #function modified to handle multilabels
 def get_from_one_hot(pred, index_to_label):
     for pr in pred:
-        pred_labels = np.where(pr == 1)
+        pred_labels = np.where(pr > 0.6) #TODO choose this threshold better maybe
         ans = []
         for l in pred_labels:
             ans.append(index_to_label[l])

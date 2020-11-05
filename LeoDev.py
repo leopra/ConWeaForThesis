@@ -32,7 +32,7 @@ data = cp.assign_eutop_labelsV2(data)
 
 
 #create single label dataframe compatible with conwea
-dfcon = data[['description', 'listlabel']]
+dfcon = data[['id', 'description', 'listlabel']]
 dfcon = dfcon[dfcon['listlabel'].map(len) > 0]
 
 dfcon['todrop'] = ['Telecommunications & ICT' in r for r in dfcon['listlabel']]

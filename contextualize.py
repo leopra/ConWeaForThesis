@@ -200,18 +200,31 @@ def main(dataset_path, temp_dir):
     #mapping from bigrams to fake monograms
     bigtomon = {}
 
+    newdictseed = {}
     for vert in label_seedwords_dict.keys():
+        newterms = []
         for i,seed in enumerate(label_seedwords_dict[vert]):
             x = seed.split(' ')
             if len(x) == 2:
                 bigrams.append(seed)
                 bigtomon[seed] = "jj" + str(i)
+                newterms.append("jj" + str(i))
+            else:
+                newterms.append(seed)
+        newdictseed[vert]=newterms
 
     for bigr in bigrams:
         df['sentence'] = df['sentence'].apply(lambda x: re.sub(bigr, bigtomon[bigr], x))
 
+    #save the mapping from bigram to monogram
     jso = json.dumps(bigtomon)
-    f = open("./data/eutopiavert/bigtomon.json", "w")
+    f = open(dataset_path + "bigtomon.json", "w")
+    f.write(jso)
+    f.close()
+
+    #save the encoded dictionary
+    jso = json.dumps(newdictseed)
+    f= open(dataset_path +'seedwordsencoded.json', "w")
     f.write(jso)
     f.close()
 

@@ -16,6 +16,7 @@ import os
 import numpy as np
 
 def main(dataset_path, print_flag=True):
+    dataset_path = './data/eutopiaverttest/'
     def train_word2vec(df, dataset_path):
         def get_embeddings(inp_data, vocabulary_inv, size_features=100,
                            mode='skipgram',
@@ -334,12 +335,14 @@ def main(dataset_path, print_flag=True):
     pkl_dump_dir = dataset_path
     df = pickle.load(open(pkl_dump_dir + "df_contextualized.pkl", "rb"))
     word_cluster = pickle.load(open(pkl_dump_dir + "word_cluster_map.pkl", "rb"))
-    with open(pkl_dump_dir + "seedwords.json") as fp:
+    with open(pkl_dump_dir + "seedwordsencoded.json") as fp:
         label_term_dict = json.load(fp)
 
     label_term_dict = add_all_interpretations(label_term_dict, word_cluster)
     print_label_term_dict(label_term_dict, None, print_components=False)
     labels = list(set(label_term_dict.keys()))
+
+    #creates onehot mappings name- index, index-name, should be coherent with multilabel binarizer
     label_to_index, index_to_label = create_label_index_maps(labels)
     df, word_vec = preprocess(df, word_cluster)
     del word_cluster

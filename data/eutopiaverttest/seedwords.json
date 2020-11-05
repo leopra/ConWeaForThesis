@@ -1,27 +1,5 @@
 {
-  "Forestry": [
-    "tree",
-    "wildfire",
-    "forest",
-    "timber",
-    "reforestation",
-    "planting",
-    "silviculture",
-    "woodland",
-    "forest management",
-    "woods",
-    "logging",
-    "afforestation",
-    "forest industry",
-    "rainforest",
-    "lumber",
-    "forest resources",
-    "ecosystem services",
-    "lulucf",
-    "restoration"
-
-  ],
-    "Public Administration": [
+  "Public Administration": [
     "education",
     "government",
     "administration",
@@ -69,17 +47,6 @@
     "insects",
     "protein",
     "vegan"
-  ],
-  "Telecommunications & ICT":  [
-    "software",
-    "saas",
-    "ict",
-    "communications",
-    "it",
-    "app",
-    "telecom",
-    "telecommunication",
-    "information technology"
   ],
   "Buildings":  [
     "real estate",
