@@ -223,9 +223,8 @@ def main(dataset_path, print_flag=True):
             tn, fp, fn, tp = confusion_matrix(y_true_allnp[:,i], prednp[:,i]).ravel()
             precision = tp/(tp+fp)
             recall = tp/(tp+fn)
-            print('Agriculture : precision {}, recall: {}'.format(precision, recall))
+            print('{} : precision {}, recall: {}'.format(l,precision, recall))
 
-        tn, fp, fn, tp = confusion_matrix(y_true_all, pred).ravel()
 
         #print(classification_report(y_true_all, pred_labels))
         print("Dumping the model...")
