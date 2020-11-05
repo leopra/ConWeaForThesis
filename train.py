@@ -14,6 +14,7 @@ from keras_han.model import HAN
 from nltk.corpus import stopwords
 import os
 import numpy as np
+import pandas as pd
 
 def main(dataset_path, print_flag=True):
     dataset_path = './data/eutopiaverttest/'
@@ -227,6 +228,17 @@ def main(dataset_path, print_flag=True):
             recall = tp/(tp+fn)
             print('{} : precision {}, recall: {}'.format(l,precision, recall))
 
+        topn = 3
+        perf_summary = pd.DataFrame(columns=['model', 'metric', 'value'])
+        predictions = pred_labels
+        for i in range(1, topn + 1):
+            est_top = np.array([[label_to_index[label] for label in pred[0][:i]] for pred in predictions])
+            perf = y_true_allnp[range(len(y_true_allnp)), est_top.T].T.sum(axis=1) / np.minimum(np.ones(len(y_true_allnp)) * i,
+                                                                                  y_true_allnp.sum(axis=1))
+            perf_summary = perf_summary.append({'model': 'model', 'metric': 'top%d' % i, 'value': perf.mean()},
+                                               ignore_index=True)
+
+        print(perf_summary.loc[perf_summary.model == 'model', ['metric', 'value']].set_index('metric'))
 
         #print(classification_report(y_true_all, pred_labels))
         print("Dumping the model...")

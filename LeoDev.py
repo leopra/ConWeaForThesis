@@ -50,9 +50,10 @@ def detectcatcherror(stringa):
     return language
 
 #detect description not in english
-dfcon['lang'] = dfcon['description'].apply(lambda x: detectcatcherror(x))
-
+#dfcon['lang'] = dfcon['description'].apply(lambda x: detectcatcherror(x))
+dfconengl = dfcon
 dfconengl = dfcon[dfcon['lang'] == 'en']
+
 mlb = MultiLabelBinarizer()
 categories_1hot = mlb.fit_transform(dfconengl.listlabel)
 categories_cols = mlb.classes_
@@ -62,7 +63,7 @@ dfconengl = dfconengl[['description','label']]
 dfconengl.columns= ['sentence','label']
 
 out = dfcon.reset_index().drop('index', axis=1)
-out.to_pickle('./data/eutopiavert/df.pkl', protocol=3)
+out.to_pickle('./data/eutopiaverttest/df.pkl', protocol=3)
 
 #
 # #see descriptions length
