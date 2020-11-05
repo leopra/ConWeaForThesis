@@ -213,7 +213,7 @@ def main(dataset_path, print_flag=True):
         y_true_all = df["label"]
         #pred now is an array as long as the classes
         pred = model.predict(X_all)
-        #pred_labels = get_from_one_hot(pred, index_to_label)
+        pred_labels = get_from_one_hot(pred, index_to_label)
 
         # from sklearn.metrics import confusion_matrix
         # for i,l in enumerate(labels):
@@ -225,7 +225,7 @@ def main(dataset_path, print_flag=True):
         print("Dumping the model...")
         model.save_weights(dump_dir + "model_weights_" + model_name + ".h5")
         model.save(dump_dir + "model_" + model_name + ".h5")
-        return pred
+        return pred_labels
 
     def expand_seeds(df, label_term_dict, pred_labels, label_to_index, index_to_label, word_to_index, index_to_word,
                      inv_docfreq, docfreq, it, n1, doc_freq_thresh=5):
