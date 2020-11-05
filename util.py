@@ -266,8 +266,9 @@ def get_label_docs_dict(df, label_term_dict, pred_labels):
         label_docs_dict[l] = []
     for index, row in df.iterrows():
         line = row["sentence"]
-        for lab in pred_labels[index]:
-            label_docs_dict[lab].append(line)
+        for preds in pred_labels[index]:
+            for lab in preds:
+                label_docs_dict[lab].append(line)
     return label_docs_dict
 
 
