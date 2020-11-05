@@ -217,7 +217,9 @@ def main(dataset_path, print_flag=True):
         pred_labels = get_from_one_hot(pred, index_to_label)
 
         prednp = np.array(pred)
+        print(prednp)
         y_true_allnp = np.array(y_true_all)
+        print(y_true_allnp)
         from sklearn.metrics import confusion_matrix
         for i,l in enumerate(labels):
             tn, fp, fn, tp = confusion_matrix(y_true_allnp[:,i], prednp[:,i]).ravel()
