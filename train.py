@@ -224,6 +224,8 @@ def main(dataset_path, print_flag=True):
         print(prednp.shape)
 
         y_true_allnp = np.array(y_true_all)
+        #this is to fix the error of different dimensions
+        y_true_allnp = np.array([np.array(x) for x in y_true_allnp])
         print(y_true_allnp)
         print(type(y_true_allnp))
         print(type(y_true_allnp[0]))
