@@ -222,11 +222,17 @@ def main(dataset_path, print_flag=True):
         print(type(prednp))
         print(type(prednp[0]))
         print(prednp.shape)
+
         y_true_allnp = np.array(y_true_all)
         print(y_true_allnp)
         print(type(y_true_allnp))
         print(type(y_true_allnp[0]))
-        print(y_true_all.shape)
+        print(y_true_allnp.shape)
+
+        from compress_pickle import dump
+        dump(prednp,'matrix1', compression = "lzma", set_default_extension = False)
+        dump(y_true_allnp,'matrix2', compression = "lzma", set_default_extension = False)
+
         from sklearn.metrics import confusion_matrix
         for i,l in enumerate(labels):
             tn, fp, fn, tp = confusion_matrix(y_true_allnp.T[i], prednp.T[i]).ravel()
