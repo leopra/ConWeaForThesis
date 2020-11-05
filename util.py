@@ -139,8 +139,11 @@ def create_train_dev(texts, labels, tokenizer, max_sentences=15, max_sentence_le
 
 #function modified to handle multilabels
 def get_from_one_hot(pred, index_to_label):
-    print(pred[0].tolist())
-    print(index_to_label)
+#FOR DEBUG
+#     pred = np.array([np.array([0.06276411563158035, 0.026689041405916214, 0.02115209773182869, 0.02666153758764267, 0.036641381680965424, 0.06232026591897011, 0.05271370708942413, 0.0654744952917099, 0.024458739906549454, 0.0076940408907830715, 0.02747887559235096, 0.04158252850174904, 0.034140586853027344]
+# )])
+#     index_to_label = {0: 'Agriculture', 1: 'Buildings', 2: 'Constructions', 3: 'Energy', 4: 'Financial services', 5: 'Food & Beverage', 6: 'Healthcare', 7: 'Logistics', 8: 'Manufacturing', 9: 'Mining', 10: 'Public Administration', 11: 'Transportation', 12: 'Utilities (electricity, water, waste)'}
+
     ans = []
     for pr in pred:
         onesamplelabels = []
@@ -150,8 +153,8 @@ def get_from_one_hot(pred, index_to_label):
         #TODO this is very bad, if the result is less that 0.5 for everything i don't think i should return the highest label
         # where returns a tuple but argmax returns integer, that is the reason for indexing [0]
         if pred_labels.size == 0:
-            pred_label = np.argmax(pred, axis=-1)
-            onesamplelabels.append(index_to_label[pred_label])
+            pred_labels = np.argmax(pr, axis=-1)
+            onesamplelabels.append(index_to_label[pred_labels])
             ans.append(onesamplelabels)
         else:
             for l in pred_labels:
