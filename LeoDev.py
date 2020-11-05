@@ -62,7 +62,7 @@ dfconengl['label'] = list(categories_1hot)
 dfconengl = dfconengl[['description','label']]
 dfconengl.columns= ['sentence','label']
 
-out = dfcon.reset_index().drop('index', axis=1)
+out = dfcon.reset_index().drop('index', axis=1).sample(200)
 out.to_pickle('./data/eutopiaverttest/df.pkl', protocol=3)
 
 #
