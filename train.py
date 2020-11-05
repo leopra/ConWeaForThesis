@@ -217,7 +217,8 @@ def main(dataset_path, print_flag=True):
         pred = model.predict(X_all)
         pred_labels = get_from_one_hot(pred, index_to_label)
 
-        prednp = np.array(pred_labels)
+        onehotpred = [make_one_hot(x) for x in pred_labels]
+        prednp = np.array(onehotpred)
         y_true_allnp = np.array(y_true_all)
         #this is to fix the error of different dimensions
         y_true_allnp = np.array([np.array(x) for x in y_true_allnp])
