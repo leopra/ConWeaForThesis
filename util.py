@@ -130,11 +130,12 @@ def create_train_dev(texts, labels, tokenizer, max_sentences=15, max_sentence_le
 
 #function modified to handle multilabels
 def get_from_one_hot(pred, index_to_label):
-    pred_labels = np.where(pred == 1)
-    ans = []
-    for l in pred_labels:
-        ans.append(index_to_label[l])
-    return ans
+    for pr in pred:
+        pred_labels = np.where(pr == 1)
+        ans = []
+        for l in pred_labels:
+            ans.append(index_to_label[l])
+        return ans
 
 
 def calculate_df_doc_freq(df):
