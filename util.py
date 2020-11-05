@@ -102,6 +102,19 @@ def make_one_hot(y, label_to_index):
     y_new = np.asarray(y_new)
     return y_new
 
+def make_one_hotmulti(y, label_to_index):
+    labels = list(label_to_index.keys())
+    n_classes = len(labels)
+    y_new = []
+    for pred in y:
+        current = np.zeros(n_classes)
+        for label in pred:
+            i = label_to_index[label]
+            current[i] = 1.0
+        y_new.append(current)
+    y_new = np.asarray(y_new)
+    return y_new
+
 
 def prep_data(max_sentence_length, max_sentences, texts, tokenizer):
     data = np.zeros((len(texts), max_sentences, max_sentence_length), dtype='int32')
