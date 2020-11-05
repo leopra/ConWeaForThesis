@@ -225,7 +225,7 @@ def main(dataset_path, print_flag=True):
 
 
         from sklearn.metrics import confusion_matrix
-        for i,l in enumerate(labels):
+        for i,l in enumerate(label_to_index.keys()):
             tn, fp, fn, tp = confusion_matrix(y_true_allnp.T[i], prednp.T[i]).ravel()
             precision = tp/(tp+fp)
             recall = tp/(tp+fn)
@@ -233,7 +233,7 @@ def main(dataset_path, print_flag=True):
 
         topn = 3
         perf_summary = pd.DataFrame(columns=['model', 'metric', 'value'])
-        predictions = pred_labels
+        predictions = onehotpred
         for i in range(1, topn + 1):
             est_top = np.array([[label_to_index[label] for label in pred[0][:i]] for pred in predictions])
             perf = y_true_allnp[range(len(y_true_allnp)), est_top.T].T.sum(axis=1) / np.minimum(np.ones(len(y_true_allnp)) * i,
