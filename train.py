@@ -218,14 +218,10 @@ def main(dataset_path, print_flag=True):
         pred_labels = get_from_one_hot(pred, index_to_label)
 
         prednp = np.array(pred)
-        print(type(prednp), type(prednp[0]))
-        print(prednp)
         y_true_allnp = np.array(y_true_all)
-        print(type(y_true_allnp), type(y_true_allnp[0]))
-        print(y_true_allnp)
         from sklearn.metrics import confusion_matrix
         for i,l in enumerate(labels):
-            tn, fp, fn, tp = confusion_matrix(y_true_allnp[:,i], prednp[:,i]).ravel()
+            tn, fp, fn, tp = confusion_matrix(y_true_allnp.T[i], prednp.T[i]).ravel()
             precision = tp/(tp+fp)
             recall = tp/(tp+fn)
             print('{} : precision {}, recall: {}'.format(l,precision, recall))
