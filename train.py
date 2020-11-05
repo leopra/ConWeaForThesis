@@ -216,11 +216,16 @@ def main(dataset_path, print_flag=True):
         pred = model.predict(X_all)
         pred_labels = get_from_one_hot(pred, index_to_label)
 
-        # from sklearn.metrics import confusion_matrix
-        # for i,l in enumerate(labels):
-        #     tn, fp, fn, tp = confusion_matrix(y_true_all[:,i], pred[:,i]).ravel()
-        #
-        # tn, fp, fn, tp = confusion_matrix(y_true_all, pred).ravel()
+        prednp = np.array(pred)
+        y_true_allnp = np.array(y_true_all)
+        from sklearn.metrics import confusion_matrix
+        for i,l in enumerate(labels):
+            tn, fp, fn, tp = confusion_matrix(y_true_allnp[:,i], prednp[:,i]).ravel()
+            precision = tp/(tp+fp)
+            recall = tp/(tp+fn)
+            print('Agriculture : precision {}, recall: {}'.format(precision, recall))
+
+        tn, fp, fn, tp = confusion_matrix(y_true_all, pred).ravel()
 
         #print(classification_report(y_true_all, pred_labels))
         print("Dumping the model...")

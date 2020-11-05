@@ -142,6 +142,9 @@ def get_from_one_hot(pred, index_to_label):
     for pr in pred:
         pred_labels = np.where(pr > 0.6) #TODO choose this threshold better maybe
         ans = []
+        #TODO this is very bad, if the result is less that 0.5 for everything i don't think i should return the highest label
+        if not pred_labels:
+            pred_labels = np.argmax(pred, axis=-1)
         for l in pred_labels:
             ans.append(index_to_label[l])
         return ans
