@@ -141,15 +141,17 @@ def create_train_dev(texts, labels, tokenizer, max_sentences=15, max_sentence_le
 def get_from_one_hot(pred, index_to_label):
     ans = []
     for pr in pred:
+        onesamplelabels = []
         pred_labels = np.where(pr > 0.6) #TODO choose this threshold better maybe
         #TODO this is very bad, if the result is less that 0.5 for everything i don't think i should return the highest label
         # where returns a tuple but argmax returns integer, that is the reason for indexing [0]
         if len(pred_labels[0]) == 0:
-            pred_label = np.array(np.argmax(pred, axis=-1))
+            pred_label = np.argmax(pred, axis=-1)
             ans.append([index_to_label[pred_label]])
         else:
             for l in pred_labels[0]:
-                ans.append(index_to_label[l])
+                onesamplelabels.append(index_to_label[l])
+            ans.append(onesamplelabels)
     return ans
 
 
