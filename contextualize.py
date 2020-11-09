@@ -141,7 +141,10 @@ def main(dataset_path, temp_dir):
             sentences = sent_tokenize(line)
             for sentence_ind, sent in enumerate(sentences):
                 sentence = Sentence(sent, use_tokenizer=True)
-                embedding.embed(sentence)
+                try:
+                    embedding.embed(sentence)
+                except e:
+                    print(sentence)
                 for token_ind, token in enumerate(sentence):
                     word = token.text
                     if word in stop_words:
