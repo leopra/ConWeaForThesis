@@ -62,8 +62,9 @@ dfconengl['label'] = list(categories_1hot)
 dfconengl = dfconengl[['description','label']]
 dfconengl.columns= ['sentence','label']
 
-out = dfconengl.sample(200).reset_index().drop('index', axis=1)
-out.to_pickle('./data/eutopiaverttest/df.pkl', protocol=3)
+
+out = dfconengl.sample(30000).reset_index().drop('index', axis=1)
+out.to_pickle('./data/eutopiavert30000/df.pkl', protocol=3)
 
 #
 # #see descriptions length
@@ -72,8 +73,8 @@ out.to_pickle('./data/eutopiaverttest/df.pkl', protocol=3)
 #     return nltk.word_tokenize(text)
 #
 #
-# with open('./data/eutopiavert/df.pkl', 'rb') as handle:
-#     b = pickle.load(handle)
+with open('./data/eutopiavert30000/df.pkl', 'rb') as handle:
+    b = pickle.load(handle)
 #
 # smaller = b.groupby('label', as_index=False).apply(lambda x: x.sample(20))
 # smaller = smaller.reset_index().drop('level_0', axis=1).drop('level_1', axis=1).sample(frac=1).reset_index()

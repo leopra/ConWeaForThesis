@@ -267,8 +267,8 @@ def get_label_docs_dict(df, label_term_dict, pred_labels):
     for index, row in df.iterrows():
         line = row["sentence"]
         for preds in pred_labels[index]:
-            for lab in preds:
-                label_docs_dict[lab].append(line)
+            #for each label of the multilabels we put the document in the label bucket
+                label_docs_dict[preds].append(line)
     return label_docs_dict
 
 
