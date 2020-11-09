@@ -17,7 +17,7 @@ import numpy as np
 import pandas as pd
 
 def main(dataset_path, print_flag=True):
-    dataset_path = './data/eutopiaverttest/'
+    #dataset_path = './data/eutopiaverttest/'
     def train_word2vec(df, dataset_path):
         def get_embeddings(inp_data, vocabulary_inv, size_features=100,
                            mode='skipgram',
@@ -387,10 +387,10 @@ def main(dataset_path, print_flag=True):
 
 
 if __name__ == "__main__":
-    # parser = argparse.ArgumentParser()
-    # parser.add_argument('--dataset_path', type=str, default='./data/nyt/')
-    # parser.add_argument('--gpu_id', type=str, default="cpu")
-    # args = parser.parse_args()
-    # if args.gpu_id != "cpu":
-    #     os.environ["CUDA_VISIBLE_DEVICES"] = str(args.gpu_id)
-    main(dataset_path='aaa') #args.dataset_path)
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--dataset_path', type=str, default='./data/nyt/')
+    parser.add_argument('--gpu_id', type=str, default="cpu")
+    args = parser.parse_args()
+    if args.gpu_id != "cpu":
+        os.environ["CUDA_VISIBLE_DEVICES"] = str(args.gpu_id)
+    main(dataset_path=args.dataset_path)
