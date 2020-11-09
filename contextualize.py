@@ -35,6 +35,7 @@ def main(dataset_path, temp_dir):
                 except Exception as e:
                     except_counter += 1
                     print("Exception Counter while getting BERT: ", except_counter, sentence_ind, index, e)
+                    print(sentence)
                     continue
                 for token_ind, token in enumerate(sentence):
                     word = token.text
