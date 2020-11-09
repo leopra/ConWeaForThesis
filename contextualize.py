@@ -143,7 +143,8 @@ def main(dataset_path, temp_dir):
                 sentence = Sentence(sent, use_tokenizer=True)
                 try:
                     embedding.embed(sentence)
-                except e:
+                except:
+                    print(index)
                     print(sentence)
                 for token_ind, token in enumerate(sentence):
                     word = token.text
