@@ -203,7 +203,7 @@ def main(dataset_path, print_flag=True):
                     embedding_matrix=embedding_matrix)
         print("Compiling model...")
         model.summary()
-        model.compile(loss="binary_crossentropy", optimizer='adam', metrics=['acc',TopKCategoricalAccuracy])
+        model.compile(loss="binary_crossentropy", optimizer='adam', metrics=['acc',TopKCategoricalAccuracy()])
         print("model fitting - Hierachical attention network...")
         es = EarlyStopping(monitor='val_loss', mode='min', verbose=1, patience=3)
         mc = ModelCheckpoint(filepath=tmp_dir + 'model.{epoch:02d}-{val_loss:.2f}.hdf5', monitor='val_acc', mode='max',
