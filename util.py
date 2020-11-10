@@ -120,7 +120,8 @@ def prep_data(max_sentence_length, max_sentences, texts, tokenizer):
     data = np.zeros((len(texts), max_sentences, max_sentence_length), dtype='int32')
     documents = []
     for text in texts:
-        sents = tokenize.sent_tokenize(text)
+        #added lowercase
+        sents = tokenize.sent_tokenize(text.lower())
         documents.append(sents)
     for i, sentences in enumerate(documents):
         tokenized_sentences = tokenizer.texts_to_sequences(
