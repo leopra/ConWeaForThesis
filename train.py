@@ -241,9 +241,9 @@ def main(dataset_path, print_flag=True):
         topk2_accuracypseudo = TopKCategoricalAccuracy(k=2, name="top_k2_categorical_accuracy", dtype=None)
         topk3_accuracypseudo = TopKCategoricalAccuracy(k=3, name="top_k3_categorical_accuracy", dtype=None)
 
-        topk1_accuracypseudo.update_state(y_true=y_true_allnp, y_pred=y)
-        topk2_accuracypseudo.update_state(y_true=y_true_allnp, y_pred=y)
-        topk3_accuracypseudo.update_state(y_true=y_true_allnp, y_pred=y)
+        topk1_accuracypseudo.update_state(y_true=y_true_allnp, y_pred=y_one_hot)
+        topk2_accuracypseudo.update_state(y_true=y_true_allnp, y_pred=y_one_hot)
+        topk3_accuracypseudo.update_state(y_true=y_true_allnp, y_pred=y_one_hot)
 
         print("ACCURACY PSEUDO LABELS")
         print("K1: ", topk1_accuracypseudo.result().numpy())
