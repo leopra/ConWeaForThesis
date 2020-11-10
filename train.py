@@ -98,7 +98,7 @@ def main(dataset_path, print_flag=True):
             return max_label
 
         #this an implementation for multilabel, returns a one-hot-encoded array
-        def argmax_multilabel(count_dict, percentage=0.2):
+        def argmax_multilabel(count_dict, percentage=0.4):
             total = 0
             labcounts = []
             for l in labels:
@@ -220,6 +220,7 @@ def main(dataset_path, print_flag=True):
 
         onehotpred = make_one_hotmulti(pred_labels, label_to_index)
         prednp = np.array(onehotpred).astype(np.int64)
+
         y_true_allnp = np.array(y_true_all)
         #this is to fix the error of different dimensions
         y_true_allnp = np.array([np.array(x) for x in y_true_allnp])
@@ -236,8 +237,20 @@ def main(dataset_path, print_flag=True):
             recall = tp/(tp+fn)
             print('{} : precision {}, recall: {}'.format(l,precision, recall))
 
+        topk1_accuracypseudo = TopKCategoricalAccuracy(k=1, name="top_k1_categorical_accuracy", dtype=None)
+        topk2_accuracypseudo = TopKCategoricalAccuracy(k=2, name="top_k2_categorical_accuracy", dtype=None)
+        topk3_accuracypseudo = TopKCategoricalAccuracy(k=3, name="top_k3_categorical_accuracy", dtype=None)
 
-        #keras top-k accuracy
+        topk1_accuracypseudo.update_state(y_true=y_true_allnp, y_pred=y)
+        topk2_accuracypseudo.update_state(y_true=y_true_allnp, y_pred=y)
+        topk3_accuracypseudo.update_state(y_true=y_true_allnp, y_pred=y)
+
+        print("ACCURACY PSEUDO LABELS")
+        print("K1: ", topk1_accuracypseudo.result().numpy())
+        print("K2: ", topk2_accuracypseudo.result().numpy())
+        print("K3: ", topk3_accuracypseudo.result().numpy())
+
+        #keras top-k accuracy on nn prediction
         topk1_accuracy = TopKCategoricalAccuracy(k=1, name="top_k1_categorical_accuracy", dtype=None)
         topk2_accuracy = TopKCategoricalAccuracy(k=2, name="top_k2_categorical_accuracy", dtype=None)
         topk3_accuracy = TopKCategoricalAccuracy(k=3, name="top_k3_categorical_accuracy", dtype=None)
@@ -246,6 +259,7 @@ def main(dataset_path, print_flag=True):
         topk2_accuracy.update_state(y_true=y_true_allnp.astype(np.float64), y_pred=pred)
         topk3_accuracy.update_state(y_true=y_true_allnp.astype(np.float64), y_pred=pred)
 
+        print("ACCURACY NN PREDICTION")
         print("K1: ", topk1_accuracy.result().numpy())
         print("K2: ",topk2_accuracy.result().numpy())
         print("K3: ", topk3_accuracy.result().numpy())
