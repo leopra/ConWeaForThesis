@@ -237,18 +237,17 @@ def main(dataset_path, print_flag=True):
             recall = tp/(tp+fn)
             print('{} : precision {}, recall: {}'.format(l,precision, recall))
 
-        topk1_accuracypseudo = TopKCategoricalAccuracy(k=1, name="top_k1_categorical_accuracy", dtype=None)
-        topk2_accuracypseudo = TopKCategoricalAccuracy(k=2, name="top_k2_categorical_accuracy", dtype=None)
-        topk3_accuracypseudo = TopKCategoricalAccuracy(k=3, name="top_k3_categorical_accuracy", dtype=None)
-
-        topk1_accuracypseudo.update_state(y_true=y_true_allnp, y_pred=y_one_hot)
-        topk2_accuracypseudo.update_state(y_true=y_true_allnp, y_pred=y_one_hot)
-        topk3_accuracypseudo.update_state(y_true=y_true_allnp, y_pred=y_one_hot)
-        print(y_one_hot.shape)
-        print("ACCURACY PSEUDO LABELS")
-        print("K1: ", topk1_accuracypseudo.result().numpy())
-        print("K2: ", topk2_accuracypseudo.result().numpy())
-        print("K3: ", topk3_accuracypseudo.result().numpy())
+        # topk1_accuracypseudo = TopKCategoricalAccuracy(k=1, name="top_k1_categorical_accuracy", dtype=None)
+        # topk2_accuracypseudo = TopKCategoricalAccuracy(k=2, name="top_k2_categorical_accuracy", dtype=None)
+        # topk3_accuracypseudo = TopKCategoricalAccuracy(k=3, name="top_k3_categorical_accuracy", dtype=None)
+        #
+        # topk1_accuracypseudo.update_state(y_true=y_true_allnp, y_pred=y_one_hot)
+        # topk2_accuracypseudo.update_state(y_true=y_true_allnp, y_pred=y_one_hot)
+        # topk3_accuracypseudo.update_state(y_true=y_true_allnp, y_pred=y_one_hot)
+        # print("ACCURACY PSEUDO LABELS")
+        # print("K1: ", topk1_accuracypseudo.result().numpy())
+        # print("K2: ", topk2_accuracypseudo.result().numpy())
+        # print("K3: ", topk3_accuracypseudo.result().numpy())
 
         #keras top-k accuracy on nn prediction
         topk1_accuracy = TopKCategoricalAccuracy(k=1, name="top_k1_categorical_accuracy", dtype=None)
