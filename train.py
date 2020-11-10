@@ -230,7 +230,7 @@ def main(dataset_path, print_flag=True):
             if sum(y_true_allnp.T[i])==0:
                 print('no {l} in dataset')
             if sum(prednp.T[i]) == 0:
-                print("no {l} ever predicted")
+                print("no {} ever predicted".format(l))
             tn, fp, fn, tp = confusion_matrix(y_true_allnp.T[i], prednp.T[i]).ravel()
             precision = tp/(tp+fp)
             recall = tp/(tp+fn)
