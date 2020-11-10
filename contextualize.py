@@ -198,8 +198,7 @@ def main(dataset_path, temp_dir):
             df["sentence"][index] = " . ".join(sentences)
         return df, word_cluster
 
-    # dataset_path = './data/eutopiavert/'
-    # temp_dir = './temp'
+
     pkl_dump_dir = dataset_path
     bert_dump_dir = temp_dir + "bert/"
     cluster_dump_dir = temp_dir + "clusters/"
@@ -248,7 +247,7 @@ def main(dataset_path, temp_dir):
     f.close()
 
     dump_bert_vecs(df, bert_dump_dir)
-    tau = compute_tau(label_seedwords_dict, bert_dump_dir)
+    tau = compute_tau(newdictseed, bert_dump_dir)
     print("Cluster Similarity Threshold: ", tau)
     cluster_words(tau, bert_dump_dir, cluster_dump_dir)
     df_contextualized, word_cluster_map = contextualize(df, cluster_dump_dir)
