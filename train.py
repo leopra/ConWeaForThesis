@@ -227,7 +227,9 @@ def main(dataset_path, print_flag=True):
         from sklearn.metrics import confusion_matrix
         for i,l in enumerate(label_to_index.keys()):
             print(y_true_allnp.T[i])
+            print(y_true_allnp.shape, y_true_allnp.dtype)
             print(prednp.T[i])
+            print(prednp.shape, prednp.dtype)
             tn, fp, fn, tp = confusion_matrix(y_true_allnp.T[i], prednp.T[i]).ravel()
             precision = tp/(tp+fp)
             recall = tp/(tp+fn)
