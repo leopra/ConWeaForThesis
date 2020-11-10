@@ -6,7 +6,7 @@ import nltk
 import pandas as pd
 from sklearn.preprocessing import MultiLabelBinarizer
 from langdetect import detect
-
+import matplotlib.pyplot as plt
 
 PATH = os.path.dirname(os.__file__)
 sys.path.append(os.path.join(PATH,'Libraries-GP'))
@@ -51,20 +51,33 @@ def detectcatcherror(stringa):
 
 #detect description not in english
 #dfcon['lang'] = dfcon['description'].apply(lambda x: detectcatcherror(x))
+
+with open('./data/eutopiavert/df.pkl', 'rb') as handle:
+    dfcon = pickle.load(handle)
+
 dfconengl = dfcon
 dfconengl = dfcon[dfcon['lang'] == 'en']
 
 mlb = MultiLabelBinarizer()
 categories_1hot = mlb.fit_transform(dfconengl.listlabel)
 categories_cols = mlb.classes_
+
+# dataready = pd.DataFrame(categories_1hot, columns=categories_cols, index=data.index)],axis=1)
+#
+# #see categories distribution
+# fig, ax = plt.subplots(1, 1, figsize=(15, 10))
+# ax.bar(categories_cols, dataready[categories_cols].sum());
+# ax.set_title('Categories')
+# ax.grid()
+
 dfconengl['label'] = list(categories_1hot)
 #this is the final dataset onehotencoded
 dfconengl = dfconengl[['description','label']]
 dfconengl.columns= ['sentence','label']
 
 
-out = dfconengl.sample(30000).reset_index().drop('index', axis=1)
-out.to_pickle('./data/eutopiavert30000/df.pkl', protocol=3)
+out = dfconengl.reset_index().drop('index', axis=1)
+out.to_pickle('./data/eutopiavert/df.pkl', protocol=3)
 
 #
 # #see descriptions length
@@ -73,8 +86,11 @@ out.to_pickle('./data/eutopiavert30000/df.pkl', protocol=3)
 #     return nltk.word_tokenize(text)
 #
 #
-with open('./data/eutopiavert30000/df.pkl', 'rb') as handle:
+with open('./data/eutopiavert2000/df.pkl', 'rb') as handle:
     b = pickle.load(handle)
+
+out = b[1320:1340].reset_index().drop('index', axis=1)
+out.to_pickle('./data/eutopiavertzz/df.pkl', protocol=3)
 #
 # smaller = b.groupby('label', as_index=False).apply(lambda x: x.sample(20))
 # smaller = smaller.reset_index().drop('level_0', axis=1).drop('level_1', axis=1).sample(frac=1).reset_index()

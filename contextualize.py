@@ -13,7 +13,7 @@ from nltk import sent_tokenize
 from nltk.corpus import stopwords
 from util import *
 import json
-
+from pytorch_pretrained_bert import BertTokenizer
 def main(dataset_path, temp_dir):
     def dump_bert_vecs(df, dump_dir):
         print("Getting BERT vectors...")
@@ -23,13 +23,20 @@ def main(dataset_path, temp_dir):
         stop_words.add("would")
         except_counter = 0
 
+        tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
         for index, row in df.iterrows():
             if index % 100 == 0:
                 print("Finished sentences: " + str(index) + " out of " + str(len(df)))
-            line = row["sentence"]
+            #all sentences are undercase now
+            line = row["sentence"].lower()
             sentences = sent_tokenize(line)
             for sentence_ind, sent in enumerate(sentences):
-                sentence = Sentence(sent, use_tokenizer=True)
+                tokenized_text = tokenizer.tokenize(sent)
+                if len(tokenized_text) > 512:
+                    print('sentence too long for Bert: truncating')
+                    sentence = Sentence(' '.join(sent[:512]), use_tokenizer=True)
+                else:
+                    sentence = Sentence(sent, use_tokenizer=True)
                 try:
                     embedding.embed(sentence)
                 except Exception as e:
@@ -135,13 +142,20 @@ def main(dataset_path, temp_dir):
         except_counter = 0
         word_cluster = {}
 
+        #this tokenizer is used to check for length > 512
+        tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
         for index, row in df.iterrows():
             if index % 100 == 0:
                 print("Finished rows: " + str(index) + " out of " + str(len(df)))
             line = row["sentence"]
             sentences = sent_tokenize(line)
             for sentence_ind, sent in enumerate(sentences):
-                sentence = Sentence(sent, use_tokenizer=True)
+                tokenized_text = tokenizer.tokenize(sent)
+                if len(tokenized_text) > 512:
+                    print('sentence too long for Bert: truncating')
+                    sentence = Sentence(' '.join(sent[:512]), use_tokenizer=True)
+                else:
+                    sentence = Sentence(sent, use_tokenizer=True)
                 try:
                     embedding.embed(sentence)
                 except:
