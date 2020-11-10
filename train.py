@@ -15,6 +15,7 @@ from nltk.corpus import stopwords
 import os
 import numpy as np
 import pandas as pd
+from keras.metrics import TopKCategoricalAccuracy
 
 def main(dataset_path, print_flag=True):
     #dataset_path = './data/eutopiaverttest/'
@@ -202,7 +203,7 @@ def main(dataset_path, print_flag=True):
                     embedding_matrix=embedding_matrix)
         print("Compiling model...")
         model.summary()
-        model.compile(loss="binary_crossentropy", optimizer='adam', metrics=['acc'])
+        model.compile(loss="binary_crossentropy", optimizer='adam', metrics=['acc',TopKCategoricalAccuracy])
         print("model fitting - Hierachical attention network...")
         es = EarlyStopping(monitor='val_loss', mode='min', verbose=1, patience=3)
         mc = ModelCheckpoint(filepath=tmp_dir + 'model.{epoch:02d}-{val_loss:.2f}.hdf5', monitor='val_acc', mode='max',
@@ -234,6 +235,21 @@ def main(dataset_path, print_flag=True):
             precision = tp/(tp+fp)
             recall = tp/(tp+fn)
             print('{} : precision {}, recall: {}'.format(l,precision, recall))
+
+
+        #keras top-k accuracy
+        topk1_accuracy = TopKCategoricalAccuracy(k=1, name="top_k1_categorical_accuracy", dtype=None)
+        topk2_accuracy = TopKCategoricalAccuracy(k=2, name="top_k2_categorical_accuracy", dtype=None)
+        topk3_accuracy = TopKCategoricalAccuracy(k=3, name="top_k3_categorical_accuracy", dtype=None)
+
+        topk1_accuracy.update_state(y_true=y_true_allnp.astype(np.float64), y_pred=pred)
+        topk2_accuracy.update_state(y_true=y_true_allnp.astype(np.float64), y_pred=pred)
+        topk3_accuracy.update_state(y_true=y_true_allnp.astype(np.float64), y_pred=pred)
+
+        print("K1: ", topk1_accuracy.result().numpy())
+        print("K2: ",topk2_accuracy.result().numpy())
+        print("K3: ", topk3_accuracy.result().numpy())
+
 
         topn = 3
         perf_summary = pd.DataFrame(columns=['model', 'metric', 'value'])
