@@ -206,7 +206,7 @@ def main(dataset_path, print_flag=True):
         model.compile(loss="binary_crossentropy", optimizer='adam', metrics=[TopKCategoricalAccuracy(k=3)])
         print("model fitting - Hierachical attention network...")
         es = EarlyStopping(monitor='val_loss', mode='min', verbose=1, patience=3)
-        mc = ModelCheckpoint(filepath=tmp_dir + 'model.{epoch:02d}-{val_loss:.2f}.hdf5', monitor='val_acc', mode='max',
+        mc = ModelCheckpoint(filepath=tmp_dir + 'model.{epoch:02d}-{val_loss:.2f}.hdf5', monitor=TopKCategoricalAccuracy(k=3), mode='max',
                              verbose=1, save_weights_only=True, save_best_only=True)
         model.fit(X_train, y_train, validation_data=(X_val, y_val), epochs=100, batch_size=256, callbacks=[es, mc])
         print("****************** CLASSIFICATION REPORT FOR All DOCUMENTS ********************")
@@ -227,10 +227,10 @@ def main(dataset_path, print_flag=True):
 
         from sklearn.metrics import confusion_matrix
         for i,l in enumerate(label_to_index.keys()):
-            print(y_true_allnp.T[i])
-            print(y_true_allnp.shape, y_true_allnp.dtype)
-            print(prednp.T[i])
-            print(prednp.shape, prednp.dtype)
+            if sum(y_true_allnp.T[i])==0:
+                print('no {l} in dataset')
+            if sum(prednp.T[i]) == 0:
+                print("no {l} ever predicted")
             tn, fp, fn, tp = confusion_matrix(y_true_allnp.T[i], prednp.T[i]).ravel()
             precision = tp/(tp+fp)
             recall = tp/(tp+fn)
