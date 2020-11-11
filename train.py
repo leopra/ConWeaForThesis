@@ -232,11 +232,14 @@ def main(dataset_path, print_flag=True):
         plt.title('NN PREDICTION DISTRIBUTION')
         plt.show()
 
-        #array of strings of predicted labels( with hard threshold for seeding words
-        pred_labels = get_from_one_hot(pred, index_to_label)
-
-        #one-hot-encoding of predictions based on >0,5> thresh for recall and accuracy
+        # one-hot-encoding of predictions based on >0,5> thresh for recall and accuracy
         lsprecrec = (pred > 0.5).astype(int)
+
+        #array of strings of predicted labels( with hard threshold for seeding words)
+        #pred usualy. trying lsprecrec for lower threshold
+        pred_labels = get_from_one_hot(lsprecrec, index_to_label)
+
+
 
 
         y_true_allnp = np.array(y_true_all)
