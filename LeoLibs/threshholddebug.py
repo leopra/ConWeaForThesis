@@ -1,9 +1,46 @@
 import numpy as np
 import pickle
 import keras
+from sklearn.metrics import accuracy_score
+from tensorflow.python.keras.metrics import TopKCategoricalAccuracy
+
 
 def generate_pseudo_labels(df, labels, label_term_dict, tokenizer, argmaxparam):
 
+    def argmax_perfectmatch(count_dict, percentage=0.2):
+        total = 0
+        labcounts = []
+        for l in labels:
+            count = 0
+            try:
+                for t in count_dict[l]:
+                    count += count_dict[l][t]
+            except:
+                pass
+            labcounts.append((l, count))
+            total += count
+
+        current = np.zeros(len(labels))
+
+        # add 1 to labels over the threshold
+        for i in range(len(current)):
+            #if i have only match of less than 3 classes assign all of them
+            if len(labcounts) < 3:
+                if labcounts[i][1] != 0:
+                    current[i] = 1.0
+
+            #if they are more check for threshold
+            else:
+                if (labcounts[i][1] / total) >= percentage:
+                    current[i] = 1.0
+
+        # if there was no label over the threshold give the best one
+        if np.sum(current) == 0:
+            labcounts = [x[1] for x in labcounts]
+            index_max = max(range(len(labcounts)), key=labcounts.__getitem__)
+            current[index_max] = 1.0
+
+        return current
 
     # this an implementation for multilabel, returns a one-hot-encoded array
     def argmax_multilabel(count_dict, percentage=0.4):
@@ -27,10 +64,10 @@ def generate_pseudo_labels(df, labels, label_term_dict, tokenizer, argmaxparam):
                 current[i] = 1.0
 
         # if there was no label over the threshold give the best one
-        if np.sum(current) == 0:
-            labcounts = [x[1] for x in labcounts]
-            index_max = max(range(len(labcounts)), key=labcounts.__getitem__)
-            current[index_max] = 1.0
+        # if np.sum(current) == 0:
+        #     labcounts = [x[1] for x in labcounts]
+        #     index_max = max(range(len(labcounts)), key=labcounts.__getitem__)
+        #     current[index_max] = 1.0
 
         return current
 
@@ -74,7 +111,8 @@ def generate_pseudo_labels(df, labels, label_term_dict, tokenizer, argmaxparam):
 
         #only saves data for nn training if at least one seedword was found (obviously)
         if flag:
-            lbl = argmax_multilabel(count_dict, argmaxparam)
+            #lbl = argmax_multilabel(count_dict, argmaxparam)
+            lbl = argmax_perfectmatch(count_dict, argmaxparam)
             # TODO currently is impossible that there is no label, in the future maybe this should be possible
             if np.sum(lbl) == 0:
                 continue
@@ -110,7 +148,7 @@ label_term_dict = {
     'Logistics': ['delivery', 'shipping', 'freight', 'supply$0', 'supply$1', 'jj7', 'jj8', 'logistics',
                   'distribution$0', 'distribution$1', 'distribution$2']}
 
-dataset_path = '../data/eutopiaverttest/'
+dataset_path = './data/eutopiavert2000/'
 tokenizer = pickle.load(open(dataset_path + "tokenizer.pkl", "rb"))
 
 pkl_dump_dir = dataset_path
@@ -119,10 +157,13 @@ df = pickle.load(open(pkl_dump_dir + "df_contextualized.pkl", "rb"))
 
 #smalldf = df[9:10]
 
-#for a in range(10):
-a=3/10
-X,y,y_true = generate_pseudo_labels(df, labels, label_term_dict, tokenizer, a)
+for a in range(100):
+    a = a/100
+    X,y,y_true = generate_pseudo_labels(df, labels, label_term_dict, tokenizer, a)
 
-catacc = keras.metrics.CategoricalAccuracy()
-catacc.update_state(y_true, y)
-print(a, "result: ", catacc.result().numpy())
+    acc = accuracy_score(y_true, y)
+    #catacc = keras.metrics.CategoricalAccuracy()
+    #catacc = TopKCategoricalAccuracy(k=2, name="top_k2_categorical_accuracy", dtype=None)
+    #catacc.update_state(y_true, y)
+
+    print(a, "result: ", acc)

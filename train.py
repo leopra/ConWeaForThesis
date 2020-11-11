@@ -85,20 +85,10 @@ def main(dataset_path, print_flag=True):
         return df, word_vec
 
     def generate_pseudo_labels(df, labels, label_term_dict, tokenizer):
-        def argmax_label(count_dict):
-            maxi = 0
-            max_label = None
-            for l in count_dict:
-                count = 0
-                for t in count_dict[l]:
-                    count += count_dict[l][t]
-                if count > maxi:
-                    maxi = count
-                    max_label = l
-            return max_label
-
+        #TODO this is bad code, i must be sure that labels follows the one-hot-index order
+        labels = sorted(labels)
         #this an implementation for multilabel, returns a one-hot-encoded array
-        def argmax_multilabel(count_dict, percentage=0.4):
+        def argmax_perfectmatch(count_dict, percentage=0.2):
             total = 0
             labcounts = []
             for l in labels:
@@ -108,17 +98,24 @@ def main(dataset_path, print_flag=True):
                         count += count_dict[l][t]
                 except:
                     pass
-                labcounts.append((l,count))
+                labcounts.append((l, count))
                 total += count
 
             current = np.zeros(len(labels))
 
-            #add 1 to labels over the threshold
+            # add 1 to labels over the threshold
             for i in range(len(current)):
-                if (labcounts[i][1] / total ) >= percentage:
-                    current[i] = 1.0
+                # if i have only match of less than 3 classes assign all of them
+                if len(labcounts) < 3:
+                    if labcounts[i][1] != 0:
+                        current[i] = 1.0
 
-            #if there was no label over the threshold give the best one
+                # if they are more check for threshold
+                else:
+                    if (labcounts[i][1] / total) >= percentage:
+                        current[i] = 1.0
+
+            # if there was no label over the threshold give the best one
             if np.sum(current) == 0:
                 labcounts = [x[1] for x in labcounts]
                 index_max = max(range(len(labcounts)), key=labcounts.__getitem__)
@@ -164,7 +161,7 @@ def main(dataset_path, print_flag=True):
                         except:
                             count_dict[l][word] = 1
             if flag:
-                lbl = argmax_multilabel(count_dict)
+                lbl = argmax_perfectmatch(count_dict)
                 #TODO currently is impossible that there is no label, in the future maybe this should be possible
                 if np.sum(lbl) == 0:
                     continue
@@ -208,7 +205,7 @@ def main(dataset_path, print_flag=True):
         es = EarlyStopping(monitor='val_loss', mode='min', verbose=1, patience=3)
         mc = ModelCheckpoint(filepath=tmp_dir + 'model.{epoch:02d}-{val_loss:.2f}.hdf5', monitor=TopKCategoricalAccuracy(k=3), mode='max',
                              verbose=1, save_weights_only=True, save_best_only=True)
-        model.fit(X_train, y_train, validation_data=(X_val, y_val), epochs=100, batch_size=256, callbacks=[es, mc])
+        model.fit(X_train, y_train, validation_data=(X_val, y_val), epochs=1, batch_size=256, callbacks=[es, mc])
         print("****************** CLASSIFICATION REPORT FOR All DOCUMENTS ********************")
         X_all = prep_data(texts=df["sentence"], max_sentences=max_sentences, max_sentence_length=max_sentence_length,
                           tokenizer=tokenizer)
@@ -225,7 +222,8 @@ def main(dataset_path, print_flag=True):
         #this is to fix the error of different dimensions
         y_true_allnp = np.array([np.array(x) for x in y_true_allnp])
 
-
+        #TODO make the >0.5->1 and <0.5->0
+        labelsforprecisionandrecall = pred > 0.5
         from sklearn.metrics import confusion_matrix
         for i,l in enumerate(label_to_index.keys()):
             if sum(y_true_allnp.T[i])==0:
