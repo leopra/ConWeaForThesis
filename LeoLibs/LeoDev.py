@@ -1,11 +1,10 @@
 import os
-import re
 import sys
 import pickle
-import nltk
 import pandas as pd
 from sklearn.preprocessing import MultiLabelBinarizer
 from langdetect import detect
+import numpy as np
 import matplotlib.pyplot as plt
 
 PATH = os.path.dirname(os.__file__)
@@ -13,7 +12,7 @@ sys.path.append(os.path.join(PATH,'Libraries-GP'))
 
 # eutop Libraries
 from SQLServer import DATABASE_CONFIG_NEW, sql_cnnt
-import CrunchbaseDatasetProcessing as cp
+from LeoLibs import CrunchbaseDatasetProcessing as cp
 
 data = pd.read_sql_query("""select * from ml_crunchbase  where id in (select min(id) from ml_crunchbase group by cb_url)""",
     sql_cnnt("cnnt", DATABASE_CONFIG_NEW))
@@ -52,7 +51,7 @@ def detectcatcherror(stringa):
 #detect description not in english
 #dfcon['lang'] = dfcon['description'].apply(lambda x: detectcatcherror(x))
 
-with open('./data/eutopiavert/df.pkl', 'rb') as handle:
+with open('../data/eutopiavert/df.pkl', 'rb') as handle:
     dfcon = pickle.load(handle)
 
 dfconengl = dfcon
@@ -73,10 +72,26 @@ categories_cols = mlb.classes_
 dfconengl['label'] = list(categories_1hot)
 #this is the final dataset onehotencoded
 dfconengl = dfconengl[['description','label']]
+#lowewrcase everything to check for errors
+b['sentence'] = b['sentence'].apply(lambda x: x.lower())
 dfconengl.columns= ['sentence','label']
 
+#code to see labels distribution
+twodmatrix = np.stack(b.label.values, axis=0)
+labelcounts = np.sum(twodmatrix, axis=0)
 
-out = dfconengl.reset_index().drop('index', axis=1)
+plt.bar(range(0,13), labelcounts)
+
+#code to see 1-2-3 labels distribution
+multilabelpersample = np.sum(twodmatrix, axis=1)
+counts=[]
+for i in range(5):
+    counts.append(np.count_nonzero(multilabelpersample == i))
+
+plt.bar(range(5), counts)
+
+
+out = b.reset_index().drop('index', axis=1)
 out.to_pickle('./data/eutopiavert/df.pkl', protocol=3)
 
 #
@@ -86,7 +101,7 @@ out.to_pickle('./data/eutopiavert/df.pkl', protocol=3)
 #     return nltk.word_tokenize(text)
 #
 #
-with open('./data/eutopiavert2000/df.pkl', 'rb') as handle:
+with open('../data/eutopiavert/df.pkl', 'rb') as handle:
     b = pickle.load(handle)
 
 out = b[1320:1340].reset_index().drop('index', axis=1)
