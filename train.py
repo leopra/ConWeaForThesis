@@ -16,6 +16,7 @@ import os
 import numpy as np
 import pandas as pd
 from keras.metrics import TopKCategoricalAccuracy
+import matplotlib.pyplot as plt
 
 def main(dataset_path, print_flag=True):
     #dataset_path = './data/eutopiaverttest/'
@@ -187,6 +188,13 @@ def main(dataset_path, print_flag=True):
         X, y, y_true = generate_pseudo_labels(df, labels, label_term_dict, tokenizer)
         #y_one_hot = make_one_hot(y, label_to_index)
         y_one_hot = np.array(y)
+
+        #code too see distribution of labels
+        twodmatrix = np.stack(y, axis=0)
+        labelcounts = np.sum(twodmatrix, axis=0)
+        plt.bar(range(0, 13), labelcounts)
+        plt.show()
+
         print("Fitting tokenizer...")
         print("Splitting into train, dev...")
         X_train, y_train, X_val, y_val = create_train_dev(X, labels=y_one_hot, tokenizer=tokenizer,
@@ -211,41 +219,50 @@ def main(dataset_path, print_flag=True):
                           tokenizer=tokenizer)
 
         y_true_all = df["label"]
+
         #pred now is an array as long as the classes
         pred = model.predict(X_all)
+        #i need to convert this to binary 0,1 array
+
+        #code to see prediction distribution
+        twodmatrix = np.stack(y, axis=0)
+        labelcounts = np.sum(twodmatrix, axis=0)
+        plt.bar(range(0, 13), labelcounts)
+        plt.show()
+
+        #array of strings of predicted labels( with hard threshold for seeding words
         pred_labels = get_from_one_hot(pred, index_to_label)
 
-        onehotpred = make_one_hotmulti(pred_labels, label_to_index)
-        prednp = np.array(onehotpred).astype(np.int64)
+        #one-hot-encoding of predictions based on >0,5> thresh for recall and accuracy
+        lsprecrec = (pred > 0.5).astype(int)
+
 
         y_true_allnp = np.array(y_true_all)
         #this is to fix the error of different dimensions
         y_true_allnp = np.array([np.array(x) for x in y_true_allnp])
 
-        #TODO make the >0.5->1 and <0.5->0
-        labelsforprecisionandrecall = pred > 0.5
         from sklearn.metrics import confusion_matrix
         for i,l in enumerate(label_to_index.keys()):
             if sum(y_true_allnp.T[i])==0:
                 print('no {l} in dataset')
-            if sum(prednp.T[i]) == 0:
+            if sum(lsprecrec.T[i]) == 0:
                 print("no {} ever predicted".format(l))
-            tn, fp, fn, tp = confusion_matrix(y_true_allnp.T[i], prednp.T[i]).ravel()
+            tn, fp, fn, tp = confusion_matrix(y_true_allnp.T[i], lsprecrec.T[i]).ravel()
             precision = tp/(tp+fp)
             recall = tp/(tp+fn)
             print('{} : precision {}, recall: {}'.format(l,precision, recall))
 
-        # topk1_accuracypseudo = TopKCategoricalAccuracy(k=1, name="top_k1_categorical_accuracy", dtype=None)
-        # topk2_accuracypseudo = TopKCategoricalAccuracy(k=2, name="top_k2_categorical_accuracy", dtype=None)
-        # topk3_accuracypseudo = TopKCategoricalAccuracy(k=3, name="top_k3_categorical_accuracy", dtype=None)
-        #
-        # topk1_accuracypseudo.update_state(y_true=y_true_allnp, y_pred=y_one_hot)
-        # topk2_accuracypseudo.update_state(y_true=y_true_allnp, y_pred=y_one_hot)
-        # topk3_accuracypseudo.update_state(y_true=y_true_allnp, y_pred=y_one_hot)
-        # print("ACCURACY PSEUDO LABELS")
-        # print("K1: ", topk1_accuracypseudo.result().numpy())
-        # print("K2: ", topk2_accuracypseudo.result().numpy())
-        # print("K3: ", topk3_accuracypseudo.result().numpy())
+        topk1_accuracypseudo = TopKCategoricalAccuracy(k=1, name="top_k1_categorical_accuracy", dtype=None)
+        topk2_accuracypseudo = TopKCategoricalAccuracy(k=2, name="top_k2_categorical_accuracy", dtype=None)
+        topk3_accuracypseudo = TopKCategoricalAccuracy(k=3, name="top_k3_categorical_accuracy", dtype=None)
+
+        topk1_accuracypseudo.update_state(y_true=y_true, y_pred=y_one_hot)
+        topk2_accuracypseudo.update_state(y_true=y_true, y_pred=y_one_hot)
+        topk3_accuracypseudo.update_state(y_true=y_true, y_pred=y_one_hot)
+        print("ACCURACY PSEUDO LABELS")
+        print("K1: ", topk1_accuracypseudo.result().numpy())
+        print("K2: ", topk2_accuracypseudo.result().numpy())
+        print("K3: ", topk3_accuracypseudo.result().numpy())
 
         #keras top-k accuracy on nn prediction
         topk1_accuracy = TopKCategoricalAccuracy(k=1, name="top_k1_categorical_accuracy", dtype=None)
