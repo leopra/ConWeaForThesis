@@ -193,6 +193,7 @@ def main(dataset_path, print_flag=True):
         twodmatrix = np.stack(y, axis=0)
         labelcounts = np.sum(twodmatrix, axis=0)
         plt.bar(range(0, 13), labelcounts)
+        plt.title('PSEUDOLABEL DISTRIBUTION')
         plt.show()
 
         print("Fitting tokenizer...")
@@ -228,6 +229,7 @@ def main(dataset_path, print_flag=True):
         twodmatrix = np.stack(y, axis=0)
         labelcounts = np.sum(twodmatrix, axis=0)
         plt.bar(range(0, 13), labelcounts)
+        plt.title('NN PREDICTION DISTRIBUTION')
         plt.show()
 
         #array of strings of predicted labels( with hard threshold for seeding words
