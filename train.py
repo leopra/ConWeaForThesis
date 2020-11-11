@@ -214,7 +214,7 @@ def main(dataset_path, print_flag=True):
         es = EarlyStopping(monitor='val_loss', mode='min', verbose=1, patience=3)
         mc = ModelCheckpoint(filepath=tmp_dir + 'model.{epoch:02d}-{val_loss:.2f}.hdf5', monitor=TopKCategoricalAccuracy(k=3), mode='max',
                              verbose=1, save_weights_only=True, save_best_only=True)
-        model.fit(X_train, y_train, validation_data=(X_val, y_val), epochs=100, batch_size=256, callbacks=[es, mc])
+        model.fit(X_train, y_train, validation_data=(X_val, y_val), epochs=10, batch_size=256, callbacks=[es, mc])
         print("****************** CLASSIFICATION REPORT FOR All DOCUMENTS ********************")
         X_all = prep_data(texts=df["sentence"], max_sentences=max_sentences, max_sentence_length=max_sentence_length,
                           tokenizer=tokenizer)
@@ -388,6 +388,7 @@ def main(dataset_path, print_flag=True):
         if it == 0:
             print("Disambiguating seeds..")
             label_term_dict = disambiguate(label_term_dict, components)
+        #not adding seeds at the first iteration
         else:
             print("Expanding seeds..")
             label_term_dict = expand(E_LT, index_to_label, index_to_word, it, label_count, n1, label_term_dict,
