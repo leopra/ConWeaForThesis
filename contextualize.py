@@ -17,6 +17,7 @@ from pytorch_pretrained_bert import BertTokenizer
 
 import nltk
 nltk.download('stopwords')
+nltk.download('punkt')
 
 
 def main(dataset_path, temp_dir):
