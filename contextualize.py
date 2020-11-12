@@ -14,6 +14,11 @@ from nltk.corpus import stopwords
 from util import *
 import json
 from pytorch_pretrained_bert import BertTokenizer
+
+import nltk
+nltk.download('stopwords')
+
+
 def main(dataset_path, temp_dir):
     def dump_bert_vecs(df, dump_dir):
         print("Getting BERT vectors...")
