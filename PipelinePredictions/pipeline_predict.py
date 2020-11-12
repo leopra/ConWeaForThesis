@@ -2,33 +2,71 @@ import pickle
 import argparse
 import json
 import gc
-import math
-from util import *
-from sklearn.metrics import classification_report
-from keras.callbacks import EarlyStopping
-from sklearn.feature_extraction.text import CountVectorizer
-from keras.callbacks import ModelCheckpoint
-from collections import defaultdict
-from gensim.models import word2vec
-from keras_han.model import HAN
+from keras.preprocessing.text import Tokenizer
 from nltk.corpus import stopwords
 from keras.preprocessing.sequence import pad_sequences
 import string
-import os
 import numpy as np
 from keras.models import load_model
 from gensim.models import word2vec
 from keras_han.layers import AttentionLayer
 from keras_han.model import HAN
 from nltk import tokenize
-import pandas as pd
-from keras.metrics import TopKCategoricalAccuracy
-import matplotlib.pyplot as plt
 
 #path where all the pretrained models are saved
 basepath = './PipelinePredictions/models/'
 #tokenizer
 tokenizer = pickle.load(open(basepath+ "tokenizer.pkl", "rb"))
+
+#this function learns the word embeddings ans saves them in the file embedding_matrix.pkl
+#TODO why word2vec and not fasttext?
+def train_word2vec(strings):
+    def fit_get_tokenizer(data, max_words):
+        tokenizer = Tokenizer(num_words=max_words, filters='!"#%&()*+,-./:;<=>?@[\\]^_`{|}~\t\n')
+        tokenizer.fit_on_texts(data)
+        return tokenizer
+
+    def get_embeddings(inp_data, vocabulary_inv, size_features=100,
+                       mode='skipgram',
+                       min_word_count=2,
+                       context=5):
+        num_workers = 15  # Number of threads to run in parallel
+        downsampling = 1e-3  # Downsample setting for frequent words
+        print('Training Word2Vec model...')
+        sentences = [[vocabulary_inv[w] for w in s] for s in inp_data]
+        if mode == 'skipgram':
+            sg = 1
+            print('Model: skip-gram')
+        elif mode == 'cbow':
+            sg = 0
+            print('Model: CBOW')
+        embedding_model = word2vec.Word2Vec(sentences, workers=num_workers,
+                                            sg=sg,
+                                            size=size_features,
+                                            min_count=min_word_count,
+                                            window=context,
+                                            sample=downsampling)
+        embedding_model.init_sims(replace=True)
+        embedding_weights = np.zeros((len(vocabulary_inv) + 1, size_features))
+        embedding_weights[0] = 0
+        for i, word in vocabulary_inv.items():
+            if word in embedding_model:
+                embedding_weights[i] = embedding_model[word]
+            else:
+                embedding_weights[i] = np.random.uniform(-0.25, 0.25, embedding_model.vector_size)
+
+        return embedding_weights
+
+    tokenizer = fit_get_tokenizer(strings, max_words=150000)
+    print("Total number of words: ", len(tokenizer.word_index))
+    tagged_data = tokenizer.texts_to_sequences(df.sentence)
+    vocabulary_inv = {}
+    for word in tokenizer.word_index:
+        vocabulary_inv[tokenizer.word_index[word]] = word
+    embedding_mat = get_embeddings(tagged_data, vocabulary_inv)
+    return embedding_mat
+    # pickle.dump(tokenizer, open(basepath + "tokenizer.pkl", "wb"))
+    # pickle.dump(embedding_mat, open(basepath + "embedding_matrix.pkl", "wb"))
 
 #new data needs to be processed with bert to disambiguate word meanings
 #encoded with bert then checks for the nearest cluster
@@ -233,7 +271,7 @@ def predictWithHAN(strings, word_vec):
     #     sg=1, hs=1, negative=0
     # )
     # modelvec.save_word2vec_format(basepath + 'word2vec.bin', binary=True)
-
+    #TODO missing word2vec training
     # load model
     model = load_model(basepath + 'model_conwea.h5',
                        custom_objects={'AttentionLayer': AttentionLayer, 'HAN': HAN})
@@ -247,9 +285,9 @@ def predictWithHAN(strings, word_vec):
 #DEBUG
 df = pickle.load(open(basepath + "df_contextualized.pkl", "rb"))
 strings = df.sentence.values
+aas = train_word2vec(strings)
 x, y =preprocess(strings)
 for t in df.sentence.values:
-#t = df.iloc[].sentence
     print(generate_pseudo_labels(t))
 
 #
