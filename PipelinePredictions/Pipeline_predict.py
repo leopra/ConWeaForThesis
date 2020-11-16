@@ -5,16 +5,21 @@ import gc
 from keras.preprocessing.text import Tokenizer
 from nltk.corpus import stopwords
 from keras.preprocessing.sequence import pad_sequences
-import string
+import string as str_ing
 import numpy as np
 from keras.models import load_model
 from gensim.models import word2vec
 from keras_han.layers import AttentionLayer
 from keras_han.model import HAN
 from nltk import tokenize
+from flair.embeddings import BertEmbeddings
+from pytorch_pretrained_bert import BertTokenizer
+from nltk import sent_tokenize
+from flair.data import Sentence
+from scipy import spatial
 
 #path where all the pretrained models are saved
-basepath = './PipelinePredictions/models/'
+basepath = '../PipelinePredictions/models/'
 #tokenizer
 tokenizer = pickle.load(open(basepath+ "tokenizer.pkl", "rb"))
 
@@ -65,14 +70,14 @@ def train_word2vec(strings):
         vocabulary_inv[tokenizer.word_index[word]] = word
     embedding_mat = get_embeddings(tagged_data, vocabulary_inv)
     return embedding_mat
-    # pickle.dump(tokenizer, open(basepath + "tokenizer.pkl", "wb"))
-    # pickle.dump(embedding_mat, open(basepath + "embedding_matrix.pkl", "wb"))
+    pickle.dump(tokenizer, open(basepath + "tokenizer.pkl", "wb"))
+    pickle.dump(embedding_mat, open(basepath + "embedding_matrix.pkl", "wb"))
 
 #new data needs to be processed with bert to disambiguate word meanings
 #encoded with bert then checks for the nearest cluster
 #also is undercased and classic preprocesses
 def preprocess(strings):
-    #this data structure is a dictionary that saves thw words and the coentroid vector for each meaning found by kmeans
+    #this data structure is a dictionary that saves the words and the centroid vector for each meaning found by kmeans
     # bank$0 corresponds to the first element
     word_cluster = pickle.load(open(basepath + "word_cluster_map.pkl", "rb"))
     def get_vec(word, word_cluster, stop_words):
@@ -98,7 +103,7 @@ def preprocess(strings):
             except:
                 cluster = 0
 
-        word_clean = prefix.translate(str.maketrans('', '', string.punctuation))
+        word_clean = prefix.translate(str.maketrans('', '', str_ing.punctuation))
         if len(word_clean) == 0 or word_clean in stop_words:
             return []
         try:
@@ -141,7 +146,7 @@ def preprocess(strings):
 
 
 #function that uses a tokenizer and a dictionary of seedowrds to predict labels
-def generate_pseudo_labels(strings, tokenizer):
+def generate_pseudo_labels(strings):
 
     #labels and dictionary of seedwords
     with open(basepath + "seedwordsencoded.json") as fp:
@@ -266,31 +271,102 @@ def predictWithHAN(strings, word_vec):
     strings = prep_data_for_HAN(texts=strings, max_sentences=max_sentences, max_sentence_length=max_sentence_length,
                       tokenizer=tokenizer)
 
-    # modelvec = word2vec.Word2Vec(
-    #     strings, size=300, window=5, min_count=5, workers=5,
-    #     sg=1, hs=1, negative=0
-    # )
-    # modelvec.save_word2vec_format(basepath + 'word2vec.bin', binary=True)
-    #TODO missing word2vec training
-    # load model
+    # load model (embedding matrix already saved inside the model
     model = load_model(basepath + 'model_conwea.h5',
                        custom_objects={'AttentionLayer': AttentionLayer, 'HAN': HAN})
 
     model.load_weights(basepath + 'model_weights_conwea.h5')
-    #TODO load weigths
+
+    #convert real number to binary classification
     pred = model.predict(strings)
     pred = (pred > 0.5).astype(int)
     return pred
 
-#DEBUG
-df = pickle.load(open(basepath + "df_contextualized.pkl", "rb"))
-strings = df.sentence.values
-aas = train_word2vec(strings)
-x, y =preprocess(strings)
-for t in df.sentence.values:
-    print(generate_pseudo_labels(t))
+#this function contextualizes each word with the most similar cluster assigning (nothing/$0,$1..)
+def contextualizeSentences(strings, word_cluster):
 
+    def cosine_similarity(a, b):
+        return 1 - spatial.distance.cosine(a, b)
+
+    def to_tokenized_string(sentence):
+        tokenized = " ".join([t.text for t in sentence.tokens])
+        return tokenized
+
+    def get_cluster(tok_vec, cc):
+        max_sim = -10
+        max_sim_id = -1
+        for i, cluster_center in enumerate(cc):
+            sim = cosine_similarity(tok_vec, cluster_center)
+            if sim > max_sim:
+                max_sim = sim
+                max_sim_id = i
+        return max_sim_id
+
+    out = []
+    embedding = BertEmbeddings('bert-base-uncased')
+    tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
+
+    for index,string in enumerate(strings):
+        print("Contextualizing the corpus ", index)
+        stop_words = set(stopwords.words('english'))
+        stop_words.add('would')
+
+        # this tokenizer is used to check for length > 512
+        sentences = sent_tokenize(string)
+        for sentence_ind, sent in enumerate(sentences):
+            tokenized_text = tokenizer.tokenize(sent)
+            if len(tokenized_text) > 512:
+                print('sentence too long for Bert: truncating')
+                sentence = Sentence(' '.join(sent[:512]), use_tokenizer=True)
+            else:
+                sentence = Sentence(sent, use_tokenizer=True)
+            try:
+                embedding.embed(sentence)
+            except:
+                print(index)
+                print(sentence)
+            for token_ind, token in enumerate(sentence):
+                word = token.text
+                if word in stop_words:
+                    continue
+                word_clean = word.translate(str.maketrans('', '', str_ing.punctuation))
+                if len(word_clean) == 0 or word_clean in stop_words or "/" in word_clean:
+                    continue
+                try:
+                    cc = word_cluster[word_clean]
+                except Exception as e:
+                    print("Exception Counter while getting clusters: ", index, e)
+                    continue
+                    # try:
+                    #     cc = word_cluster[word]
+                    # except:
+                    #     word_clean_path = cluster_dump_dir + word_clean + "/cc.pkl"
+                    #     word_path = cluster_dump_dir + word + "/cc.pkl"
+                    #     try:
+                    #         with open(word_clean_path, "rb") as handler:
+                    #             cc = pickle.load(handler)
+                    #         word_cluster[word_clean] = cc
+                    #     except:
+                    #         try:
+                    #             with open(word_path, "rb") as handler:
+                    #                 cc = pickle.load(handler)
+                    #             word_cluster[word] = cc
+                    #         except Exception as e:
+
+                if len(cc) > 1:
+                    tok_vec = token.embedding.cpu().numpy()
+                    cluster = get_cluster(tok_vec, cc)
+                    sentence.tokens[token_ind].text = word + "$" + str(cluster)
+            sentences[sentence_ind] = to_tokenized_string(sentence)
+            out.append(" . ".join(sentences))
+    return out
+
+# #DEBUG
+# df = pickle.load(open(basepath + "df.pkl", "rb"))
+# strings = df.sentence.values
+# aas = train_word2vec(strings)
+# x, y =preprocess(strings)
 #
-# label_term_dict = add_all_interpretations(label_term_dict, word_cluster)
-# print_label_term_dict(label_term_dict, None, print_components=False)
-# labels = list(set(label_term_dict.keys()))
+# word_cluster = pickle.load(open(basepath + "word_cluster_map.pkl", "rb"))
+# contextualizeSentences(strings, word_cluster)
+
