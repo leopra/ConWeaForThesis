@@ -12,7 +12,7 @@ sys.path.append(os.path.join(PATH, 'Libraries-GP'))
 #eutop Libraries
 from SQLServer import DATABASE_CONFIG_NEW, sql_cnnt
 
-data = pd.read_sql_query("select distinct client_id from co_aggregations where client_id not in "
+data = pd.read_sql_query("select client_id from co_aggregations where client_id not in "
                          "(select client_id from co_verticals)",
                          sql_cnnt("cnnt", DATABASE_CONFIG_NEW))
 
@@ -77,6 +77,7 @@ for index in ids[:1]:
     pitch_client = pitch_client.sort_values('source')
     #TODO handle bigrams
     #TODO handle empty data in the clearest way
+    #TODO remove duplicates description
     descrlist = desc_client.description.apply(lambda x: clean_text(x)).values
     pitchlist = pitch_client.pitch_line.apply(lambda x: clean_text(x)).values
 
