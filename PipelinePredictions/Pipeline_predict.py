@@ -228,6 +228,10 @@ def generate_pseudo_labels(strings):
                 continue
             y.append(lbl)
             X.append(line)
+        else:
+            #fix to not allow empty result from pseudo label
+            X.append(line)
+            y.append(np.zeros(len(labels)))
     return X, y
 
 #this function encodes strings to integer and pads/trim using the tokenizer pretrained in /models

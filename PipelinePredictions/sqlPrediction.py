@@ -65,6 +65,13 @@ label_args = {'__label__Agriculture': 0,
  '__label__Mining': 9, '__label__Public_Administration': 10,
  '__label__Transportation': 11, '__label__Utilities_(electricity,_water,_waste)': 12}
 
+real_vertical_index = pd.read_sql_query("SELECT * FROM [tb_verticals]",sql_cnnt("cnnt", DATABASE_CONFIG_NEW))
+mapfastindextoeutopiaindex = {0:1,1:2,2:3,3:4,4:5,5:6,6:8,7:9,8:10,9:11,10:13,11:15,12:16}
+#[(1, 'agriculture'), (2, 'building'), (3, 'constructions'), (4, 'energy'), (5, 'financial services'),
+# (6, 'food & beverage'), (7, 'forestry'), (8, 'healthcare'), (9, 'logistics'), (10, 'manufacturing'),
+# (11, 'mining'), (12, 'other activities'), (13, 'public administration'), (14, 'telecommunications & ICT'),
+# (15, 'transportation'), (16, 'utilities (electricity, water, waste)')]
+
 #TODO check if this is ok, should be
 #this function taker the fasttext prediction and returns a one hot encoding checking if the values is over 0.5
 #the object returned by fasttext prediction is a tuple of 2 arrays, the first one containing the arrays with predictions for each label, the second
@@ -82,10 +89,13 @@ def convertLabeltoOneHot(fastpred):
 
 def clean_text(text):
         return re.sub(r'[;,\.!\?\(\)]', ' ', text.lower()).replace('\n', '').replace('[\s+]', ' ')
+
+
 #company ids to be classified
 ids =data.client_id.values
-
-for index in ids[:1]:
+predictionssql = {}
+countforoutput = 0
+for index in ids[:220]:
     #group all descritption of same company together
     desc_client = desc[desc.client_id == index]
     desc_client["source"] = pd.Categorical(desc_client["source"], categories=priority_desc, ordered=True)
@@ -115,8 +125,8 @@ for index in ids[:1]:
         onehotfastdescr = convertLabeltoOneHot(predfastdescr)
 
     else:
-        onehotfastdescr = np.zeros(len(label_args), dtype=int)
-        preds_desc_pseudo = np.zeros(len(label_args), dtype=int)
+        onehotfastdescr = [np.zeros(len(label_args), dtype=int)]
+        preds_desc_pseudo = [np.zeros(len(label_args), dtype=int)]
 
     if len(pitchlist) > 0:
         #classify pitch if not empty
@@ -130,8 +140,8 @@ for index in ids[:1]:
         onehotfastpitch = convertLabeltoOneHot(predfastpitch)
 
     else:
-        preds_pitch_pseudo = np.zeros(len(label_args), dtype=int)
-        onehotfastpitch = np.zeros(len(label_args), dtype=int)
+        preds_pitch_pseudo = [np.zeros(len(label_args), dtype=int)]
+        onehotfastpitch = [np.zeros(len(label_args), dtype=int)]
 
 
     #code for nicer output
@@ -141,10 +151,24 @@ for index in ids[:1]:
     x = ['pseudo_descr'] * len(preds_desc_pseudo) + ['fast_descr'] * len(onehotfastdescr) + ['pseudo_pitch']* len(preds_pitch_pseudo) + ['fast_pitch'] * len(onehotfastpitch)
     df['predtype'] = x
 
-    print(df)
+    #print(df)
     columnstosum = list(df)
     #remove label from sum
     columnstosum.pop()
-    print(df[columnstosum].sum(axis=0).values)
-    #print(np.sum(results, axis=1))
-    #print(results)
+    finalcounts = df[columnstosum].sum(axis=0).values
+    print(finalcounts)
+    #norm1 = finalcounts / np.linalg.norm(finalcounts)
+    mean = np.mean(finalcounts)
+    std = np.std(finalcounts)
+    labelsovermean = (finalcounts > (mean +std)).astype(int)
+    kk = []
+    for ix,value in enumerate(labelsovermean):
+        if value == 1:
+            kk.append(mapfastindextoeutopiaindex[ix])
+
+    predictionssql[index] = kk
+    countforoutput += 1
+    if countforoutput %20 ==0:
+        print('classificate {} aziende'.format(countforoutput))
+
+
