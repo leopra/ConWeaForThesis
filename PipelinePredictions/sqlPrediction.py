@@ -2,18 +2,29 @@ import pandas as pd
 import os
 import sys
 from PipelinePredictions import Pipeline_predict as pipred
+from PipelinePredictions import SubBigrams as subbi
 import fasttext
 import numpy as np
 import re
+import json
+import warnings
+
+#ignore warnings
+warnings.filterwarnings("ignore")
+
+
 # Dinamically add the library to sys.path
 PATH = os.path.dirname(os.__file__)
 sys.path.append(os.path.join(PATH, 'Libraries-GP'))
 
 #eutop Libraries
 from SQLServer import DATABASE_CONFIG_NEW, sql_cnnt
+from AzureStorage import blob_download
 
-data = pd.read_sql_query("select client_id from co_aggregations where client_id not in "
-                         "(select client_id from co_verticals)",
+basepath = './PipelinePredictions/models/'
+
+data = pd.read_sql_query("select top(10000) client_id from co_aggregations where client_id not in "
+                         "(select client_id from co_verticals) ", #TODO add " and vertical_id is not null"
                          sql_cnnt("cnnt", DATABASE_CONFIG_NEW))
 
 
@@ -38,24 +49,32 @@ desc = pd.read_sql_query(qry_desc, sql_cnnt("cnnt", DATABASE_CONFIG_NEW))
 pitch = pd.read_sql_query(qry_pitch, sql_cnnt("cnnt", DATABASE_CONFIG_NEW))
 
 
-#model to classify description
-modeldescr = fasttext.load_model('../PipelinePredictions/models/fasttex_model_23_10_2020.bin')
+#model to classify description and pitch , download if needed
+#blob_download('verticals-ml', 'fasttext-descr', basepath + 'fasttext-descr.bin') #86% top1 accuracy
+#blob_download('verticals-ml', 'fasttext-pitch', basepath +'fasttext-pitch.bin') #62% top1 accuracy
+
+modeldescr = fasttext.load_model(basepath +'fasttext-descr.bin')
 
 #model to classify pitchlines
-modelpitch = fasttext.load_model('../PipelinePredictions/models/fasttex_model_23_10_2020.bin')
+modelpitch = fasttext.load_model(basepath +'fasttext-pitch.bin')
 
 label_args = {'__label__Agriculture': 0,
  '__label__Buildings': 1, '__label__Constructions': 2, '__label__Energy': 3,
  '__label__Financial_services': 4, '__label__Food_&_Beverage': 5,
  '__label__Healthcare': 6, '__label__Logistics': 7, '__label__Manufacturing': 8,
- '__label__Mining': 9, '__label__Public_Administration': 10, '__label__Telecommunications_&_ICT': 10, #TODO remove this
+ '__label__Mining': 9, '__label__Public_Administration': 10,
  '__label__Transportation': 11, '__label__Utilities_(electricity,_water,_waste)': 12}
 
+#TODO check if this is ok, should be
+#this function taker the fasttext prediction and returns a one hot encoding checking if the values is over 0.5
+#the object returned by fasttext prediction is a tuple of 2 arrays, the first one containing the arrays with predictions for each label, the second
+#containing the confidence value for each label
 def convertLabeltoOneHot(fastpred):
     out = []
-    for i in fastpred[0]:
-        x = [label_args[z] for z in i]
-        onehot = np.zeros(len(label_args)-1, dtype=int)
+    for k,i in enumerate(fastpred[0]):
+        values = fastpred[1][k]
+        x = [label_args[z] for k,z in enumerate(i) if values[k]>0.5]
+        onehot = np.zeros(len(label_args), dtype=int)
         for j in x:
             onehot[j] = 1
         out.append(onehot)
@@ -78,20 +97,54 @@ for index in ids[:1]:
     #TODO handle bigrams
     #TODO handle empty data in the clearest way
     #TODO remove duplicates description
-    descrlist = desc_client.description.apply(lambda x: clean_text(x)).values
-    pitchlist = pitch_client.pitch_line.apply(lambda x: clean_text(x)).values
+    descrlist = desc_client.description.apply(lambda x: clean_text(x))
+    pitchlist = pitch_client.pitch_line.apply(lambda x: clean_text(x))
 
-    #pseudo predictions
-    text, preds_desc = pipred.generate_pseudo_labels(descrlist)
-    text, preds_pitch = pipred.generate_pseudo_labels(pitchlist)
+    #pseudo predictions, encode bigrams
+    with open(basepath + 'seedwordsencoded.json') as fp:
+        seedenc = json.load(fp)
 
-    #fasttext predictions
-    predfastdescr = modeldescr.predict(descrlist.tolist(), k=3)
-    predfastpitch = modelpitch.predict(pitchlist.tolist(), k=3)
-    onehotpreddescr = convertLabeltoOneHot(predfastdescr)
-    onehotpredpitch = convertLabeltoOneHot(predfastpitch)
+    if len(descrlist) > 0:
+        #classify descriptions if not empty
+        try:
+            descrlistbig = descrlist.apply(lambda x: subbi.substituteBigwithMono(x, seedenc)).values
+        except:
+            print(descrlist.values)
+        text, preds_desc_pseudo = pipred.generate_pseudo_labels(descrlistbig)
+        predfastdescr = modeldescr.predict(descrlist.values.tolist(), k=4)
+        onehotfastdescr = convertLabeltoOneHot(predfastdescr)
 
-    res = np.concatenate((preds_desc, onehotpreddescr, preds_pitch, onehotpredpitch), axis=0)
-    results = np.stack(res, axis=0)
-    print(np.sum(results, axis=0))
-    print(results)
+    else:
+        onehotfastdescr = np.zeros(len(label_args), dtype=int)
+        preds_desc_pseudo = np.zeros(len(label_args), dtype=int)
+
+    if len(pitchlist) > 0:
+        #classify pitch if not empty
+        try:
+            pitchlistbig = pitchlist.apply(lambda x: subbi.substituteBigwithMono(x, seedenc)).values
+        except:
+            print(pitchlist.values)
+
+        text, preds_pitch_pseudo = pipred.generate_pseudo_labels(pitchlistbig)
+        predfastpitch = modelpitch.predict(pitchlist.values.tolist(), k=4)
+        onehotfastpitch = convertLabeltoOneHot(predfastpitch)
+
+    else:
+        preds_pitch_pseudo = np.zeros(len(label_args), dtype=int)
+        onehotfastpitch = np.zeros(len(label_args), dtype=int)
+
+
+    #code for nicer output
+    res = np.concatenate((preds_desc_pseudo, onehotfastdescr, preds_pitch_pseudo, onehotfastpitch), axis=0)
+    df = pd.DataFrame(res, dtype=int, columns = [x[9:14] for x in label_args])
+    #codice fogna per avere indicato da dove viene la predizione nella tabella
+    x = ['pseudo_descr'] * len(preds_desc_pseudo) + ['fast_descr'] * len(onehotfastdescr) + ['pseudo_pitch']* len(preds_pitch_pseudo) + ['fast_pitch'] * len(onehotfastpitch)
+    df['predtype'] = x
+
+    print(df)
+    columnstosum = list(df)
+    #remove label from sum
+    columnstosum.pop()
+    print(df[columnstosum].sum(axis=0).values)
+    #print(np.sum(results, axis=1))
+    #print(results)

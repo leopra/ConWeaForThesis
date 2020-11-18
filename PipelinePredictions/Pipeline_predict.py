@@ -19,7 +19,7 @@ from flair.data import Sentence
 from scipy import spatial
 
 #path where all the pretrained models are saved
-basepath = '../PipelinePredictions/models/'
+basepath = './PipelinePredictions/models/'
 #tokenizer
 tokenizer = pickle.load(open(basepath+ "tokenizer.pkl", "rb"))
 
