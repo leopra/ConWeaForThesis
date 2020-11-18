@@ -168,7 +168,7 @@ for index in ids[:220]:
 
     predictionssql[index] = kk
     countforoutput += 1
-    if countforoutput %20 ==0:
+    if countforoutput %100 ==0:
         print('classificate {} aziende'.format(countforoutput))
 
 
