@@ -17,6 +17,7 @@ import numpy as np
 import pandas as pd
 from keras.metrics import TopKCategoricalAccuracy
 import matplotlib.pyplot as plt
+import sys
 
 def main(dataset_path, print_flag=True):
     #dataset_path = './data/eutopiaverttest/'
@@ -294,22 +295,17 @@ def main(dataset_path, print_flag=True):
                      inv_docfreq, docfreq, it, n1, doc_freq_thresh=5):
         def get_rank_matrix(docfreq, inv_docfreq, label_count, label_docs_dict, label_to_index, term_count,
                             word_to_index, doc_freq_thresh):
-            print('PROBLEMO')
             E_LT = np.zeros((label_count, term_count))
-            print('muy problema', label_count, term_count)
             components = {}
             for l in label_docs_dict:
                 components[l] = {}
                 docs = label_docs_dict[l]
                 docfreq_local = calculate_doc_freq(docs)
-                print('a')
                 vect = CountVectorizer(vocabulary=list(word_to_index.keys()), tokenizer=lambda x: x.split())
-                print('zz')
                 X = vect.fit_transform(docs)
                 X_arr = X.toarray()
                 rel_freq = np.sum(X_arr, axis=0) / len(docs)
                 names = vect.get_feature_names()
-                print('b')
                 for i, name in enumerate(names):
                     try:
                         if docfreq_local[name] < doc_freq_thresh:
@@ -322,6 +318,8 @@ def main(dataset_path, print_flag=True):
                                            "idf": inv_docfreq[name],
                                            "rel_freq": np.tanh(rel_freq[i]),
                                            "rank": E_LT[label_to_index[l]][word_to_index[name]]}
+                    print('comp', sys.getsizeof(components))
+                    print('e_lt', sys.getsizeof(E_LT))
 
             print('ok i guess')
             return E_LT, components
