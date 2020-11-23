@@ -18,6 +18,7 @@ import pandas as pd
 from keras.metrics import TopKCategoricalAccuracy
 import matplotlib.pyplot as plt
 import sys
+import psutil
 
 def main(dataset_path, print_flag=True):
     #dataset_path = './data/eutopiaverttest/'
@@ -308,14 +309,16 @@ def main(dataset_path, print_flag=True):
                 names = vect.get_feature_names()
                 print('compl', sys.getsizeof(components))
                 print('e_ltl', sys.getsizeof(E_LT))
+                print(psutil.virtual_memory())
                 for i, name in enumerate(names):
+                    print('compn', sys.getsizeof(components))
+                    print('e_ltn', sys.getsizeof(E_LT))
                     try:
                         if docfreq_local[name] < doc_freq_thresh:
                             continue
                     except:
                         continue
-                    print('compn', sys.getsizeof(components))
-                    print('e_ltn', sys.getsizeof(E_LT))
+
                     E_LT[label_to_index[l]][word_to_index[name]] = (docfreq_local[name] / docfreq[name]) * inv_docfreq[
                         name] * np.tanh(rel_freq[i])
                     components[l][name] = {"reldocfreq": docfreq_local[name] / docfreq[name],
