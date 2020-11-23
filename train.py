@@ -378,16 +378,18 @@ def main(dataset_path, print_flag=True):
                 new_label_term_dict[l] = old_label_term_dict[l]
             return new_label_term_dict
 
+        print('1')
         label_count = len(label_to_index)
         term_count = len(word_to_index)
         label_docs_dict = get_label_docs_dict(df, label_term_dict, pred_labels)
-
+        print('2')
         E_LT, components = get_rank_matrix(docfreq, inv_docfreq, label_count, label_docs_dict, label_to_index,
                                            term_count, word_to_index, doc_freq_thresh)
-
+        print('3')
         if it == 0:
             print("Disambiguating seeds..")
             label_term_dict = disambiguate(label_term_dict, components)
+            print('4')
         #not adding seeds at the first iteration
         else:
             print("Expanding seeds..")
