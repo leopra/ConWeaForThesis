@@ -294,7 +294,9 @@ def main(dataset_path, print_flag=True):
                      inv_docfreq, docfreq, it, n1, doc_freq_thresh=5):
         def get_rank_matrix(docfreq, inv_docfreq, label_count, label_docs_dict, label_to_index, term_count,
                             word_to_index, doc_freq_thresh):
+            print('PROBLEMO')
             E_LT = np.zeros((label_count, term_count))
+            print('muy problema', label_count, term_count)
             components = {}
             for l in label_docs_dict:
                 components[l] = {}
