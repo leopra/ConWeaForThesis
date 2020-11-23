@@ -322,6 +322,8 @@ def main(dataset_path, print_flag=True):
                                            "idf": inv_docfreq[name],
                                            "rel_freq": np.tanh(rel_freq[i]),
                                            "rank": E_LT[label_to_index[l]][word_to_index[name]]}
+
+            print('ok i guess')
             return E_LT, components
 
         def disambiguate(label_term_dict, components):
