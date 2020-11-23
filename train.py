@@ -306,20 +306,23 @@ def main(dataset_path, print_flag=True):
                 X_arr = X.toarray()
                 rel_freq = np.sum(X_arr, axis=0) / len(docs)
                 names = vect.get_feature_names()
+                print('compl', sys.getsizeof(components))
+                print('e_ltl', sys.getsizeof(E_LT))
                 for i, name in enumerate(names):
                     try:
                         if docfreq_local[name] < doc_freq_thresh:
                             continue
                     except:
                         continue
+                    print('compn', sys.getsizeof(components))
+                    print('e_ltn', sys.getsizeof(E_LT))
                     E_LT[label_to_index[l]][word_to_index[name]] = (docfreq_local[name] / docfreq[name]) * inv_docfreq[
                         name] * np.tanh(rel_freq[i])
                     components[l][name] = {"reldocfreq": docfreq_local[name] / docfreq[name],
                                            "idf": inv_docfreq[name],
                                            "rel_freq": np.tanh(rel_freq[i]),
                                            "rank": E_LT[label_to_index[l]][word_to_index[name]]}
-                    print('comp', sys.getsizeof(components))
-                    print('e_lt', sys.getsizeof(E_LT))
+
 
             print('ok i guess')
             return E_LT, components
@@ -421,7 +424,7 @@ def main(dataset_path, print_flag=True):
     docfreq = calculate_df_doc_freq(df)
     inv_docfreq = calculate_inv_doc_freq(df, docfreq)
 
-    train_word2vec(df, dataset_path)
+    #train_word2vec(df, dataset_path)
 
     from sklearn.metrics import confusion_matrix
     for i in range(6):
