@@ -286,8 +286,8 @@ def main(dataset_path, print_flag=True):
 
         #print(classification_report(y_true_all, pred_labels))
         print("Dumping the model...")
-        model.save_weights(dump_dir + "model_weights_" + model_name + ".h5")
-        model.save(dump_dir + "model_" + model_name + ".h5")
+        # model.save_weights(dump_dir + "model_weights_" + model_name + ".h5")
+        # model.save(dump_dir + "model_" + model_name + ".h5")
         return pred_labels
 
     def expand_seeds(df, label_term_dict, pred_labels, label_to_index, index_to_label, word_to_index, index_to_word,
