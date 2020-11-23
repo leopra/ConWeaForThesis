@@ -302,11 +302,14 @@ def main(dataset_path, print_flag=True):
                 components[l] = {}
                 docs = label_docs_dict[l]
                 docfreq_local = calculate_doc_freq(docs)
+                print('a')
                 vect = CountVectorizer(vocabulary=list(word_to_index.keys()), tokenizer=lambda x: x.split())
+                print('zz')
                 X = vect.fit_transform(docs)
                 X_arr = X.toarray()
                 rel_freq = np.sum(X_arr, axis=0) / len(docs)
                 names = vect.get_feature_names()
+                print('b')
                 for i, name in enumerate(names):
                     try:
                         if docfreq_local[name] < doc_freq_thresh:
