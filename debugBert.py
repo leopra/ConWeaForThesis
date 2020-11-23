@@ -31,3 +31,13 @@ for index, row in df[14:15].iterrows():
             print(sentence)
             print(index)
             continue
+
+#CODE USED TO SAVE FILES TO AZURE BLOB STORAGE
+#
+# import os
+# import sys
+# PATH = os.path.dirname(os.__file__)
+# sys.path.append(os.path.join(PATH, 'Libraries-GP'))
+#
+# from AzureStorage import blob_upload
+# blob_upload('verticals-ml', 'cluster-map1,8gb', './data/eutopiavert/word_cluster_map.pkl')

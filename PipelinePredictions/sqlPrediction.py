@@ -8,6 +8,30 @@ import numpy as np
 import re
 import json
 import warnings
+import torch
+
+#this class had to be added there to fix a pirtch error see
+#https://stackoverflow.com/questions/61591081/derived-class-of-pytorch-nn-module-cannot-be-loaded-by-module-import-in-python
+class BERTClass(torch.nn.Module):
+    def __init__(self):
+        super(BERTClass, self).__init__()
+        self.l1 = transformers.BertModel.from_pretrained('bert-base-uncased')
+        self.l2 = torch.nn.Dropout(0.3)
+        self.l3 = torch.nn.Linear(768, 13)
+        #TODO update with sigmoid
+
+    def forward(self, ids, mask, token_type_ids):
+        _, output_1 = self.l1(ids, attention_mask=mask, token_type_ids=token_type_ids)
+        output_2 = self.l2(output_1)
+        output = self.l3(output_2)
+        return output
+
+    def predict(self, ids, mask, token_type_ids):
+        outputs = self(ids, mask, token_type_ids)
+        _, predicted = torch.max(outputs, 1)
+        return predicted
+
+from PipelinePredictions import bertSupervised
 
 #ignore warnings
 warnings.filterwarnings("ignore")
@@ -91,11 +115,12 @@ def clean_text(text):
         return re.sub(r'[;,\.!\?\(\)]', ' ', text.lower()).replace('\n', '').replace('[\s+]', ' ')
 
 
+
 #company ids to be classified
 ids =data.client_id.values
 predictionssql = {}
 countforoutput = 0
-for index in ids[:220]:
+for index in ids[:10]:
     #group all descritption of same company together
     desc_client = desc[desc.client_id == index]
     desc_client["source"] = pd.Categorical(desc_client["source"], categories=priority_desc, ordered=True)
@@ -120,13 +145,20 @@ for index in ids[:220]:
             descrlistbig = descrlist.apply(lambda x: subbi.substituteBigwithMono(x, seedenc)).values
         except:
             print(descrlist.values)
+
+        #pseudo
         text, preds_desc_pseudo = pipred.generate_pseudo_labels(descrlistbig)
+        #fasttext
         predfastdescr = modeldescr.predict(descrlist.values.tolist(), k=4)
         onehotfastdescr = convertLabeltoOneHot(predfastdescr)
+        #bert supervised
+        bertpred = bertSupervised.predictBert(descrlist.values.tolist())
 
     else:
         onehotfastdescr = [np.zeros(len(label_args), dtype=int)]
         preds_desc_pseudo = [np.zeros(len(label_args), dtype=int)]
+        bertpred = [np.zeros(len(label_args), dtype=int)]
+
 
     if len(pitchlist) > 0:
         #classify pitch if not empty
@@ -145,10 +177,11 @@ for index in ids[:220]:
 
 
     #code for nicer output
-    res = np.concatenate((preds_desc_pseudo, onehotfastdescr, preds_pitch_pseudo, onehotfastpitch), axis=0)
+    res = np.concatenate((preds_desc_pseudo, onehotfastdescr, bertpred, preds_pitch_pseudo, onehotfastpitch), axis=0)
     df = pd.DataFrame(res, dtype=int, columns = [x[9:14] for x in label_args])
     #codice fogna per avere indicato da dove viene la predizione nella tabella
-    x = ['pseudo_descr'] * len(preds_desc_pseudo) + ['fast_descr'] * len(onehotfastdescr) + ['pseudo_pitch']* len(preds_pitch_pseudo) + ['fast_pitch'] * len(onehotfastpitch)
+    x = ['pseudo_descr'] * len(preds_desc_pseudo) + ['fast_descr'] * len(onehotfastdescr)\
+        + ["bert"] * len(bertpred) + ['pseudo_pitch']* len(preds_pitch_pseudo) + ['fast_pitch'] * len(onehotfastpitch)
     df['predtype'] = x
 
     #print(df)
