@@ -2,36 +2,20 @@ import pandas as pd
 import os
 import sys
 from PipelinePredictions import Pipeline_predict as pipred
-from PipelinePredictions import SubBigrams as subbi
 import fasttext
 import numpy as np
 import re
 import json
 import warnings
-import torch
-
-#this class had to be added there to fix a pirtch error see
-#https://stackoverflow.com/questions/61591081/derived-class-of-pytorch-nn-module-cannot-be-loaded-by-module-import-in-python
-class BERTClass(torch.nn.Module):
-    def __init__(self):
-        super(BERTClass, self).__init__()
-        self.l1 = transformers.BertModel.from_pretrained('bert-base-uncased')
-        self.l2 = torch.nn.Dropout(0.3)
-        self.l3 = torch.nn.Linear(768, 13)
-        #TODO update with sigmoid
-
-    def forward(self, ids, mask, token_type_ids):
-        _, output_1 = self.l1(ids, attention_mask=mask, token_type_ids=token_type_ids)
-        output_2 = self.l2(output_1)
-        output = self.l3(output_2)
-        return output
-
-    def predict(self, ids, mask, token_type_ids):
-        outputs = self(ids, mask, token_type_ids)
-        _, predicted = torch.max(outputs, 1)
-        return predicted
-
 from PipelinePredictions import bertSupervised
+from fuzzywuzzy import fuzz
+from itertools import combinations
+from PipelinePredictions import testtagpred
+
+with open('PipelinePredictions/tag_data/tags_synonyms_dict.json') as fp:
+    tag_labels = json.load(fp)
+
+basepath = './PipelinePredictions/models/'
 
 #ignore warnings
 warnings.filterwarnings("ignore")
@@ -44,8 +28,6 @@ sys.path.append(os.path.join(PATH, 'Libraries-GP'))
 #eutop Libraries
 from SQLServer import DATABASE_CONFIG_NEW, sql_cnnt
 from AzureStorage import blob_download
-
-basepath = './PipelinePredictions/models/'
 
 data = pd.read_sql_query("select top(10000) client_id from co_aggregations where client_id not in "
                          "(select client_id from co_verticals) ", #TODO add " and vertical_id is not null"
@@ -77,10 +59,10 @@ pitch = pd.read_sql_query(qry_pitch, sql_cnnt("cnnt", DATABASE_CONFIG_NEW))
 #blob_download('verticals-ml', 'fasttext-descr', basepath + 'fasttext-descr.bin') #86% top1 accuracy
 #blob_download('verticals-ml', 'fasttext-pitch', basepath +'fasttext-pitch.bin') #62% top1 accuracy
 
-modeldescr = fasttext.load_model(basepath +'fasttext-descr.bin')
+modeldescr = fasttext.load_model(basepath +'fasttex_pitch_model_ova_18_11_2020.bin')
 
 #model to classify pitchlines
-modelpitch = fasttext.load_model(basepath +'fasttext-pitch.bin')
+#modelpitch = fasttext.load_model(basepath +'fasttext-pitch.bin')
 
 label_args = {'__label__Agriculture': 0,
  '__label__Buildings': 1, '__label__Constructions': 2, '__label__Energy': 3,
@@ -88,6 +70,8 @@ label_args = {'__label__Agriculture': 0,
  '__label__Healthcare': 6, '__label__Logistics': 7, '__label__Manufacturing': 8,
  '__label__Mining': 9, '__label__Public_Administration': 10,
  '__label__Transportation': 11, '__label__Utilities_(electricity,_water,_waste)': 12}
+
+inverse_dict = dict([(i,f) for f,i in label_args.items()])
 
 real_vertical_index = pd.read_sql_query("SELECT * FROM [tb_verticals]",sql_cnnt("cnnt", DATABASE_CONFIG_NEW))
 mapfastindextoeutopiaindex = {0:1,1:2,2:3,3:4,4:5,5:6,6:8,7:9,8:10,9:11,10:13,11:15,12:16}
@@ -115,12 +99,14 @@ def clean_text(text):
         return re.sub(r'[;,\.!\?\(\)]', ' ', text.lower()).replace('\n', '').replace('[\s+]', ' ')
 
 
+with open(basepath + 'seedwords.json') as fp:
+    seedwords = json.load(fp)
 
 #company ids to be classified
 ids =data.client_id.values
 predictionssql = {}
 countforoutput = 0
-for index in ids[:10]:
+for index in ids:
     #group all descritption of same company together
     desc_client = desc[desc.client_id == index]
     desc_client["source"] = pd.Categorical(desc_client["source"], categories=priority_desc, ordered=True)
@@ -129,47 +115,57 @@ for index in ids[:10]:
     pitch_client = pitch[pitch.client_id == index]
     pitch_client["source"] = pd.Categorical(pitch_client["source"], categories=priority_pitch, ordered=True)
     pitch_client = pitch_client.sort_values('source')
-    #TODO handle bigrams
-    #TODO handle empty data in the clearest way
-    #TODO remove duplicates description
     descrlist = desc_client.description.apply(lambda x: clean_text(x))
     pitchlist = pitch_client.pitch_line.apply(lambda x: clean_text(x))
 
-    #pseudo predictions, encode bigrams
-    with open(basepath + 'seedwordsencoded.json') as fp:
-        seedenc = json.load(fp)
+
 
     if len(descrlist) > 0:
-        #classify descriptions if not empty
-        try:
-            descrlistbig = descrlist.apply(lambda x: subbi.substituteBigwithMono(x, seedenc)).values
-        except:
-            print(descrlist.values)
+        #classify descr if not empty
+        descrlistx = descrlist.values.tolist()
+
+        #this code is to delete similar descriptions
+        comb = combinations(range(len(descrlistx)),2)
+        todrop = []
+        tosave = []
+        for c0,c1 in comb:
+            if c0 in todrop and c1 in todrop:
+                continue
+            if fuzz.ratio(descrlistx[c0], descrlistx[c1]) > 80:
+                if c0 in tosave and c1 in tosave:
+                    todrop.append(c1)
+                    tosave.remove(c1)
+                elif c0 in tosave:
+                    todrop.append(c1)
+                elif c1 in tosave:
+                    todrop.append(c0)
+                else:
+                    tosave.append(c0)
+                    todrop.append(c1)
+
+        descrlistx = [i for j, i in enumerate(descrlistx) if j not in todrop]
 
         #pseudo
-        text, preds_desc_pseudo = pipred.generate_pseudo_labels(descrlistbig)
+        text, preds_desc_pseudo = pipred.generate_pseudo_labels(descrlistx, seedwords)
         #fasttext
-        predfastdescr = modeldescr.predict(descrlist.values.tolist(), k=4)
+        predfastdescr = modeldescr.predict(descrlistx, k=4)
         onehotfastdescr = convertLabeltoOneHot(predfastdescr)
         #bert supervised
-        bertpred = bertSupervised.predictBert(descrlist.values.tolist())
+        bertpred = bertSupervised.predictBert(descrlistx)
 
     else:
         onehotfastdescr = [np.zeros(len(label_args), dtype=int)]
         preds_desc_pseudo = [np.zeros(len(label_args), dtype=int)]
         bertpred = [np.zeros(len(label_args), dtype=int)]
 
-
     if len(pitchlist) > 0:
         #classify pitch if not empty
-        try:
-            pitchlistbig = pitchlist.apply(lambda x: subbi.substituteBigwithMono(x, seedenc)).values
-        except:
-            print(pitchlist.values)
-
-        text, preds_pitch_pseudo = pipred.generate_pseudo_labels(pitchlistbig)
-        predfastpitch = modelpitch.predict(pitchlist.values.tolist(), k=4)
-        onehotfastpitch = convertLabeltoOneHot(predfastpitch)
+        pitchlistx = pitchlist.values.tolist()
+        text, preds_pitch_pseudo = pipred.generate_pseudo_labels(pitchlistx, seedwords)
+        #TODO removed pitch to lower noise
+        #predfastpitch = modelpitch.predict(pitchlistx, k=4)
+        #onehotfastpitch = convertLabeltoOneHot(predfastpitch)
+        onehotfastpitch = [np.zeros(len(label_args), dtype=int)]
 
     else:
         preds_pitch_pseudo = [np.zeros(len(label_args), dtype=int)]
@@ -190,6 +186,8 @@ for index in ids[:10]:
     columnstosum.pop()
     finalcounts = df[columnstosum].sum(axis=0).values
     print(finalcounts)
+    for f, v in enumerate(finalcounts.tolist()):
+        print(inverse_dict[f], v)
     #norm1 = finalcounts / np.linalg.norm(finalcounts)
     mean = np.mean(finalcounts)
     std = np.std(finalcounts)
@@ -203,5 +201,9 @@ for index in ids[:10]:
     countforoutput += 1
     if countforoutput %100 ==0:
         print('classificate {} aziende'.format(countforoutput))
+
+    whole_text = ' '.join(descrlist.values.tolist() + pitchlist.values.tolist())
+    testtagpred.generate_pseudo_labelsTag([whole_text], tag_labels)[1]
+
 
 

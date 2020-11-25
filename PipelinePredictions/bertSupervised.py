@@ -8,7 +8,6 @@ import torch
 import transformers
 from transformers import BertTokenizer
 import numpy as np
-#from PipelinePredictions import BERTClass
 
 basepath = './PipelinePredictions/models/'
 
@@ -18,7 +17,6 @@ class BERTClass(torch.nn.Module):
         self.l1 = transformers.BertModel.from_pretrained('bert-base-uncased')
         self.l2 = torch.nn.Dropout(0.3)
         self.l3 = torch.nn.Linear(768, 13)
-        #TODO update with sigmoid
 
     def forward(self, ids, mask, token_type_ids):
         _, output_1 = self.l1(ids, attention_mask=mask, token_type_ids=token_type_ids)
@@ -32,8 +30,12 @@ class BERTClass(torch.nn.Module):
         return predicted
 
 #LOAD MODEL HERE SO IT'S NOT LOADED EVERYTIME
-modelo = torch.load(basepath + 'bert_model.h5', map_location=torch.device('cpu'))
+modelo = BERTClass()
+m_state_dict = torch.load(basepath + 'mymodule.pt')
+modelo.load_state_dict(m_state_dict)
 
+#torch.load('bert_model.h5', map_location=torch.device('cpu'))
+#torch.save(modelo.state_dict(), 'mymodule.pt')
 
 def predictBert(strings):
     MAX_LEN = 200

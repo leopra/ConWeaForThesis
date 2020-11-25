@@ -1,0 +1,683 @@
+{"3d printing": [
+"3d model", "3d-printing", "additive manufacturing", "rapid prototyping", "3d printing"],
+
+"advanced materials": [
+"hydroceramics", "self-healing materials", "carbon fiber", "nano fiber", "bioconcrete", "vegan leather", "responsive materials", "bioplastic", "mycelium", "transparent wood", "hydrogel", "hydrophobic cement", "sustainable concrete", "breathe bricks", "advanced materials", "lignin"],
+
+"advanced metering": [
+"feed-in tariff", "net metering", "smart metering", "smart meter", "advanced metering"],
+
+"air vehicles": [
+"aircraft", "airplane", "flying device", "airborne", "helicopter", "spacecraft", "air vehicles"],
+
+"air-to-water": [
+"heat pump", "heatpump", "air-to-water"],
+
+"algae": [
+"seaweed", "kelp", "sea moss", "alga", "diatom", "algae"],
+
+"packaging": [
+"packaging"],
+
+"alternative proteins": [
+"insects", "clean meat", "fermented protein", "sustainable protein", "meat alternative", "cultured meat", "lab-grown meat", "alternative proteins", "plant based", "soy"],
+
+"animal farming": [
+"animal farming", "livestock farming", "raising animals", "cattle", "livestock", "breeding", "ranching"],
+
+"animal welfare": [
+"animal protection", "animal rights", "animal health", "species friendly", "animal-friendly", "humane farming", "animal welfare"],
+
+"apiculture": [
+"beekeeping", "apiculture", "bees", "honey", "hives"],
+
+"apps": [
+"software application", "app", "apps"],
+
+"aquaculture": [
+"pisciculture", "fish farming", "aquiculture", "aquatic", "mariculture", "aquaculture"],
+
+"artificial intelligence (ai)": [
+"machine intelligence", "machine learning", "algorithms", "artificial intelligence"],
+
+"automotive": [
+"automotive", "motor vehicle", "auto", "car", "truck"],
+
+"autonomous vehicles": [
+"self-driving", "unmanned", "autonomous vehicles"],
+
+"aviation": [
+"aviation", "airmanship", "air travel", "aircraft"],
+
+"banking": [
+"debit card", "credit card", "bank account", "fintech", "bank account", "banking"],
+
+"big data": [
+"big data"],
+
+"biofuels": [
+"biodiesel", "biomass fuel", "agrofuel", "bio diesel", "ethanol", "organic fuel", "biofuel"],
+
+"waste to energy": [
+"waste-to-energy", "waste heat", "recovery from waste", "waste-to-energy", "incineration", "energy recovery", "waste to energy"],
+
+"biomimicry": [
+"bio-mimicry", "biomimetics", "biomimicry"],
+
+"bioplastics": [
+"drop-in plastics", "biobased polymer", "bioplastic materials", "bioplastics", "bioplastics"],
+
+"biotechnology": [
+"biotech", "bioengineering", "biotechnical", "biotechnology"],
+
+"blockchain": [
+"digital ledger", "blockchain"],
+
+"building materials": [
+"construction materials", "building supplies", "construction products", "structural material", "construction equipment", "reinforcement materials", "building materials"],
+
+"carbon capture, storage & utilization": [
+"carbon sequestration", "carbon dioxide capture", "carbon-capture", "carbon fixation", "carbon storage", "co2 removal", "carbon sink", "ccus", "dac", "ccu", "beccs", "eor", "carbon capture and storage", "ccs", "carbon control and sequestration", "carbon capture and sequestration", "direct air capture", "bio-energy with carbon capture and storage", "enhanced oil recovery", "carbon capture and utilization", "flue gas", "carbon capture, storage & utilization"],
+
+"carbon offsetting": [
+"carbon compensation", "offset emissions", "compensation for the carbon pollution", "carbon credits", "carbon offset", "carbon offsetting"],
+
+"cargo management": [
+"logistics management", "fleet management", "cargo tracking", "cargo management"],
+
+"carpooling & carsharing": [
+"carpooling", "carsharing", "car pool", "car share", "rideshare", "ride share"],
+
+"cereals & grains": [
+"cereal", "grain", "cornflakes", "granola", "oatmeal", "wheat", "corn", "bran", "barley", "cereals", "grains"],
+
+"certifications": [
+"certification", "certificate", "accreditation", "certifications"],
+
+"charging stations": [
+"charging dock", "filling station", "charging unit", "charging stations", "charging station"],
+
+"chemicals": [
+"chemical", "chemical substance", "chemicals", "chemistry"],
+
+"circular economy": [
+"sharing economy", "circularity", "circular economy"],
+
+"clean cookstoves": [
+"clean cooking", "cookstove smoke", "efficient cookstoves", "clean cookstoves", "solar stove"],
+
+"cloud service": [
+"iaas", "paas", "saas", "infrastructure as a service", "platform as a service", "software as a service", "cloud computing", "cloud service"],
+
+"combined heat and power": [
+"combined heat", "co-generation", "co-production", "cogeneration plant", "combined heat and power"],
+
+"commercial": [
+"commercial property", "commercial building", "commercial real estate", "office building", "commercial premises", "commercial"],
+
+"co-modality": [
+"transport modes", "efficient transport", "co-modality"],
+
+"components": [
+"component", "components"],
+
+"composting": [
+"manure", "compost", "composting"],
+
+"computer vision": [
+"image recognition", "video analysis", "computer vision"],
+
+"concentrated solar power": [
+"concentrated solar", "csp", "concentrated solar thermal", "solar power tower", "solar tower", "solar trough", "solar complex", "concentrated solar power"],
+
+"concrete": [
+"concrete", "cement", "grasscrete", "hempcrete", "ferrock", "ashcrete", "timbercrete"],
+
+"consumer apps": [
+"consumer application", "b2c platform", "consumer apps"],
+
+"consumer goods": [
+"consumer products", "consumer goods", "commodity", "consumable"],
+
+"coral reef": [
+"reef", "corals", "barrier reef", "coral bleaching", "coral reef"],
+
+"crowdfunding": [
+"crowd funding", "joint financing", "collective financing", "community financing", "co-finance", "equity", "debt", "equity crowdfunding", "debt crowdfunding", "crowdfunding"],
+
+"data visualization": [
+"data display", "data visualisation", "data visualization"],
+
+"deconstruction": [
+"demolition", "deconstruction"],
+
+"deeptech": [
+"deep tech", "deeptech"],
+
+"desalination": [
+"desalination", "desalinization", "desalinisation"],
+
+"digitalization": [
+"digitalization", "digitalisation", "digitisation"],
+
+"district heating": [
+"central heating", "municipal heat", "heating network", "centralized heating", "district heating"],
+
+"drones": [
+"drone", "pilotless aircraft", "radio-controlled aircraft", "unmanned air vehicle", "drones"],
+
+"e-commerce": [
+"e-commerce"],
+
+"electrification": [
+"electrification"],
+
+"electrochemical storage": [
+ "chemical storage", "electrochemical storage"],
+
+"electromechanical storage": [
+  "mechanical storage", "electromechanical storage"],
+
+"emerging energy generation": [
+"ocean thermal", "kinetic energy", "emerging energy generation"],
+
+"emission control": [
+"emissions reduction", "pollution control", "emission control"],
+
+"emissions trading": [
+"emissions allowance", "trading emissions rights", "emissions trading"],
+
+"energy efficiency": [
+"energy-efficient", "energy saving", "power saving", "energy conservation", "energy performance", "power conservation", "energy efficiency"],
+
+"energy provider": [
+"power supplier", "electricity supplier", "utility company", "energy distributor", "power distributor", "energy company", "electric commpany", "energy provider"],
+
+"energy storage": [
+"mechanical storage", "electromagnetic storage", "electrical storage", "electrochemical storage", "chemical stotage", "thermal storage", "energy storage"],
+
+"environment preservation": [
+"environmental conservation", "environmental protection", "nature protection", "forestry", "environment preservation"],
+
+"environment restoration": [
+"environmental clean-up", "ecological restoration", "environmental remediation", "environment restoration"],
+
+"equipment innovation": [
+"equipment retrofit", "equipment innovation"],
+
+"electric vehicles (ev)": [
+"electric car", "electric automobile", "ev", "electric vehicle", "electrified vehicle", "electric scooter", "electric locomotive", "electric bus", "plug-in electric", "battery electric", "electric vehicles"],
+
+"fashion": [
+"clothing", "clothes", "shoe", "shoes", "fashiontech", "sustainable fashion", "fashion"],
+
+"fishing": [
+"fisheries", "trawling", "fishing"],
+
+"fleet management": [
+"fleet management"],
+
+"food delivery": [
+"food delivery", "meal delivery"],
+
+"food freshness monitoring": [
+"food freshness monitoring", "freshness monitoring"],
+
+"food surplus & waste": [
+"food surplus", "food waste", "excess food", "leftovers", "ugly produce"],
+
+"forest machinery": [
+"woodworking", "timber processing", "forest machinery"],
+
+"fuel cell": [
+"electrochemical cell", "fuel cell", "fuel cell"],
+
+"fuel efficiency": [
+"fuel economy", "fuel-efficient", "fuel consumption", "fuel saving", "fuel innovation", "fuel mileage", "fuel switching", "fuel efficiency"],
+
+"geothermal energy": [
+"geothermal", "earth heat", "geotherml power", "geothermal energy"],
+
+"green roof": [
+"green roof"],
+
+"ground vehicles": [
+"motor vehicle", "automobile", "car", "motorised vechicle", "automobile", "road vehicle", "bus", "motorcycle", "ground vehicles"],
+
+"hazardous waste": [
+"toxic waste", "hazardous material", "contaminated material", "hazardous substance", "environmental pollutant", "hazardous waste"],
+
+"heat pumps": [
+"heat pumps", "heat pumps"],
+
+"hvac": [
+"ventilation", "air condition", "climatization", "heating system", "heating unit", "ac system", "nest learning thermostat", "hvac", "air conditioning"],
+
+"hydro energy": [
+"water power", "hydropower", "hydroelectricity", "hydri-energy", "hydro energy", "ocean energy", "tidal energy"],
+
+"hydroponics & aeroponics": [
+"hydroponics", "aeroponics", "hydroponic", "aeroponic"],
+
+"air quality": [
+"iaq", "air quality indoors", "air quality", "clean air", "atmospheric pollution", "airborne pollution", "outdoor air quality", "air monitoring"],
+
+"industrial": [
+"manufacturing", "factory", "industrial"],
+
+"industry 4.0": [
+"manufacturing automation", "smart factory", "smart industry", "fourth industrial revolution", "industry 4.0"],
+
+"insects": [
+"insect", "anthropod", "worm", "bug", "criket", "insects"],
+
+"insurance": [
+"insurance policy", "insurance"],
+
+"internet of things": [
+"iot", "sensors", "internet of things"],
+
+"kinetic energy": [
+"kinetic energy"],
+
+"lab-grown meat": [
+"cultured meat", "in vitro meat", "slaughter-free meat", "clean meat", "cultivated meat", "synthetic meat", "cell-based meat", "lab-grown meat"],
+
+"leak detection and repair (ldar)": [
+"ldar", "leak detection", "pipeline monitoring", "flow monitoring", "leak repair", "leak detection and repair"],
+
+"life sciences": [
+"biological sciences", "biology", "physics", "natural sciences", "physical sciences", "chemical science", "medicine", "well being", "healthcare", "life sciences"],
+
+"life-cycle analysis (lca)": [
+"lca", "lifecycle analysis", "life cycle approach", "life-cycle", "cradle-to-grave", "life-cycle analysis"],
+
+"lighting": [
+"fixture", "lights", "lamp", "lumen", "led", "lighting"],
+
+"low-energy thermal treatments": [
+"thermal processing", "refrigeration", "freezing", "coolant", "congelation", "food preservation", "food sterilization", "pasteurisation", "low-energy thermal treatments"],
+
+"marketplace": [
+"circular market", "online platform", "online shop", "e-market", "online store", "e-commerce", "marketplace"],
+
+"materials efficiency": [
+"materials efficiency"],
+
+"materials innovation": [
+"innovative materials", "biobased materials", "materials innovation"],
+
+"medical devices": [
+"medical equipment", "medical apparatus", "medical devices"],
+
+"micromobility": [
+"bicycles", "ebikes", "e-bikes", "electric scooters", "electric skateboards", "shared bicycles", "pedelec", "electric sharing system", "micromobility", "scooter", "scooters"],
+
+"modular housing": [
+"prefabricated building", "pre-fab house", "modular house", "modular home", "modular construction", "modular housing"],
+
+"monitoring & analytics": [
+"descriptive analytics", "predictive analytics", "web analytics", "monitoring", "analytics"],
+
+"municipal solid waste": [
+"municipal waste", "urban waste", "city waste", "household waste", "solid waste", "domestic waste", "municipal solid waste"],
+
+"nanotechnology": [
+"nanotech", "nanotechnology"],
+
+"net-zero housing": [
+"zero-energy building", "zero carbon house", "zero net energy", "net-zero energy building", "energy-plus building", "green building", "low energy houses", "net-zero housing"],
+
+"nuclear energy": [
+"nuclear", "nuclear power", "atomic energy", "atomic power", "fission", "fusion power", "molten salt", "rector", "nuclear reactor", "nuclear fission", "modular reactor", "nuclear waste", "nuclear energy"],
+
+"nutrients & fertilizer": [
+"fertilizer", "manure", "compost", "mulch", "soil nutrients", "soil management", "soil conditioner", "potassium nitrate", "nutrients"],
+
+"off-shore": [
+"offshore", "open sea", "off-shore"],
+
+"oil & gas": [
+"gasoline", "petrol", "crude oil", "fuel oil"],
+
+"operation, inspection & mantinace": [
+"maintenance", "servicing", "operational maintenance", "inspection", "operation, inspection", "mantinace"],
+
+"paper & pulp": [
+"paper industry", "wood pulp", "papermaking", "paper", "cellulose"],
+
+"parking management systems": [
+"parking", "car parking system", "parking system", "smart parking", "parking management systems"],
+
+"pest and disease": [
+"pest control", "pest management", "pesticides", "disinsectisation", "disease detection", "fumigate", "pest and disease", "disease control"],
+
+"pharmaceuticals": [
+"pharmaceutical", "pharmaceutic", "drug", "pharma", "pharmaceuticals"],
+
+"plant-based": [
+"vegetable-based", "plant origin", "vegetable origin", "vegetal", "vegan", "vegetarian", "plant-based", "plant derived"],
+
+"plant-based meat": [
+"soy protein", "veggie burgers", "meat alternative", "meat substitute", "plant-based meat"],
+
+"plastic": [
+"polymer", "petrochemicals", "pet", "hdpe", "pvc", "bpa", "ldpe", "plastic"],
+
+"plastic waste": [
+"plastic pollution", "microbeads", "micro-plastics", "mega-plastics", "plastic waste"],
+
+"polymers": [
+"plastics", "polymers"],
+
+"power distribution": [
+"electricity distribution", "energy distribution", "power delivery", "electrical distribution", "energy delivery", "electricity supply", "electricity transmission", "grid", "power distribution"],
+
+"power generation": [
+"electricity generation", "energy production", "electricity production", "power-generating", "produce electricity", "energy generation", "power generation"],
+
+"power purchase agreement": [
+"electricity power agreement", "ppa", "power purchase agreement"],
+
+"precision agriculture": [
+"satellite farming", "site specific crop management", "prescriptive planting", "precision farming", "variable rate application", "variable rate technology", "agricultural drones", "precision beekeeping", "satellite crop monitoring", "precision livestock farming", "precision viticulture", "drones", "robotics", "harvesting", "picking", "weeding", "precision agriculture", "agtech", "agritech", "smart farming", "smart agriculture"],
+
+"predictive analytics": [
+"forward looking analysis", "predictive modelling", "data modelling", "predictive model", "predictive analytics", "predictive analysis"],
+
+"rail & hyperloop": [
+"rail", "hyperloop", "train", "railway", "railroad", "rail vehicles"],
+
+"recycling": [
+"recycle", "reprocess", "material recovery", "recycling"],
+
+"reduce & reuse": [
+"reuse", "reduce", "repurpose", "re-use", "recirculate", "reprocess", "circular economy"],
+
+"reforestation": [
+"reforestation", "re-afforestation", "forest replanting", "tree planting"],
+
+"regulation & compliance": [
+"regulation", "compliance", "regulatory compliance"],
+
+"remote sensing": [
+"remote detector", "remote observation", "remote monitoring", "gis", "geographic information system", "remote sensing"],
+
+"residential": [
+"residential", "housing", "apartment block"],
+
+"retrofit": [
+"retrofit", "refurbish", "renovate", "re-equip", "modernise"],
+
+"revolo": [
+"revolo"],
+
+"robotics": [
+"robotics", "automation", "robotization", "mechanization", "drone"],
+
+"route optimization": [
+"pathfinding", "pathing", "route optimization"],
+
+"seafood": [
+"seafood", "fish", "shellfish", "aquaculture", "marine farming"],
+
+"sensors": [
+"detector", "sensor", "sensing element", "signal device", "sensors"],
+
+"shared mobility": [
+"carsharing", "bikesharing", "bicycle sharing", "ridesharing", "microtransit", "carpool", "peer-to-peer sharing", "personal vehicle sharing", "shared mobility", "car sharing", "bike sharing", "scooter sharing"],
+
+"sharing economy": [
+"shared mobility", "carsharing", "bikesharing", "bicycle sharing", "ridesharing", "microtransit", "carpool", "peer-to-peer sharing", "personal vehicle sharing", "community-based economy", "gig economy", "platform economy", "access economy", "collaborative consumption", "circular economy", "sharing economy"],
+
+"shipping": [
+"shipping", "cargo ships", "merchant marine", "merchant vessels", "freight", "maritime transport"],
+
+"smart appliances": [
+"smart devices", "connected light bulbs", "nest learning thermostat", "smart home", "smart building", "home automation", "smart house", "domotics", "smart appliances"],
+
+"smart city": [
+"sustainable city", "urban agglomeration", "urban infrastructure", "smart transport", "smart mobility", "connected traffic", "traffic management", "congestion management", "parking", "connected cars", "municipal waste collection", "smart garbage cans", "urbanization", "smart city", "smart cities"],
+
+"smart grid": [
+"smart meters", "electricity production control", "power line communication", "grid fault detection", "bidirectional energy flows", "distributed power flow control", "demand-side management", "demand response", "load adjustment", "load balancing", "peak leveling", "peak curtailment", "peak shaving", "base load", "load balancing", "weather forecasting", "intermittency", "smart grid", "demand side response"],
+
+"social platforms": [
+"social media platform", "social platforms"],
+
+"soil management": [
+"soil treatment", "soil  conservation", "land management", "soil management"],
+
+"solar energy": [
+"solar", "solar power", "sun energy", "sunlight", "photoelectric cells", "photovoltaic", "solar collector", "solar panel", "solar energy", "solar cell", "photovoltaics", "solar panels"],
+
+"solar photovoltaic": [
+"photovoltaic", "solar panel", "semiconductor", "solar cell", "solar photovoltaic"],
+
+"solar vehicles": [
+"solar electric", "solar boat", "solar car", "solar airplane", "hybrid airship", "solar assist", "solar vehicles"],
+
+"supply chain": [
+"logistics chain", "distribution channel", "supply network", "supply chain"],
+
+"syngas": [
+"synthesis gas", "synthetic natural gas", "syngas"],
+
+"textile / clothing": [
+"textile", "clothing", "fashion", "footwear", "shoes", "socks", "jeans", "trousers", "t-shirt"],
+
+"thermal storage": [
+"thermal energy storage", "tes", "phase-change material", "heat pump", "waste heat", "molten salt", "sensible heat", "thermal storage"],
+
+"tidal energy": [
+"tidal", "stream energy", "tidal power", "tidal energy"],
+
+"traffic management systems": [
+"congestion management", "transport management", "traffic planning", "smart transport", "connected traffic", "traffic management", "smart parking", "connected cars", "air traffic control", "urban traffic", "traffic management systems"],
+
+"value chain": [
+"value-added chain", "value network", "value chain"],
+
+"vehicle batteries": [
+"car battery", "automotive battery", "motor vehicle battery", "vehicle batteries"],
+
+"vertical farming": [
+"vertical gardening", "controlled-environment agriculture", "deep farm", "vertical farming"],
+
+"virtual / augmented reality (ar/vr)": [
+"virtual reality", "augmented reality", "artificial reality", "virtual"],
+
+"waste collection": [
+"garbage removal", "garbage collection", "waste collection"],
+
+"waste disposal": [
+"dumping ground", "dumping site", "waste disposal"],
+
+"waste innovations": [
+"smart waste", "waste innovations"],
+
+"waste management": [
+"waste processing", "waste treatment", "waste facility", "waste handling", "waste storage", "waste management", "waste", "recycling"],
+
+"waste sorting": [
+"waste handling", "waste sorting"],
+
+"waste tracking": [
+"waste tracking"],
+
+"waste transport": [
+"waste shipment", "waste transport"],
+
+"wastewater": [
+"sewage", "waste-water", "effluent", "dirty water", "drain water", "liquid waste", "sanitation", "drainage water", "discharge water", "muddy water", "gray water", "grey water", "blackwater", "waste waterwastewater"],
+
+"water efficiency": [
+"water use", "water consumption", "water resources management", "saving water", "water conservation", "water efficiency"],
+
+"water production": [
+"water production", "air to water"],
+
+"water purification": [
+"water treatment", "sewage treatment", "wastewater treatment", "desalination", "water purification"],
+
+"water recycling": [
+"water reuse", "water recycling"],
+
+"water treatment": [
+"water purification", "sewage treatment", "wastewater treatment", "water treatment"],
+
+"water vehicles": [
+"boat", "ship", "water vessel", "naval", "ferry", "sailing", "yacht", "water vehicles"],
+
+"wave energy": [
+"wave energy"],
+
+"wind energy": [
+"wind power", "airborne wind", "offshore windhigh-altitude wind", "wind energy"],
+
+"wood": [
+"timber", "forest", "wood", "lumber", "woodland", "logging", "firewood", "fuelwood"],
+
+"environmental, social, and governance (esg)": [
+"environmental governance", "sustainable management", "environmental, social, and governance"],
+
+"animal feed": [
+"fodder", "pet food", "animal food", "animal nutrition", "cattle feed", "livestock feed", "fish food", "forage", "silage", "animal feed"],
+
+"bacteria": [
+"microbes", "microorganisms", "micro organisms", "bacili", "protozoa", "pathogen", "bacteria"],
+
+"batteries": [
+"storage cell", "accumulator", "rechargeable battery", "storage battery", "secondary cell", "lithium-iron", "lead-acid", "zinc-air", "nickel-cadmium", "nickel-metal", "batteries", "batteriey"],
+
+"bike sharing": [
+"bikeshare", "bicycle-sharing system", "public bicycle scheme", "public bike  share", "bike racks", "dockless bikes", "bike sharing"],
+
+"bikes & e-bikes": [
+"electric bicycle", "e-bike", "bicycle", "bike", "cycling", "tricycle", "bikes", "e-bikes"],
+
+"biochar": [
+"biochar"],
+
+"biodegradable": [
+"decompostable", "bio-degradable", "biodeterioration", "biofragmentation", "compostable", "green waste", "biodegradable"],
+
+"biogas": [
+"bio gas", "renewable natural gas", "natural gas", "marsh gas", "landfill gas", "digested gas", "anaerobic digester", "methane grid", "biogas"],
+
+"carbon accounting": [
+"enterprise carbon accounting", "creenhouse gas accounting", "carbon credit", "carbon inventory", "corporate environmental report", "carbon footprint", "sustainability accounting", "carbon accounting"],
+
+"co2-to-food": [
+"solar food", "food carbon recycling", "carbon neutral food", "co2-to-food"],
+
+"co2-to-fuel": [
+"co2-to-methanol", "direct air capture", "hydrogen split from water", "co2-to-fuelcarbon neutral fuel", "carbon negative fuel"],
+
+"composite materials": [
+"sandwich-structured", "carbon fibre", "fibre-reinforced", "compound material", "composite fiber", "composite", "reinforced concrete", "composite wood", "plywood", "reinforced plastics", "fiberglass", "ceramic matrix copmosite", "metal matrix", "advanced composite", "composite materials"],
+
+"connected cars": [
+"automotive iot", "vehicle to cloud", "vehicle to infrastructure", "vehicle to vehicle", "vehicle to pedestrian", "connected cars"],
+
+"corporate social responsibility (csr)": [
+"sustainability reporting", "corporate social responsibility", "csr", "corporate sustainability", "corporate social accountability", "esr"],
+
+"cryptocurrencies": [
+"bitcoin", "etherium", "ripple", "digital assets", "digital currency", "crypto token", "virtual money", "cryptocurrencies", "cryptocurrency"],
+
+"dairy": [
+"milk", "cheese", "butter", "cream", "yoghurt", "egg", "dairy"],
+
+"data center": [
+"data cabling", "data processing center", "data centre", "computing center", "telecommunications and storage system", "IT operations", "data center"],
+
+"e-waste": [
+"electronic waste", "electronic scrap", "waste electrical and electronic equipment", "used electrical and electronic", "internet center", "e-waste"],
+
+"electricity": [
+"electric power", "electrification", "electrical suppy"],
+
+"energy management": [
+"energy assessment", "energy conservation", "energy production", "energy consumption", "power management", "energy tracking", "energy audit", "energy monitoring", "energy measurement", "energy performance", "energy management", "energy efficiency", "energy savings"],
+
+"energy recovery": [
+"heat recovery", "energy recycling", "heat recycling", "thermal diode", "thermal oxidizer", "solar thermal collector", "thermal energy storage", "waste heat", "energy recovery"],
+
+"green building": [
+"sustainable building", "natural buildng", "green architecture", "energy refurbishment", "green building"],
+
+"heating & cooling": [
+"HVACR", "HACR", "HVAC", "Heating, ventilation, and air conditioning", "ventilation", "indoor comfort", "district heqting", "heating", "cooling"],
+
+"hydrogen": [
+"hydrogen fuel", "green hydrogen", "hydrogen cell", "hydrogen"],
+
+"landfill gas": [
+"landfill methane", "landfill energy", "discharge gas", "waste gas", "flue gas", "landfill gas"],
+
+"light-emitting diode (led)": [
+"light-emitting diode", "led"],
+
+"maritime": [
+"marine", "naval", "ocean", "sea", "offshore", "coastal", "seaborne", "pelagic", "maritime"],
+
+"modular": [
+"building-block", "pre-fabrication", "modularization", "modular design", "modular"],
+
+"off-grid": [
+"local generation", "off-the-grid", "independent grid", "grid parity", "decentralized energy", "micro-grid", "off-grid"],
+
+"organic waste": [
+"organic matter", "composting", "aerobic digestion", "anaerobic digestion", "biodegradable waste", "food waste", "paper waste", "green waste", "organic waste"],
+
+"pollution control": [
+"pollution abatement", "pollution response", "emissions control", "pollution prevention", "decontamination", "pollution control"],
+
+"power grid": [
+"electricity grid", "electrical network", "grid fault detection", "power network", "transmission lines", "electric power distribution", "power grid"],
+
+"precision irrigation": [
+"water-efficient farming", "drip irrigation", "precision irrigation"],
+
+"river": [
+"stream", "waterway", "fluvial", "small water basin", "river"],
+
+"scooters & e-scooters": [
+"scooters", "e-scooters", "electric scooters", "scooter-sharing"],
+
+"smart home": [
+"home automation", "domotics", "smart house", "home network", "home system", "home app", "lighting control", "smart thermostat", "domestic robot", "smart refrigerator", "home energy monitor", "smart home"],
+
+"toilets": [
+"lavatory", "sanitation", "eco-toilet", "crapper", "eco loo", "toilets", "toilet"],
+
+"turbines": [
+"wind turbine", "wind energy convertere", "impeller", "windmill", "propeller", "turbine blade", "turbomachine", "vortex", "turbines"],
+
+"upcycling": [
+"repurpose", "creative reuse", "recirculate", "re-use", "upcycling"],
+
+"urban farming": [
+"urban agriculture", "urban gardening", "urban food cultivation", "urban farming"],
+
+"vegan / vegetarian": [
+"vegan", "vegetarian", "plant-based"],
+
+"virtual power plant": [
+"distributed energy resources", "cloud-based power plant", "Ancillary services", "virtual power plant"],
+
+"waste": [
+"waste"],
+
+"water": [
+"water"],
+
+"biomass": [
+"wood pellets", "wood chips", "wood fuel", "bagasse", "ethanol", "biodiesel", "biorefinery", "bioenergy", "energy crop", "biomass"],
+
+"satellite imagery": [
+"satellite imagery", "earth observation", "satellite data", "aerial satellite photography"],
+
+"renewable energy": [
+"clean energy", "sustainable energy", "green energy", "renewables", "renewable energy"]}

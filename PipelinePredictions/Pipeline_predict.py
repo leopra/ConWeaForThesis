@@ -9,6 +9,8 @@ import string as str_ing
 import numpy as np
 from keras.models import load_model
 from gensim.models import word2vec
+from sklearn.feature_extraction.text import CountVectorizer
+
 from keras_han.layers import AttentionLayer
 from keras_han.model import HAN
 from nltk import tokenize
@@ -146,12 +148,11 @@ def preprocess(strings):
 
 
 #function that uses a tokenizer and a dictionary of seedowrds to predict labels
-def generate_pseudo_labels(strings):
+def generate_pseudo_labels(strings, seedwordsdict):
 
     #labels and dictionary of seedwords
-    with open(basepath + "seedwordsencoded.json") as fp:
-        label_term_dict = json.load(fp)
-    labels = sorted(label_term_dict.keys())
+
+    labels = sorted(seedwordsdict.keys())
 
     #this an implementation for multilabel, returns a one-hot-encoded array
     def argmax_perfectmatch(count_dict, percentage=0.2):
@@ -192,20 +193,16 @@ def generate_pseudo_labels(strings):
     y = []
     X = []
     y_true = []
-    index_word = {}
-    for w in tokenizer.word_index:
-        index_word[tokenizer.word_index[w]] = w
 
     for line in strings:
-        tokens = tokenizer.texts_to_sequences([line])[0]
-        words = []
-        for tok in tokens:
-            words.append(index_word[tok])
+        countvec = CountVectorizer(ngram_range=(1, 4))
+        countvec.fit_transform([line])
+        words = countvec.get_feature_names()
         count_dict = {}
         flag = 0
         for l in labels:
             seed_words = set()
-            for w in label_term_dict[l]:
+            for w in seedwordsdict[l]:
                 seed_words.add(w)
             int_labels = list(set(words).intersection(seed_words))
             if len(int_labels) == 0:
