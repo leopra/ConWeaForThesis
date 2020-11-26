@@ -31,11 +31,11 @@ class BERTClass(torch.nn.Module):
 
 #LOAD MODEL HERE SO IT'S NOT LOADED EVERYTIME
 modelo = BERTClass()
-m_state_dict = torch.load(basepath + 'mymodule.pt')
+m_state_dict = torch.load(basepath + 'bert_weigths.pt')
 modelo.load_state_dict(m_state_dict)
 
 #torch.load('bert_model.h5', map_location=torch.device('cpu'))
-#torch.save(modelo.state_dict(), 'mymodule.pt')
+#torch.save(modelo.state_dict(), 'bert_weigths.pt')
 
 def predictBert(strings):
     MAX_LEN = 200

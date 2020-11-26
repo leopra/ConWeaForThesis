@@ -1,0 +1,2165 @@
+{"3d printing": {"tag": [1], "vertical": []},
+ 
+"3d printing robots": {"tag": [1], "vertical": []},
+ 
+"3d printing3d technology": {"tag": [1], "vertical": []},
+ 
+"3d sensing": {"tag": [148], "vertical": []},
+ 
+"advanced material tech": {"tag": [2], "vertical": []},
+ 
+"advanced materials": {"tag": [2], "vertical": []},
+ 
+"industrial waste": {"tag": [94, 231], "vertical": []},
+ 
+"aem electrolysis": {"tag": [80], "vertical": []},
+ 
+"aem fuel cells": {"tag": [80], "vertical": []},
+ 
+"aeration": {"tag": [17], "vertical": []},
+ 
+"aeroponics": {"tag": [92], "vertical": []},
+ 
+"agricultural chemicals": {"tag": [35], "vertical": [1]},
+ 
+"agricultural residue": {"tag": [233], "vertical": [1]},
+ 
+"agricultural robotics": {"tag": [145], "vertical": [1]},
+ 
+"agricultural waste": {"tag": [233], "vertical": [1]},
+ 
+"industrial water": {"tag": [94, 232], "vertical": []},
+ 
+"ai": {"tag": [14], "vertical": []},
+ 
+"ai edge chip": {"tag": [14], "vertical": []},
+ 
+"ai enablers": {"tag": [14], "vertical": []},
+ 
+"persistent organic pollutants": {"tag": [231], "vertical": []},
+ 
+"sewage gas": {"tag": [231], "vertical": []},
+ 
+"air-to-water": {"tag": [5], "vertical": []},
+ 
+"smart thermostat": {"tag": [153, 224], "vertical": [2]},
+ 
+"algae biodiesel": {"tag": [6, 20], "vertical": []},
+ 
+"algal biofuels": {"tag": [6, 20], "vertical": []},
+ 
+"thermal / waste heat treatment": {"tag": [231], "vertical": []},
+ 
+"alternative dairy": {"tag": [8], "vertical": [6]},
+ 
+"alternative protein": {"tag": [8], "vertical": [6]},
+ 
+"ambient c02 capture": {"tag": [28], "vertical": []},
+ 
+"indoor air quality": {"tag": [93], "vertical": []},
+ 
+"air quality": {"tag": [93], "vertical": []},
+ 
+"animal health": {"tag": [9], "vertical": []},
+ 
+"animal production": {"tag": [9], "vertical": []},
+ 
+"animal welfare": {"tag": [9], "vertical": []},
+ 
+"apparel": {"tag": [73], "vertical": []},
+ 
+"apparel & accessories": {"tag": [73], "vertical": []},
+ 
+"apparel & footwear": {"tag": [73], "vertical": []},
+ 
+"aquaculture": {"tag": [13], "vertical": []},
+ 
+"aquaponics": {"tag": [92], "vertical": []},
+ 
+"artficial intelligance": {"tag": [14], "vertical": []},
+ 
+"artificial intelligence": {"tag": [14], "vertical": []},
+ 
+"artificial intelligence at the edge": {"tag": [14], "vertical": []},
+ 
+"asset monitoring and management": {"tag": [113], "vertical": []},
+ 
+"automobile manufacturing": {"tag": [15], "vertical": [10]},
+ 
+"automobile parts": {"tag": [15], "vertical": []},
+ 
+"automotive": {"tag": [15], "vertical": []},
+ 
+"automotive & transportation": {"tag": [15], "vertical": [15]},
+ 
+"automotive cybersecurity": {"tag": [15], "vertical": []},
+ 
+"autonomous driving": {"tag": [16], "vertical": []},
+ 
+"autonomous vehicle fleets": {"tag": [75, 16], "vertical": []},
+ 
+"autonomous vehicles": {"tag": [16], "vertical": []},
+ 
+"aviation": {"tag": [17], "vertical": []},
+ 
+"aviation & aerospace": {"tag": [17], "vertical": []},
+ 
+"aviation / aerospace": {"tag": [17], "vertical": []},
+ 
+"b2bb2ce-commerce platforms": {"tag": [58], "vertical": []},
+ 
+"b2be-commerce": {"tag": [58], "vertical": []},
+ 
+"b2be-commerce platforms": {"tag": [58], "vertical": []},
+ 
+"bacteria": {"tag": [190], "vertical": []},
+ 
+"algae": {"tag": [6], "vertical": []},
+ 
+"fish substitute": {"tag": [8], "vertical": [6]},
+ 
+"egg substitute": {"tag": [8], "vertical": [6]},
+ 
+"pet food": {"tag": [189], "vertical": []},
+ 
+"probiotics": {"tag": [190], "vertical": []},
+ 
+"sodium battery": {"tag": [67, 191], "vertical": [4]},
+ 
+"redox flow batteries": {"tag": [191, 67], "vertical": [4]},
+ 
+"batteries": {"tag": [191], "vertical": [4]},
+ 
+"battery": {"tag": [191], "vertical": [4]},
+ 
+"battery analytics": {"tag": [191], "vertical": [4]},
+ 
+"battery development": {"tag": [191], "vertical": [4]},
+ 
+"bees": {"tag": [11], "vertical": []},
+ 
+"battery life extension": {"tag": [36, 191], "vertical": [4]},
+ 
+"battery management system": {"tag": [191], "vertical": [4]},
+ 
+"battery management systems": {"tag": [191], "vertical": [4]},
+ 
+"big data": {"tag": [19], "vertical": []},
+ 
+"big data &amp; analytics": {"tag": [19], "vertical": []},
+ 
+"bigdata": {"tag": [19], "vertical": []},
+ 
+"battery manufacturing": {"tag": [191], "vertical": [4, 10]},
+ 
+"battery recycling": {"tag": [137, 191], "vertical": [4]},
+ 
+"bio-based chemicals": {"tag": [35], "vertical": []},
+ 
+"bio-based plastics": {"tag": [24], "vertical": []},
+ 
+"bio-energy": {"tag": [233, 21], "vertical": [4]},
+ 
+"biobased materials": {"tag": [2], "vertical": []},
+ 
+"battery switching station": {"tag": [191], "vertical": [4, 15]},
+ 
+"biochemical": {"tag": [35], "vertical": []},
+ 
+"biochemicals": {"tag": [35], "vertical": []},
+ 
+"biochemistry": {"tag": [35], "vertical": []},
+ 
+"biocrude": {"tag": [20], "vertical": []},
+ 
+"biocrude oils": {"tag": [20], "vertical": []},
+ 
+"battery tech": {"tag": [191], "vertical": [4]},
+ 
+"flow batteries": {"tag": [67, 191], "vertical": [4]},
+ 
+"biodiesel": {"tag": [20], "vertical": []},
+ 
+"biofuel conversion": {"tag": [20], "vertical": []},
+ 
+"biofuel production": {"tag": [20], "vertical": []},
+ 
+"biofuels": {"tag": [20], "vertical": []},
+ 
+"biofuels & biochemicals": {"tag": [20, 35], "vertical": []},
+ 
+"hybrid flow batteries": {"tag": [191], "vertical": [4]},
+ 
+"lead-acid batteries": {"tag": [191], "vertical": []},
+ 
+"biomass": {"tag": [233], "vertical": [4]},
+ 
+"biomass boilers": {"tag": [233], "vertical": [4]},
+ 
+"biomass deconstruction": {"tag": [233], "vertical": [4]},
+ 
+"biomass energy": {"tag": [21, 233], "vertical": [4]},
+ 
+"biomass generation": {"tag": [233], "vertical": [4]},
+ 
+"biomethane": {"tag": [20], "vertical": []},
+ 
+"biomimic technology": {"tag": [22], "vertical": []},
+ 
+"biopesticides": {"tag": [124], "vertical": []},
+ 
+"biopharma": {"tag": [125], "vertical": [8]},
+ 
+"bioplastics": {"tag": [24], "vertical": []},
+ 
+"biopolymers": {"tag": [130], "vertical": []},
+ 
+"bioremediation": {"tag": [69], "vertical": []},
+ 
+"biotech": {"tag": [25], "vertical": []},
+ 
+"biotechnology": {"tag": [25], "vertical": []},
+ 
+"biotechnology developer": {"tag": [25], "vertical": []},
+ 
+"biotechnologyother commercial services": {"tag": [25], "vertical": []},
+ 
+"lithium ion batteries": {"tag": [67, 191], "vertical": [4]},
+ 
+"blockchain": {"tag": [26], "vertical": []},
+ 
+"blockchain technology": {"tag": [26], "vertical": []},
+ 
+"lithium-based batteries": {"tag": [67, 191], "vertical": [4]},
+ 
+"building energy management systems": {"tag": [65], "vertical": [2]},
+ 
+"building energy monitoring": {"tag": [113, 65], "vertical": [2]},
+ 
+"building integrated photovoltaics": {"tag": [160, 158], "vertical": [2, 4]},
+ 
+"building material": {"tag": [27], "vertical": [2]},
+ 
+"building materials": {"tag": [27], "vertical": [2]},
+ 
+"butanol": {"tag": [35], "vertical": []},
+ 
+"lithium-ion": {"tag": [67, 191], "vertical": [4]},
+ 
+"caes": {"tag": [67], "vertical": [4]},
+ 
+"car charging": {"tag": [34], "vertical": [15]},
+ 
+"car pooling": {"tag": [149, 31], "vertical": [15]},
+ 
+"car sharing": {"tag": [149, 31], "vertical": [15]},
+ 
+"nickel-based batteries": {"tag": [67, 191], "vertical": [4]},
+ 
+"carbon capture and sequestration": {"tag": [28], "vertical": []},
+ 
+"carbon capture and storage": {"tag": [28], "vertical": []},
+ 
+"carbon capture utilization": {"tag": [28], "vertical": []},
+ 
+"carbon capture utilization and storage": {"tag": [28], "vertical": []},
+ 
+"carbon credit services": {"tag": [29], "vertical": []},
+ 
+"carbon offset": {"tag": [29], "vertical": []},
+ 
+"carbon offsetting": {"tag": [29], "vertical": []},
+ 
+"second-life batteries": {"tag": [36, 67, 191], "vertical": [4]},
+ 
+"cargo tracking": {"tag": [75], "vertical": []},
+ 
+"carsharing": {"tag": [31, 149], "vertical": [15]},
+ 
+"cattle": {"tag": [9], "vertical": []},
+ 
+"cell-based protein growth medium": {"tag": [100, 8], "vertical": [6]},
+ 
+"silicon-based batteries": {"tag": [67, 191], "vertical": [4]},
+ 
+"cellulosic ethanol": {"tag": [35], "vertical": []},
+ 
+"cement": {"tag": [46], "vertical": [3]},
+ 
+"charge stations & infrastructure": {"tag": [34], "vertical": [15]},
+ 
+"charging stations": {"tag": [34], "vertical": [15]},
+ 
+"charging technology": {"tag": [34], "vertical": [15]},
+ 
+"chemical": {"tag": [35], "vertical": []},
+ 
+"chemical distribution": {"tag": [35], "vertical": []},
+ 
+"chemical engineering": {"tag": [35], "vertical": []},
+ 
+"chemical production": {"tag": [35], "vertical": []},
+ 
+"chemical recycling": {"tag": [35, 137], "vertical": []},
+ 
+"chemical synthesis": {"tag": [35], "vertical": []},
+ 
+"chemical treatment": {"tag": [35], "vertical": []},
+ 
+"chemical/catalytic conversion": {"tag": [35], "vertical": []},
+ 
+"chemicals": {"tag": [35], "vertical": []},
+ 
+"circular economy": {"tag": [36], "vertical": []},
+ 
+"clean meat": {"tag": [100], "vertical": [6]},
+ 
+"closed-loop recycling": {"tag": [137], "vertical": []},
+ 
+"clothes": {"tag": [164, 73], "vertical": []},
+ 
+"clothing & accessories": {"tag": [164, 73], "vertical": []},
+ 
+"cng": {"tag": [35], "vertical": []},
+ 
+"solid state batteries": {"tag": [67, 191], "vertical": [4]},
+ 
+"zinc-based batteries": {"tag": [67, 191], "vertical": [4]},
+ 
+"combined heat & power": {"tag": [39], "vertical": [4]},
+ 
+"bike-sharing": {"tag": [110, 149, 192], "vertical": [15]},
+ 
+"community solar marketplace": {"tag": [158], "vertical": [4]},
+ 
+"component": {"tag": [42], "vertical": []},
+ 
+"bicycle": {"tag": [110, 193], "vertical": [15]},
+ 
+"compostable products": {"tag": [43], "vertical": []},
+ 
+"composting": {"tag": [43], "vertical": []},
+ 
+"computer vision": {"tag": [44], "vertical": []},
+ 
+"concentrating photovoltaics": {"tag": [45, 160, 158], "vertical": [4]},
+ 
+"concentrating solar power": {"tag": [45, 158], "vertical": [4]},
+ 
+"concentrating solar thermal": {"tag": [158], "vertical": [4]},
+ 
+"concrete": {"tag": [46], "vertical": [3]},
+ 
+"condition assessment / leak detection": {"tag": [101], "vertical": []},
+ 
+"congestion monitoring": {"tag": [154, 167], "vertical": []},
+ 
+"bicycles": {"tag": [110, 193], "vertical": [15]},
+ 
+"bike": {"tag": [110, 193], "vertical": []},
+ 
+"construction robotics": {"tag": [145], "vertical": [3]},
+ 
+"construction robots": {"tag": [145], "vertical": [3]},
+ 
+"conventional pv": {"tag": [158, 160], "vertical": [4]},
+ 
+"bicycles & scooters": {"tag": [110, 223, 193], "vertical": [15]},
+ 
+"core ai": {"tag": [14], "vertical": []},
+ 
+"biochar": {"tag": [194], "vertical": []},
+ 
+"cows": {"tag": [9], "vertical": []},
+ 
+"crispr": {"tag": [25], "vertical": []},
+ 
+"crowd funding platform": {"tag": [50], "vertical": [5]},
+ 
+"crowdfunding": {"tag": [50], "vertical": [5]},
+ 
+"biodegradable": {"tag": [195], "vertical": []},
+ 
+"biodegradable products": {"tag": [195], "vertical": []},
+ 
+"csp power plants": {"tag": [45, 158], "vertical": [4]},
+ 
+"biogas": {"tag": [196], "vertical": []},
+ 
+"cellulosic biomass": {"tag": [233], "vertical": []},
+ 
+"forest residue": {"tag": [233], "vertical": []},
+ 
+"biofuels & biomaterials": {"tag": [20], "vertical": []},
+ 
+"breeding": {"tag": [9], "vertical": []},
+ 
+"carbon accounting": {"tag": [197], "vertical": []},
+ 
+"carbon reporting and trading": {"tag": [197], "vertical": []},
+ 
+"connected car": {"tag": [86, 201], "vertical": [15]},
+ 
+"co2 to food": {"tag": [28, 198], "vertical": [6]},
+ 
+"demand response": {"tag": [155], "vertical": [4, 16]},
+ 
+"demand response aggregator": {"tag": [155], "vertical": [4, 16]},
+ 
+"desalination": {"tag": [54, 182], "vertical": [16]},
+ 
+"digestate treatment": {"tag": [118], "vertical": []},
+ 
+"district heating": {"tag": [56], "vertical": []},
+ 
+"downstream pv": {"tag": [158, 160], "vertical": [4]},
+ 
+"drilling": {"tag": [120], "vertical": []},
+ 
+"drilling & completions": {"tag": [120], "vertical": []},
+ 
+"drilling optimization": {"tag": [120], "vertical": []},
+ 
+"drip irrigation": {"tag": [134], "vertical": [1]},
+ 
+"driverless car": {"tag": [16, 86], "vertical": [15]},
+ 
+"drone management": {"tag": [57], "vertical": []},
+ 
+"drones": {"tag": [57], "vertical": []},
+ 
+"drop-in fuels": {"tag": [20, 35], "vertical": [15]},
+ 
+"drug development": {"tag": [125], "vertical": [8]},
+ 
+"drug discovery": {"tag": [125], "vertical": [8]},
+ 
+"drug manufacturing": {"tag": [125], "vertical": [8]},
+ 
+"dssc": {"tag": [158], "vertical": [4]},
+ 
+"dye-sensitized solar cell": {"tag": [158], "vertical": [4]},
+ 
+"c02 to fuels": {"tag": [199], "vertical": []},
+ 
+"e-commerce": {"tag": [58], "vertical": []},
+ 
+"e-commerce platforms": {"tag": [58], "vertical": []},
+ 
+"e-commercei": {"tag": [58], "vertical": []},
+ 
+"co2 to fuels": {"tag": [20, 199], "vertical": []},
+ 
+"composite materials": {"tag": [200], "vertical": []},
+ 
+"cooling tech": {"tag": [211], "vertical": []},
+ 
+"ecommerce": {"tag": [58], "vertical": []},
+ 
+"ecommerce enablement": {"tag": [58], "vertical": []},
+ 
+"ecommerce logistics": {"tag": [58], "vertical": [9]},
+ 
+"ecommerce shipping": {"tag": [58], "vertical": []},
+ 
+"ecommerce sites": {"tag": [58], "vertical": []},
+ 
+"ecommerce solutions": {"tag": [58], "vertical": []},
+ 
+"cryptocurrencies": {"tag": [203], "vertical": [5]},
+ 
+"bitcoin": {"tag": [203], "vertical": [5]},
+ 
+"cryptocurrency": {"tag": [203], "vertical": [5]},
+ 
+"electric boats": {"tag": [72, 185], "vertical": [15]},
+ 
+"electric motorcycle": {"tag": [86], "vertical": [15]},
+ 
+"ethereum": {"tag": [203], "vertical": [5]},
+ 
+"corporate social responsibility": {"tag": [202], "vertical": []},
+ 
+"electric vehicle": {"tag": [72], "vertical": [15]},
+ 
+"electric vehicles": {"tag": [72], "vertical": [15]},
+ 
+"electrical distribution": {"tag": [131], "vertical": [16]},
+ 
+"electrical product distribution": {"tag": [132, 131], "vertical": [16]},
+ 
+"electricity": {"tag": [207], "vertical": [16]},
+ 
+"electrochemical storage": {"tag": [60], "vertical": [4]},
+ 
+"electronic test, measurement & monitoring": {"tag": [113], "vertical": []},
+ 
+"emissions control and reduction": {"tag": [63], "vertical": []},
+ 
+"data center": {"tag": [205], "vertical": []},
+ 
+"data center automation": {"tag": [205], "vertical": []},
+ 
+"data center design": {"tag": [205], "vertical": []},
+ 
+"data center hardware": {"tag": [205], "vertical": []},
+ 
+"energy efficiency": {"tag": [65], "vertical": [4]},
+ 
+"energy efficiency solar charging": {"tag": [65, 158], "vertical": [4]},
+ 
+"data center infrastructure management": {"tag": [205], "vertical": []},
+ 
+"data center security": {"tag": [205], "vertical": []},
+ 
+"dairy": {"tag": [204], "vertical": [6]},
+ 
+"dairy products": {"tag": [204], "vertical": [6]},
+ 
+"dairy substitute": {"tag": [204], "vertical": [6]},
+ 
+"energy production": {"tag": [132], "vertical": [4, 16]},
+ 
+"energy providers": {"tag": [131], "vertical": [4, 16]},
+ 
+"e-bike": {"tag": [110, 193], "vertical": [15]},
+ 
+"electric bicycles": {"tag": [110, 193], "vertical": [15]},
+ 
+"share e-bikes": {"tag": [149, 110], "vertical": [15]},
+ 
+"energy storage": {"tag": [67], "vertical": [4]},
+ 
+"energy storage system management / optimization": {"tag": [67], "vertical": [4]},
+ 
+"enhanced geothermal systems": {"tag": [84], "vertical": [4]},
+ 
+"e-waste": {"tag": [206], "vertical": [16]},
+ 
+"waste electronics": {"tag": [206], "vertical": []},
+ 
+"environmental compliance": {"tag": [71], "vertical": []},
+ 
+"ethanol": {"tag": [20], "vertical": []},
+ 
+"energy recovery": {"tag": [209], "vertical": [4]},
+ 
+"ev charging": {"tag": [72, 34], "vertical": [15]},
+ 
+"ev charging & management": {"tag": [72, 34], "vertical": [15]},
+ 
+"evtol": {"tag": [72, 4], "vertical": [15]},
+ 
+"fabrics": {"tag": [164], "vertical": []},
+ 
+"farm marketplace": {"tag": [106], "vertical": [1]},
+ 
+"fashion": {"tag": [73], "vertical": []},
+ 
+"fertiliser": {"tag": [118], "vertical": []},
+ 
+"fertility": {"tag": [118], "vertical": []},
+ 
+"fertilizer": {"tag": [118], "vertical": []},
+ 
+"fertilizers": {"tag": [118], "vertical": []},
+ 
+"fish": {"tag": [74], "vertical": []},
+ 
+"fish farming": {"tag": [74, 9], "vertical": []},
+ 
+"energy & occupancy monitoring": {"tag": [113, 208], "vertical": [4]},
+ 
+"fishing": {"tag": [74], "vertical": []},
+ 
+"fleet management": {"tag": [75], "vertical": [9]},
+ 
+"fleet tracking": {"tag": [75], "vertical": [9]},
+ 
+"floating offshore wind": {"tag": [119, 187], "vertical": [4]},
+ 
+"energy analytics": {"tag": [208], "vertical": [4]},
+ 
+"flying cars": {"tag": [4], "vertical": [15]},
+ 
+"energy audits": {"tag": [208], "vertical": [4]},
+ 
+"food recycling": {"tag": [137], "vertical": [6]},
+ 
+"food waste": {"tag": [78], "vertical": [6]},
+ 
+"energy disaggregation": {"tag": [65, 208], "vertical": [4, 2]},
+ 
+"freight": {"tag": [151], "vertical": []},
+ 
+"freight forwarder": {"tag": [151], "vertical": []},
+ 
+"freight forwarding": {"tag": [151], "vertical": []},
+ 
+"freight forwarding & courier services": {"tag": [151], "vertical": []},
+ 
+"freight logistics": {"tag": [151], "vertical": [9]},
+ 
+"freight service": {"tag": [151], "vertical": []},
+ 
+"fuel cell": {"tag": [80], "vertical": [4]},
+ 
+"fuel cell vehicles": {"tag": [80], "vertical": [15]},
+ 
+"fuel cells": {"tag": [80], "vertical": [4]},
+ 
+"energy management": {"tag": [208], "vertical": [4]},
+ 
+"fuel efficiency": {"tag": [83], "vertical": [15]},
+ 
+"fuel savings": {"tag": [83], "vertical": [15]},
+ 
+"energy management software": {"tag": [208], "vertical": [4]},
+ 
+"geothermal": {"tag": [84], "vertical": [4]},
+ 
+"geothermal energy": {"tag": [84], "vertical": [4]},
+ 
+"energy management system": {"tag": [208], "vertical": [4]},
+ 
+"green chemistry": {"tag": [35], "vertical": []},
+ 
+"green consumer goods": {"tag": [48], "vertical": []},
+ 
+"green retail": {"tag": [48], "vertical": []},
+ 
+"grid energy storage": {"tag": [67], "vertical": [4]},
+ 
+"ground-mounted pv": {"tag": [158, 160], "vertical": [4]},
+ 
+"hazardous waste": {"tag": [87], "vertical": [16]},
+ 
+"hazardous waste services": {"tag": [87], "vertical": [16]},
+ 
+"heat pumps": {"tag": [88], "vertical": []},
+ 
+"energy management systems": {"tag": [208], "vertical": [4]},
+ 
+"heavy duty trucks": {"tag": [86], "vertical": [15]},
+ 
+"heavy-duty truck": {"tag": [86], "vertical": [15]},
+ 
+"herd management": {"tag": [9], "vertical": []},
+ 
+"herd management software": {"tag": [9], "vertical": []},
+ 
+"high concentration photovoltaics": {"tag": [160, 158], "vertical": [4]},
+ 
+"high-altitude wind": {"tag": [187], "vertical": [4]},
+ 
+"energy managementi": {"tag": [208], "vertical": [4]},
+ 
+"energy saving": {"tag": [65, 208], "vertical": [4]},
+ 
+"hvac": {"tag": [89], "vertical": []},
+ 
+"hvacr": {"tag": [89], "vertical": []},
+ 
+"hybrid electric vehicles": {"tag": [72], "vertical": [15]},
+ 
+"energy savings": {"tag": [65, 208], "vertical": [4]},
+ 
+"hydro & marine power": {"tag": [90], "vertical": [4]},
+ 
+"hydro power project development": {"tag": [90], "vertical": [4]},
+ 
+"hydroelectric dams": {"tag": [90], "vertical": [4]},
+ 
+"enterprise energy management": {"tag": [208], "vertical": [4]},
+ 
+"enterprise energy managementefficiency education": {"tag": [208], "vertical": [4]},
+ 
+"home energy management": {"tag": [208], "vertical": [2]},
+ 
+"power grid": {"tag": [220], "vertical": [16]},
+ 
+"power grids": {"tag": [220], "vertical": [16]},
+ 
+"commercial heating & cooling": {"tag": [211], "vertical": []},
+ 
+"efficient heating & cooling": {"tag": [211], "vertical": []},
+ 
+"geothermal heating": {"tag": [84, 211], "vertical": [4]},
+ 
+"heating": {"tag": [211], "vertical": []},
+ 
+"solar thermal air conditioning / cooling": {"tag": [158, 211], "vertical": [4]},
+ 
+"residential heating & cooling": {"tag": [142, 211], "vertical": []},
+ 
+"fuel cells & hydrogen": {"tag": [80, 212], "vertical": [4]},
+ 
+"fuell cells & hydrogen": {"tag": [80, 212], "vertical": [4]},
+ 
+"hydrogen": {"tag": [212], "vertical": []},
+ 
+"hydrogen distribution": {"tag": [212], "vertical": []},
+ 
+"hydrokinetic energy": {"tag": [99], "vertical": [4]},
+ 
+"hydroponics": {"tag": [92], "vertical": []},
+ 
+"hydropower": {"tag": [90], "vertical": [4]},
+ 
+"iiot": {"tag": [95, 98], "vertical": []},
+ 
+"individual animal monitoring": {"tag": [9, 113], "vertical": []},
+ 
+"hydrogen fuel cells": {"tag": [80, 212], "vertical": []},
+ 
+"industrial": {"tag": [94], "vertical": []},
+ 
+"industrial & manufacturing": {"tag": [94], "vertical": []},
+ 
+"industrial analytics": {"tag": [94], "vertical": []},
+ 
+"industrial automation": {"tag": [94], "vertical": []},
+ 
+"industrial biotech": {"tag": [94], "vertical": []},
+ 
+"industrial biotechnology": {"tag": [94], "vertical": []},
+ 
+"industrial chemicals": {"tag": [35, 94], "vertical": []},
+ 
+"industrial connectivity": {"tag": [94], "vertical": []},
+ 
+"industrial design": {"tag": [94], "vertical": []},
+ 
+"industrial drone tech": {"tag": [57, 94], "vertical": []},
+ 
+"industrial drones": {"tag": [57, 94], "vertical": []},
+ 
+"industrial efficiency": {"tag": [94], "vertical": []},
+ 
+"industrial engineering": {"tag": [94], "vertical": []},
+ 
+"industrial equipment & component manufacturing": {"tag": [94], "vertical": []},
+ 
+"industrial iot": {"tag": [98, 95], "vertical": []},
+ 
+"industrial machinery & equipment distribution": {"tag": [94], "vertical": []},
+ 
+"industrial manufacturing": {"tag": [94], "vertical": [10]},
+ 
+"industrial marketplaces": {"tag": [94], "vertical": []},
+ 
+"industrial plants": {"tag": [94], "vertical": []},
+ 
+"industrial procurement": {"tag": [94], "vertical": []},
+ 
+"industrial products": {"tag": [94], "vertical": []},
+ 
+"industrial robotics": {"tag": [145, 94], "vertical": []},
+ 
+"industrial safety": {"tag": [94], "vertical": []},
+ 
+"industrial service": {"tag": [94], "vertical": []},
+ 
+"industrial tech software": {"tag": [94], "vertical": []},
+ 
+"industrial technology": {"tag": [94], "vertical": []},
+ 
+"industrial trucks & equipment": {"tag": [94], "vertical": []},
+ 
+"hydrogen generation": {"tag": [212], "vertical": []},
+ 
+"hydrogen infrastructure": {"tag": [212], "vertical": []},
+ 
+"industry 4.0": {"tag": [95], "vertical": []},
+ 
+"insect": {"tag": [96], "vertical": [6]},
+ 
+"insects": {"tag": [96], "vertical": [6]},
+ 
+"insurance": {"tag": [97], "vertical": [5]},
+ 
+"insurtech": {"tag": [97], "vertical": [5]},
+ 
+"intelligent traffic systems": {"tag": [154, 167], "vertical": []},
+ 
+"internet of things": {"tag": [98], "vertical": []},
+ 
+"internet of thingsi": {"tag": [98], "vertical": []},
+ 
+"internet of thingsm": {"tag": [98], "vertical": []},
+ 
+"internet-of-things": {"tag": [98], "vertical": []},
+ 
+"internetofthings": {"tag": [98], "vertical": []},
+ 
+"investment banking": {"tag": [18], "vertical": [5]},
+ 
+"iot": {"tag": [98], "vertical": []},
+ 
+"iot internetofthings": {"tag": [98], "vertical": []},
+ 
+"iot satellites": {"tag": [98], "vertical": []},
+ 
+"iot sensors": {"tag": [98, 148], "vertical": []},
+ 
+"hydrogen power generation": {"tag": [212], "vertical": []},
+ 
+"isensing & robotics": {"tag": [145, 148], "vertical": []},
+ 
+"hydrogen processing": {"tag": [212], "vertical": []},
+ 
+"hydrogen production": {"tag": [212], "vertical": []},
+ 
+"large-scale wind": {"tag": [187], "vertical": [4]},
+ 
+"last mile transportation": {"tag": [110], "vertical": [15]},
+ 
+"ldar": {"tag": [101], "vertical": []},
+ 
+"hydrogen project development": {"tag": [212], "vertical": []},
+ 
+"leak detection": {"tag": [101], "vertical": []},
+ 
+"hydrogen refueling stations": {"tag": [34, 212], "vertical": []},
+ 
+"hydrogen storage": {"tag": [212], "vertical": []},
+ 
+"lidar sensors": {"tag": [148], "vertical": []},
+ 
+"life insurance": {"tag": [97], "vertical": [5]},
+ 
+"life of field monitoring": {"tag": [113], "vertical": [1]},
+ 
+"life science": {"tag": [102], "vertical": []},
+ 
+"light-weight truck": {"tag": [86], "vertical": [15]},
+ 
+"lighting": {"tag": [104], "vertical": []},
+ 
+"hydrogen utilization": {"tag": [212], "vertical": []},
+ 
+"hydrogen/fuel cell": {"tag": [80, 212], "vertical": []},
+ 
+"lighting lamps & equipment": {"tag": [104], "vertical": []},
+ 
+"lighting materials": {"tag": [104], "vertical": []},
+ 
+"lighting materials & components": {"tag": [104], "vertical": []},
+ 
+"wind turbine inspection": {"tag": [187, 121, 121], "vertical": []},
+ 
+"pipeline inspection": {"tag": [121, 121], "vertical": []},
+ 
+"smart irrigation": {"tag": [221], "vertical": [1]},
+ 
+"livestock": {"tag": [9], "vertical": []},
+ 
+"livestock types": {"tag": [9], "vertical": []},
+ 
+"lng": {"tag": [35], "vertical": []},
+ 
+"low concentration photovoltaics": {"tag": [160, 158], "vertical": [4]},
+ 
+"lumber & wood production": {"tag": [188], "vertical": []},
+ 
+"machine learning": {"tag": [14], "vertical": []},
+ 
+"maintenance": {"tag": [121], "vertical": []},
+ 
+"manufacturing, warehousing & industrial": {"tag": [94], "vertical": [10]},
+ 
+"manufacturing/industrial": {"tag": [94], "vertical": [10]},
+ 
+"manure": {"tag": [118], "vertical": []},
+ 
+"manure treatment": {"tag": [118], "vertical": []},
+ 
+"marine energy": {"tag": [90], "vertical": [4]},
+ 
+"marine shipping & management services": {"tag": [151], "vertical": []},
+ 
+"marine transportation": {"tag": [185], "vertical": [15]},
+ 
+"marine vessels": {"tag": [185], "vertical": [15]},
+ 
+"maritime transportation": {"tag": [185], "vertical": [15]},
+ 
+"maritime vessels": {"tag": [185], "vertical": [15]},
+ 
+"materials & chemicals": {"tag": [35], "vertical": []},
+ 
+"meat substitutes": {"tag": [8], "vertical": []},
+ 
+"meat, fish, seafood & alternative proteins": {"tag": [8], "vertical": []},
+ 
+"mechanical/electrical storage": {"tag": [61, 67], "vertical": [4]},
+ 
+"medical device": {"tag": [109], "vertical": [8]},
+ 
+"medical devicem": {"tag": [109], "vertical": [8]},
+ 
+"medical devices": {"tag": [109], "vertical": [8]},
+ 
+"medical devices & equipment": {"tag": [109], "vertical": [8]},
+ 
+"medical equipment & supplies": {"tag": [109], "vertical": [8]},
+ 
+"membrane water treatment": {"tag": [184], "vertical": [16]},
+ 
+"methane": {"tag": [35], "vertical": []},
+ 
+"methanol": {"tag": [35], "vertical": []},
+ 
+"methanol fuel cells": {"tag": [35, 80], "vertical": []},
+ 
+"micro mobility": {"tag": [110], "vertical": [15]},
+ 
+"micro-scale wind": {"tag": [187], "vertical": [4]},
+ 
+"microgirds": {"tag": [154], "vertical": [4]},
+ 
+"microgrid": {"tag": [154], "vertical": [4]},
+ 
+"microgrid-as-a-service": {"tag": [154], "vertical": [4]},
+ 
+"micromobility": {"tag": [110], "vertical": []},
+ 
+"midstream pv": {"tag": [158, 160], "vertical": [4]},
+ 
+"mobile app": {"tag": [12], "vertical": []},
+ 
+"mobile apps": {"tag": [12], "vertical": []},
+ 
+"irrigation": {"tag": [221], "vertical": []},
+ 
+"solar irrigation": {"tag": [158, 221], "vertical": [4]},
+ 
+"hydrokinetic": {"tag": [99], "vertical": [4]},
+ 
+"hydrokinetic development": {"tag": [99], "vertical": [4]},
+ 
+"molten salt": {"tag": [117], "vertical": [4]},
+ 
+"molten salt thermal storage": {"tag": [165, 67], "vertical": [4]},
+ 
+"monitor": {"tag": [113], "vertical": []},
+ 
+"monitoring": {"tag": [113], "vertical": []},
+ 
+"monitoring & control": {"tag": [113], "vertical": []},
+ 
+"monitoring & security": {"tag": [113], "vertical": []},
+ 
+"motorcycle": {"tag": [86], "vertical": [15]},
+ 
+"motorcycle & small engine vehicles": {"tag": [86], "vertical": [15]},
+ 
+"motorcycle taxi": {"tag": [86], "vertical": [15]},
+ 
+"multi-junction pv cells / modules": {"tag": [158, 160], "vertical": [4]},
+ 
+"municipal solid waste": {"tag": [114], "vertical": []},
+ 
+"nano technology": {"tag": [115], "vertical": []},
+ 
+"nanomaterials": {"tag": [115], "vertical": []},
+ 
+"nanoparticles": {"tag": [115], "vertical": []},
+ 
+"nanotechnology": {"tag": [115], "vertical": []},
+ 
+"natural gas power generation": {"tag": [132], "vertical": [16]},
+ 
+"natural gas utilities": {"tag": [132], "vertical": [16]},
+ 
+"natural pesticides": {"tag": [124], "vertical": []},
+ 
+"near-shore wave power": {"tag": [90], "vertical": [4]},
+ 
+"ngv refueling infrastructure": {"tag": [34], "vertical": [15]},
+ 
+"kinetic energy harvesting": {"tag": [99], "vertical": [4]},
+ 
+"novel farming": {"tag": [134], "vertical": [1]},
+ 
+"nuclear": {"tag": [117], "vertical": [4]},
+ 
+"nuclear fission": {"tag": [117], "vertical": [4]},
+ 
+"nuclear fusion": {"tag": [117], "vertical": [4]},
+ 
+"landfill gas": {"tag": [213], "vertical": []},
+ 
+"ocean energy": {"tag": [90], "vertical": [4]},
+ 
+"ocean freight": {"tag": [151], "vertical": []},
+ 
+"led": {"tag": [104, 214], "vertical": []},
+ 
+"leds": {"tag": [104, 214], "vertical": []},
+ 
+"odense robotics": {"tag": [145], "vertical": []},
+ 
+"odense robotics startup hub": {"tag": [145], "vertical": []},
+ 
+"oem": {"tag": [80], "vertical": []},
+ 
+"lighting & led": {"tag": [104, 214], "vertical": []},
+ 
+"lighting control systems": {"tag": [104, 214], "vertical": []},
+ 
+"off-road vehicles": {"tag": [86], "vertical": [15]},
+ 
+"off-shore wave power": {"tag": [119, 90], "vertical": [4]},
+ 
+"modular": {"tag": [216], "vertical": []},
+ 
+"offshore wind": {"tag": [119, 187], "vertical": [4]},
+ 
+"oil & gas": {"tag": [120], "vertical": []},
+ 
+"oil & gas production": {"tag": [120], "vertical": []},
+ 
+"oil & gas production & exploration": {"tag": [120], "vertical": []},
+ 
+"oil & gas refining & distribution": {"tag": [120], "vertical": []},
+ 
+"oil & gas storage & transport": {"tag": [120], "vertical": []},
+ 
+"oil &amp; gas": {"tag": [120], "vertical": []},
+ 
+"oil and gas": {"tag": [120], "vertical": []},
+ 
+"onshore wind": {"tag": [187], "vertical": [4]},
+ 
+"operation & maintenance": {"tag": [121], "vertical": []},
+ 
+"organic photovoltaics": {"tag": [158, 160], "vertical": [4]},
+ 
+"modular construction": {"tag": [216], "vertical": [3]},
+ 
+"modular data centers": {"tag": [216], "vertical": []},
+ 
+"other bioalcohols": {"tag": [35], "vertical": []},
+ 
+"other consumer non-durables": {"tag": [48], "vertical": []},
+ 
+"other pharmaceuticals and biotechnology": {"tag": [125, 25], "vertical": [8]},
+ 
+"oxyfuel combustion capture": {"tag": [28], "vertical": []},
+ 
+"modular nuclear": {"tag": [216, 117], "vertical": [4]},
+ 
+"animal feed": {"tag": [189], "vertical": []},
+ 
+"animal feed & supplements": {"tag": [189], "vertical": []},
+ 
+"alkaline fuel cells": {"tag": [80], "vertical": []},
+ 
+"osmotic power": {"tag": [62], "vertical": [4]},
+ 
+"paper": {"tag": [122], "vertical": []},
+ 
+"paper & paper product manufacturing": {"tag": [122], "vertical": [10]},
+ 
+"paper manufacturing": {"tag": [122], "vertical": [10]},
+ 
+"parabolic trough": {"tag": [45, 158], "vertical": [4]},
+ 
+"parking": {"tag": [123, 154], "vertical": []},
+ 
+"parking management": {"tag": [123, 154], "vertical": []},
+ 
+"passenger car": {"tag": [86], "vertical": [15]},
+ 
+"passive solar lighting": {"tag": [104, 158], "vertical": []},
+ 
+"peak demand management": {"tag": [155], "vertical": [4]},
+ 
+"pem fuel cells": {"tag": [80], "vertical": [4]},
+ 
+"perovskite": {"tag": [158], "vertical": [4]},
+ 
+"underwater drone": {"tag": [57, 215], "vertical": []},
+ 
+"pest control": {"tag": [124], "vertical": []},
+ 
+"pesticides": {"tag": [124], "vertical": []},
+ 
+"ocean monitoring": {"tag": [113, 215], "vertical": []},
+ 
+"pharmaceutical": {"tag": [125], "vertical": [8]},
+ 
+"pharmaceuticals": {"tag": [125], "vertical": [8]},
+ 
+"pharmaceuticals / drugs": {"tag": [125], "vertical": [8]},
+ 
+"pharmacies": {"tag": [125], "vertical": [8]},
+ 
+"pharmacy": {"tag": [125], "vertical": [8]},
+ 
+"photovoltaics": {"tag": [160, 158], "vertical": [4]},
+ 
+"pipeline / storage monitoring": {"tag": [113], "vertical": []},
+ 
+"ocean thermal energy conversion": {"tag": [62, 215], "vertical": [4]},
+ 
+"pipeline monitoring": {"tag": [113], "vertical": []},
+ 
+"plant genomics": {"tag": [25], "vertical": []},
+ 
+"offgrid energy": {"tag": [217], "vertical": [4]},
+ 
+"plastic": {"tag": [128], "vertical": []},
+ 
+"off-grid": {"tag": [217], "vertical": []},
+ 
+"plastic/rubber": {"tag": [128], "vertical": []},
+ 
+"plastics": {"tag": [128], "vertical": []},
+ 
+"plastics & fibers": {"tag": [128], "vertical": []},
+ 
+"plastics and rubber manufacturing": {"tag": [128], "vertical": [10]},
+ 
+"plumbing & hvac": {"tag": [89], "vertical": []},
+ 
+"off-grid energy": {"tag": [217], "vertical": [4]},
+ 
+"remote microgrids": {"tag": [217], "vertical": [4]},
+ 
+"advanced packaging": {"tag": [7], "vertical": []},
+ 
+"ecological packaging": {"tag": [7], "vertical": []},
+ 
+"food packaging": {"tag": [7], "vertical": [6]},
+ 
+"packaging": {"tag": [7], "vertical": []},
+ 
+"polycarbonates": {"tag": [35], "vertical": []},
+ 
+"polyesters": {"tag": [35], "vertical": []},
+ 
+"polymer": {"tag": [130, 35], "vertical": []},
+ 
+"polymer processing": {"tag": [130, 35], "vertical": []},
+ 
+"polymers": {"tag": [130, 35], "vertical": []},
+ 
+"polymers & coatings": {"tag": [130, 35], "vertical": []},
+ 
+"polypropylene": {"tag": [35], "vertical": []},
+ 
+"polystyrene": {"tag": [35], "vertical": []},
+ 
+"packaging & paper": {"tag": [122, 7], "vertical": []},
+ 
+"power generation": {"tag": [132], "vertical": []},
+ 
+"power generation & storage": {"tag": [132, 67], "vertical": []},
+ 
+"power generator": {"tag": [132], "vertical": []},
+ 
+"packaging and containers": {"tag": [7], "vertical": []},
+ 
+"packaging services": {"tag": [7], "vertical": []},
+ 
+"power monitoring & metering": {"tag": [113], "vertical": [16]},
+ 
+"power optimizers": {"tag": [65], "vertical": [4]},
+ 
+"power plants": {"tag": [132], "vertical": [4]},
+ 
+"power saving": {"tag": [65], "vertical": [4]},
+ 
+"precision agriculture": {"tag": [134], "vertical": []},
+ 
+"prediction": {"tag": [135], "vertical": []},
+ 
+"predictive analytics": {"tag": [135], "vertical": []},
+ 
+"predictive intelligence": {"tag": [135], "vertical": []},
+ 
+"predictive maintenance": {"tag": [135, 121], "vertical": []},
+ 
+"packaging solutions": {"tag": [7], "vertical": []},
+ 
+"produced water": {"tag": [181], "vertical": [16]},
+ 
+"pumped storage hydro": {"tag": [67], "vertical": [4]},
+ 
+"pv cells / modules": {"tag": [160, 158], "vertical": [4]},
+ 
+"pv consumer products": {"tag": [160, 158, 48], "vertical": []},
+ 
+"pv manufacturing capital equipment": {"tag": [160], "vertical": [10]},
+ 
+"pv materials recycling": {"tag": [137, 160], "vertical": []},
+ 
+"pv mounting & racking": {"tag": [160, 158], "vertical": [4]},
+ 
+"pv thin film": {"tag": [158, 160], "vertical": [4]},
+ 
+"pv tracking hardware": {"tag": [158, 160], "vertical": [4]},
+ 
+"pv tracking systems": {"tag": [158, 160], "vertical": [4]},
+ 
+"rail infrastructure": {"tag": [136], "vertical": [15]},
+ 
+"rail transport": {"tag": [136], "vertical": [15]},
+ 
+"railroad": {"tag": [136], "vertical": [15]},
+ 
+"recycled paper": {"tag": [122, 137], "vertical": []},
+ 
+"recycled polymers": {"tag": [130, 137], "vertical": []},
+ 
+"recycling": {"tag": [137], "vertical": []},
+ 
+"recycling & waste": {"tag": [137], "vertical": [16]},
+ 
+"packing": {"tag": [7, 7], "vertical": []},
+ 
+"reforestation": {"tag": [139], "vertical": [7]},
+ 
+"remediation": {"tag": [69], "vertical": []},
+ 
+"remediation & environmental cleanup": {"tag": [69], "vertical": []},
+ 
+"plastic containers and packaging": {"tag": [128, 7], "vertical": []},
+ 
+"remote monitoring": {"tag": [113], "vertical": []},
+ 
+"remote sensing": {"tag": [141], "vertical": []},
+ 
+"renewable chemicals": {"tag": [35], "vertical": []},
+ 
+"renewable diesel": {"tag": [20], "vertical": []},
+ 
+"renewable oils": {"tag": [20], "vertical": []},
+ 
+"residential": {"tag": [142], "vertical": []},
+ 
+"residential electricity shopping": {"tag": [142, 207], "vertical": []},
+ 
+"sustainable packaging": {"tag": [7], "vertical": []},
+ 
+"residential real estate development": {"tag": [142], "vertical": []},
+ 
+"residential scale": {"tag": [142], "vertical": []},
+ 
+"residential solar": {"tag": [142, 158], "vertical": [4, 2]},
+ 
+"plant-based": {"tag": [126], "vertical": []},
+ 
+"residential/commercial": {"tag": [142, 40], "vertical": []},
+ 
+"pollution & treatment controls": {"tag": [219], "vertical": []},
+ 
+"ride hailing": {"tag": [149], "vertical": [15]},
+ 
+"ride sharing": {"tag": [149], "vertical": [15]},
+ 
+"ride-hailing": {"tag": [149], "vertical": [15]},
+ 
+"robotic": {"tag": [145], "vertical": []},
+ 
+"robotic grippers": {"tag": [145], "vertical": []},
+ 
+"robotic process automation": {"tag": [145], "vertical": []},
+ 
+"robotic tools": {"tag": [145], "vertical": []},
+ 
+"robotic tools and parts": {"tag": [145], "vertical": []},
+ 
+"robotics": {"tag": [145], "vertical": []},
+ 
+"rooftop pv": {"tag": [160], "vertical": [2]},
+ 
+"rubber & plastic product manufacturing": {"tag": [128], "vertical": [10]},
+ 
+"pollution cleanup": {"tag": [69, 219], "vertical": []},
+ 
+"satellite imagery": {"tag": [234], "vertical": []},
+ 
+"pollution control": {"tag": [219], "vertical": []},
+ 
+"seafood": {"tag": [147], "vertical": [6]},
+ 
+"seafood substitute": {"tag": [8, 147], "vertical": [6]},
+ 
+"second hand": {"tag": [36], "vertical": []},
+ 
+"pollution monitoring": {"tag": [113, 219], "vertical": []},
+ 
+"sensing technology": {"tag": [148], "vertical": []},
+ 
+"sensor": {"tag": [148], "vertical": []},
+ 
+"sensor platform": {"tag": [148], "vertical": []},
+ 
+"sensor tech": {"tag": [148], "vertical": []},
+ 
+"sensor technology": {"tag": [148], "vertical": []},
+ 
+"sensoring": {"tag": [148], "vertical": []},
+ 
+"sensors": {"tag": [148], "vertical": []},
+ 
+"sensors & controls": {"tag": [148], "vertical": []},
+ 
+"sensors technology": {"tag": [148], "vertical": []},
+ 
+"pollution prevention": {"tag": [219], "vertical": []},
+ 
+"pollution prevention and cleanup": {"tag": [69], "vertical": []},
+ 
+"run of river hydro": {"tag": [90, 222], "vertical": [4]},
+ 
+"sharing": {"tag": [150], "vertical": []},
+ 
+"sharing economy": {"tag": [150], "vertical": []},
+ 
+"shipping": {"tag": [151], "vertical": []},
+ 
+"shipping & watercraft": {"tag": [151], "vertical": []},
+ 
+"shipping service provider": {"tag": [151], "vertical": []},
+ 
+"shoes": {"tag": [73], "vertical": []},
+ 
+"silicon pv": {"tag": [160, 158], "vertical": [4]},
+ 
+"electric scooter sharing": {"tag": [110, 86, 223, 149], "vertical": [15]},
+ 
+"small scale hydro": {"tag": [90], "vertical": [4]},
+ 
+"small scale wind power": {"tag": [187], "vertical": [4]},
+ 
+"small-scale wind": {"tag": [187], "vertical": [4]},
+ 
+"smart appliances": {"tag": [153], "vertical": [2]},
+ 
+"electric scooters": {"tag": [110, 86, 223], "vertical": [15]},
+ 
+"scooter": {"tag": [110, 223], "vertical": [15]},
+ 
+"smart cities": {"tag": [154], "vertical": []},
+ 
+"smart city": {"tag": [154], "vertical": []},
+ 
+"smart grid": {"tag": [155], "vertical": [4]},
+ 
+"e-scooters": {"tag": [110, 223], "vertical": [15]},
+ 
+"shared scooters": {"tag": [149, 110, 223], "vertical": [15]},
+ 
+"smart meter": {"tag": [3], "vertical": [4]},
+ 
+"smart meter analytics": {"tag": [3, 113], "vertical": [4]},
+ 
+"smart metering & control": {"tag": [3], "vertical": [4]},
+ 
+"smart meters": {"tag": [3], "vertical": [4]},
+ 
+"smart sensor": {"tag": [148], "vertical": []},
+ 
+"smart home": {"tag": [224], "vertical": [2]},
+ 
+"soft robotics/sensors": {"tag": [145, 148], "vertical": []},
+ 
+"soil": {"tag": [157], "vertical": []},
+ 
+"soil amendments": {"tag": [118, 157], "vertical": []},
+ 
+"soil management": {"tag": [157], "vertical": []},
+ 
+"soil remediation": {"tag": [157, 69], "vertical": []},
+ 
+"soil testing": {"tag": [157], "vertical": []},
+ 
+"solar": {"tag": [158], "vertical": [4]},
+ 
+"solar cells": {"tag": [158], "vertical": [4]},
+ 
+"solar energy": {"tag": [158], "vertical": [4]},
+ 
+"solar equipment wholesaling": {"tag": [158], "vertical": []},
+ 
+"solar financing": {"tag": [158], "vertical": [4, 5]},
+ 
+"solar home systems": {"tag": [158], "vertical": [2]},
+ 
+"toilet": {"tag": [225], "vertical": []},
+ 
+"solar loans": {"tag": [158], "vertical": [5, 4]},
+ 
+"solar marketplace": {"tag": [158, 106], "vertical": [4]},
+ 
+"solar power tower": {"tag": [158], "vertical": [4]},
+ 
+"solar ppa": {"tag": [158], "vertical": [4, 5]},
+ 
+"solar thermal": {"tag": [158], "vertical": [4]},
+ 
+"vertical axis wind turbine": {"tag": [187, 226], "vertical": [4]},
+ 
+"solar tracking systems": {"tag": [158], "vertical": [4]},
+ 
+"solid oxide fuel cells": {"tag": [80], "vertical": []},
+ 
+"tidal turbine": {"tag": [90, 226], "vertical": [4]},
+ 
+"turbine": {"tag": [226], "vertical": []},
+ 
+"specialty chemicals": {"tag": [35], "vertical": []},
+ 
+"supply chain": {"tag": [162], "vertical": []},
+ 
+"supply chain & logistics": {"tag": [162], "vertical": [9]},
+ 
+"supply chain & logistics software": {"tag": [162], "vertical": [9]},
+ 
+"supply chain management": {"tag": [162], "vertical": []},
+ 
+"supply chain software": {"tag": [162], "vertical": []},
+ 
+"supply chain tracking": {"tag": [162], "vertical": []},
+ 
+"supply chain, logistics & procurement": {"tag": [162], "vertical": [9]},
+ 
+"sustainable cities and communities (#11)": {"tag": [154], "vertical": []},
+ 
+"sustainable fashion": {"tag": [73], "vertical": []},
+ 
+"turbine / component manufacturing": {"tag": [42, 226], "vertical": [10]},
+ 
+"sustainable protein": {"tag": [8], "vertical": []},
+ 
+"syngas": {"tag": [163], "vertical": []},
+ 
+"textile": {"tag": [164], "vertical": []},
+ 
+"textile manufacturing": {"tag": [164], "vertical": [10]},
+ 
+"textiles": {"tag": [164], "vertical": []},
+ 
+"therapeutic devices": {"tag": [109], "vertical": [8]},
+ 
+"wind turbine components": {"tag": [42, 187, 226], "vertical": []},
+ 
+"thermal storage": {"tag": [165, 67], "vertical": [4]},
+ 
+"tidal energy": {"tag": [90], "vertical": [4]},
+ 
+"tidal power": {"tag": [90], "vertical": [4]},
+ 
+"wind turbine manufacture": {"tag": [187, 226], "vertical": [10]},
+ 
+"upcycle": {"tag": [227], "vertical": []},
+ 
+"traffic": {"tag": [167, 154], "vertical": []},
+ 
+"traffic monitoring": {"tag": [167, 154], "vertical": []},
+ 
+"traffic monitoring software": {"tag": [167, 154], "vertical": []},
+ 
+"train": {"tag": [136], "vertical": [15]},
+ 
+"trains": {"tag": [136], "vertical": [15]},
+ 
+"urban agriculture": {"tag": [154, 228], "vertical": [1]},
+ 
+"urban farming": {"tag": [154, 228], "vertical": []},
+ 
+"vegan": {"tag": [229], "vertical": [6]},
+ 
+"vegetable": {"tag": [229], "vertical": [6]},
+ 
+"upstream pv": {"tag": [158, 160], "vertical": [4]},
+ 
+"virtual power plant": {"tag": [230], "vertical": []},
+ 
+"urban air mobility": {"tag": [4, 110], "vertical": [15]},
+ 
+"nuclear waste remediation": {"tag": [117, 231], "vertical": []},
+ 
+"urban mobility": {"tag": [110], "vertical": [15]},
+ 
+"urban tech": {"tag": [154], "vertical": []},
+ 
+"utility scale hydro": {"tag": [90], "vertical": [4, 16]},
+ 
+"organic waste": {"tag": [231, 218], "vertical": [16]},
+ 
+"residential waste": {"tag": [142, 231], "vertical": []},
+ 
+"vehicle energy storage": {"tag": [169], "vertical": [15]},
+ 
+"solid waste": {"tag": [231], "vertical": [16]},
+ 
+"vertical farming": {"tag": [170], "vertical": [1]},
+ 
+"vertical takeoff/landing": {"tag": [4], "vertical": [15]},
+ 
+"waste chemicals": {"tag": [35, 231], "vertical": []},
+ 
+"virtual reality": {"tag": [171], "vertical": []},
+ 
+"volt/var optimization": {"tag": [155], "vertical": [4]},
+ 
+"voltage regulation": {"tag": [155], "vertical": [4]},
+ 
+"vr experiences": {"tag": [171], "vertical": []},
+ 
+"waste metal": {"tag": [231], "vertical": []},
+ 
+"waste disposal": {"tag": [173], "vertical": []},
+ 
+"waste wood repurposing": {"tag": [188, 231], "vertical": []},
+ 
+"waste heat recovery": {"tag": [209], "vertical": []},
+ 
+"waste management": {"tag": [175], "vertical": []},
+ 
+"waste management consulting": {"tag": [175], "vertical": []},
+ 
+"residential/commercial water": {"tag": [142, 40, 232], "vertical": [16]},
+ 
+"waste to energy": {"tag": [21], "vertical": []},
+ 
+"waste to value": {"tag": [175], "vertical": []},
+ 
+"waste treatment": {"tag": [175], "vertical": []},
+ 
+"waste water treatment": {"tag": [179], "vertical": [16]},
+ 
+"smart water": {"tag": [232], "vertical": [16]},
+ 
+"wastewater": {"tag": [179], "vertical": [16]},
+ 
+"wastewater resource recovery": {"tag": [179], "vertical": []},
+ 
+"wastewater treatment": {"tag": [179], "vertical": []},
+ 
+"solar hot water": {"tag": [158, 232], "vertical": [4]},
+ 
+"water": {"tag": [232], "vertical": []},
+ 
+"water & wastewater": {"tag": [179, 232], "vertical": []},
+ 
+"water & wastwater": {"tag": [179, 232], "vertical": []},
+ 
+"water analytics": {"tag": [113, 232], "vertical": []},
+ 
+"water conservation": {"tag": [180, 232], "vertical": []},
+ 
+"water filtration": {"tag": [182], "vertical": []},
+ 
+"water contaminant detection": {"tag": [232], "vertical": []},
+ 
+"water heating": {"tag": [232], "vertical": []},
+ 
+"water purification": {"tag": [182], "vertical": []},
+ 
+"water reclamation / reuse": {"tag": [183], "vertical": []},
+ 
+"water recycling": {"tag": [183], "vertical": []},
+ 
+"water saving": {"tag": [180], "vertical": []},
+ 
+"water treatment": {"tag": [184], "vertical": []},
+ 
+"water management": {"tag": [232], "vertical": []},
+ 
+"water utilities": {"tag": [232], "vertical": [16]},
+ 
+"wave power": {"tag": [90], "vertical": [4]},
+ 
+"web-based recycling": {"tag": [137, 55], "vertical": [16]},
+ 
+"well monitoring": {"tag": [113], "vertical": []},
+ 
+"wind": {"tag": [187], "vertical": [4]},
+ 
+"wind energy": {"tag": [187], "vertical": [4]},
+ 
+"wind farm project": {"tag": [187], "vertical": [4]},
+ 
+"water-related service provider": {"tag": [232], "vertical": [16]},
+ 
+"potable water": {"tag": [232], "vertical": []},
+ 
+"darrieus wind turbine": {"tag": [187, 226], "vertical": [4]},
+ 
+"women's clothing": {"tag": [73, 164], "vertical": []},
+ 
+"wood": {"tag": [188], "vertical": []},
+ 
+"wood processing": {"tag": [188], "vertical": []},
+ 
+"horizontal axis wind turbine": {"tag": [187, 226], "vertical": [4]},
+ 
+"6 - clean water and sanitation": {"tag": [], "vertical": [16]},
+ 
+"7 - affordable and clean energy": {"tag": [], "vertical": [4]},
+ 
+"accounting & finance": {"tag": [], "vertical": [5]},
+ 
+"accounting & finance services": {"tag": [], "vertical": [5]},
+ 
+"accounting & finance software": {"tag": [], "vertical": [5]},
+ 
+"advanced manufacturing": {"tag": [], "vertical": [10]},
+ 
+"affordable and clean energy (#7)": {"tag": [], "vertical": [4]},
+ 
+"agricultural equipment": {"tag": [], "vertical": [1]},
+ 
+"agricultural insurance": {"tag": [], "vertical": [1]},
+ 
+"agricultural products & related activities": {"tag": [], "vertical": [1]},
+ 
+"agricultural tech": {"tag": [], "vertical": [1]},
+ 
+"agricultural technology": {"tag": [], "vertical": [1]},
+ 
+"agriculture": {"tag": [], "vertical": [1]},
+ 
+"agriculture & food": {"tag": [], "vertical": [1, 6]},
+ 
+"agriculture & forestry": {"tag": [], "vertical": [7]},
+ 
+"agriculture logistics": {"tag": [], "vertical": [1, 9]},
+ 
+"agritech": {"tag": [], "vertical": [1]},
+ 
+"agroforestry": {"tag": [], "vertical": [1, 7]},
+ 
+"agtech": {"tag": [], "vertical": [1]},
+ 
+"air transportation": {"tag": [], "vertical": [15]},
+ 
+"alternative energy equipment": {"tag": [], "vertical": [4]},
+ 
+"alternative fuel vehicles": {"tag": [], "vertical": [15]},
+ 
+"asset & financial management & trading": {"tag": [], "vertical": [5]},
+ 
+"asset & financial management & trading software": {"tag": [], "vertical": [5]},
+ 
+"asset/financial management": {"tag": [], "vertical": [5]},
+ 
+"automated demand response": {"tag": [], "vertical": [4]},
+ 
+"bakery": {"tag": [], "vertical": [6]},
+ 
+"banking": {"tag": [], "vertical": [5]},
+ 
+"beverage": {"tag": [], "vertical": [6]},
+ 
+"beverages": {"tag": [], "vertical": [6]},
+ 
+"buildings": {"tag": [], "vertical": [2]},
+ 
+"bus": {"tag": [], "vertical": [15]},
+ 
+"bus transportation": {"tag": [], "vertical": [15]},
+ 
+"car": {"tag": [], "vertical": [15]},
+ 
+"clean energy": {"tag": [], "vertical": [4]},
+ 
+"clean water and sanitation (#6)": {"tag": [], "vertical": [16]},
+ 
+"clinical": {"tag": [], "vertical": [8]},
+ 
+"clinical trials": {"tag": [], "vertical": [8]},
+ 
+"cng vehicles": {"tag": [], "vertical": [15]},
+ 
+"commercial waste": {"tag": [], "vertical": [16]},
+ 
+"construction": {"tag": [], "vertical": [3]},
+ 
+"construction & design services": {"tag": [], "vertical": [3]},
+ 
+"construction automation": {"tag": [], "vertical": [3]},
+ 
+"construction/fabrication": {"tag": [], "vertical": [3]},
+ 
+"constructionindustry": {"tag": [], "vertical": [3]},
+ 
+"conventional fuel vehicles": {"tag": [], "vertical": [15]},
+ 
+"conventional fuels": {"tag": [], "vertical": [15]},
+ 
+"credit management": {"tag": [], "vertical": [5]},
+ 
+"credit scoring": {"tag": [], "vertical": [5]},
+ 
+"crop": {"tag": [], "vertical": [1]},
+ 
+"crop enhancement": {"tag": [], "vertical": [1]},
+ 
+"crop production": {"tag": [], "vertical": [1]},
+ 
+"crop protection": {"tag": [], "vertical": [1]},
+ 
+"crop types": {"tag": [], "vertical": [1]},
+ 
+"crops": {"tag": [], "vertical": [1]},
+ 
+"connected vehicles": {"tag": [], "vertical": [15]},
+ 
+"debit cards": {"tag": [], "vertical": [5]},
+ 
+"debt collection": {"tag": [], "vertical": [5]},
+ 
+"debt collections": {"tag": [], "vertical": [5]},
+ 
+"decentralized energy": {"tag": [], "vertical": [4]},
+ 
+"digital health": {"tag": [], "vertical": [8]},
+ 
+"digital health and medical technologies": {"tag": [], "vertical": [8]},
+ 
+"digital healthcare": {"tag": [], "vertical": [8]},
+ 
+"digital logistics": {"tag": [], "vertical": [9]},
+ 
+"digital therapeutics": {"tag": [], "vertical": [8]},
+ 
+"disease diagnosis": {"tag": [], "vertical": [8]},
+ 
+"diversified machinery manufacturing": {"tag": [], "vertical": [10]},
+ 
+"doctor": {"tag": [], "vertical": [8]},
+ 
+"e-logistics": {"tag": [], "vertical": [9]},
+ 
+"e-mobility": {"tag": [], "vertical": [15]},
+ 
+"efficient windows": {"tag": [], "vertical": [2]},
+ 
+"electric fleets": {"tag": [], "vertical": [15]},
+ 
+"electric utilities": {"tag": [], "vertical": [16]},
+ 
+"electrical/electronic manufacturing": {"tag": [], "vertical": [10]},
+ 
+"electronic manufacturing services": {"tag": [], "vertical": [10]},
+ 
+"energy": {"tag": [], "vertical": [4]},
+ 
+"energy & power": {"tag": [], "vertical": [4]},
+ 
+"energy & utilities": {"tag": [], "vertical": [4, 16]},
+ 
+"energy conversin": {"tag": [], "vertical": [4]},
+ 
+"energy harvester": {"tag": [], "vertical": [4]},
+ 
+"energy harvesting": {"tag": [], "vertical": [4]},
+ 
+"energy infrastructure": {"tag": [], "vertical": [4]},
+ 
+"energy procurement": {"tag": [], "vertical": [4]},
+ 
+"energy services": {"tag": [], "vertical": [4]},
+ 
+"energy suppliers": {"tag": [], "vertical": [16]},
+ 
+"energy tech": {"tag": [], "vertical": [4]},
+ 
+"energy trading & marketing": {"tag": [], "vertical": [4]},
+ 
+"fabless manufacturing": {"tag": [], "vertical": [10]},
+ 
+"farm & construction machinery manufacturing": {"tag": [], "vertical": [1, 10]},
+ 
+"finance": {"tag": [], "vertical": [5]},
+ 
+"financial": {"tag": [], "vertical": [5]},
+ 
+"financial advisory": {"tag": [], "vertical": [5]},
+ 
+"financial analytics": {"tag": [], "vertical": [5]},
+ 
+"financial exchanges": {"tag": [], "vertical": [5]},
+ 
+"financial management": {"tag": [], "vertical": [5]},
+ 
+"financial management solutions": {"tag": [], "vertical": [5]},
+ 
+"financial service": {"tag": [], "vertical": [5]},
+ 
+"financial services": {"tag": [], "vertical": [5]},
+ 
+"financing": {"tag": [], "vertical": [5]},
+ 
+"fintech": {"tag": [], "vertical": [5]},
+ 
+"fintech related": {"tag": [], "vertical": [5]},
+ 
+"fintech software": {"tag": [], "vertical": [5]},
+ 
+"food": {"tag": [], "vertical": [6]},
+ 
+"food & beverage": {"tag": [], "vertical": [6]},
+ 
+"food & beverages": {"tag": [], "vertical": [6]},
+ 
+"food & grocery": {"tag": [], "vertical": [6]},
+ 
+"food and beverage": {"tag": [], "vertical": [6]},
+ 
+"food and beveragei": {"tag": [], "vertical": [6]},
+ 
+"food delivery": {"tag": [], "vertical": [6]},
+ 
+"food delivery platform": {"tag": [], "vertical": [6]},
+ 
+"food logistics": {"tag": [], "vertical": [6, 9]},
+ 
+"food logistics & delivery": {"tag": [], "vertical": [6, 9]},
+ 
+"food processing": {"tag": [], "vertical": [6]},
+ 
+"food safety": {"tag": [], "vertical": [6]},
+ 
+"food safety & preservation": {"tag": [], "vertical": [6]},
+ 
+"food shelf life": {"tag": [], "vertical": [6]},
+ 
+"food storage": {"tag": [], "vertical": [6]},
+ 
+"food transportation": {"tag": [], "vertical": [6]},
+ 
+"foodtech": {"tag": [], "vertical": [6]},
+ 
+"forestry": {"tag": [], "vertical": [7]},
+ 
+"fresh foods": {"tag": [], "vertical": [6]},
+ 
+"fruit": {"tag": [], "vertical": [6]},
+ 
+"gas utilities": {"tag": [], "vertical": [16]},
+ 
+"government": {"tag": [], "vertical": [13]},
+ 
+"government software": {"tag": [], "vertical": [13]},
+ 
+"govtech": {"tag": [], "vertical": [13]},
+ 
+"green building": {"tag": [], "vertical": [2]},
+ 
+"green buildings": {"tag": [], "vertical": [2]},
+ 
+"health": {"tag": [], "vertical": [8]},
+ 
+"health & medicine": {"tag": [], "vertical": [8]},
+ 
+"health & wellness": {"tag": [], "vertical": [8]},
+ 
+"health & wellness (non-internet/mobile)": {"tag": [], "vertical": [8]},
+ 
+"health &amp; beauty": {"tag": [], "vertical": [8]},
+ 
+"health and safety": {"tag": [], "vertical": [8]},
+ 
+"health care": {"tag": [], "vertical": [8]},
+ 
+"health carem": {"tag": [], "vertical": [8]},
+ 
+"health diagnostics": {"tag": [], "vertical": [8]},
+ 
+"health insurance": {"tag": [], "vertical": [8]},
+ 
+"health monitoring": {"tag": [], "vertical": [8]},
+ 
+"health platform": {"tag": [], "vertical": [8]},
+ 
+"health supplements": {"tag": [], "vertical": [8]},
+ 
+"healthcare": {"tag": [], "vertical": [8]},
+ 
+"healthcare services": {"tag": [], "vertical": [8]},
+ 
+"healthcare software": {"tag": [], "vertical": [8]},
+ 
+"healthcare tech": {"tag": [], "vertical": [8]},
+ 
+"healthtech": {"tag": [], "vertical": [8]},
+ 
+"healthy food": {"tag": [], "vertical": [6]},
+ 
+"heavy equipment manufacturing": {"tag": [], "vertical": [10]},
+ 
+"hedge funds": {"tag": [], "vertical": [5]},
+ 
+"horticulture": {"tag": [], "vertical": [1]},
+ 
+"impact investing": {"tag": [], "vertical": [5]},
+ 
+"indoor cultivation systems": {"tag": [], "vertical": [1, 2]},
+ 
+"inflammatory diseases": {"tag": [], "vertical": [8]},
+ 
+"injection molding": {"tag": [], "vertical": [10]},
+ 
+"innovative food": {"tag": [], "vertical": [6]},
+ 
+"investing": {"tag": [], "vertical": [5]},
+ 
+"investment": {"tag": [], "vertical": [5]},
+ 
+"investment firms & funds": {"tag": [], "vertical": [5]},
+ 
+"last mile logistics": {"tag": [], "vertical": [9]},
+ 
+"logistic": {"tag": [], "vertical": [9]},
+ 
+"logistics": {"tag": [], "vertical": [9]},
+ 
+"logistics & delivery": {"tag": [], "vertical": [9]},
+ 
+"logistics management": {"tag": [], "vertical": [9]},
+ 
+"logistics platform": {"tag": [], "vertical": [9]},
+ 
+"logistics provider": {"tag": [], "vertical": [9]},
+ 
+"logistics services": {"tag": [], "vertical": [9]},
+ 
+"logistics tech": {"tag": [], "vertical": [9]},
+ 
+"mabr": {"tag": [], "vertical": [4]},
+ 
+"machinery manufacturing": {"tag": [], "vertical": [10]},
+ 
+"manufacturing": {"tag": [], "vertical": [10]},
+ 
+"manufacturing, warehousing & industrial software": {"tag": [], "vertical": [10]},
+ 
+"maritime logistics": {"tag": [], "vertical": [9]},
+ 
+"medical": {"tag": [], "vertical": [8]},
+ 
+"medical / healthcare": {"tag": [], "vertical": [8]},
+ 
+"medical diagnostics": {"tag": [], "vertical": [8]},
+ 
+"medical facilities & services": {"tag": [], "vertical": [8]},
+ 
+"medical laboratories & research": {"tag": [], "vertical": [8]},
+ 
+"medical product distribution": {"tag": [], "vertical": [8]},
+ 
+"medical technology": {"tag": [], "vertical": [8]},
+ 
+"medicalm": {"tag": [], "vertical": [8]},
+ 
+"mental": {"tag": [], "vertical": [8]},
+ 
+"mental health": {"tag": [], "vertical": [8]},
+ 
+"metals & mining": {"tag": [], "vertical": [11]},
+ 
+"micro lending": {"tag": [], "vertical": [5]},
+ 
+"milk": {"tag": [], "vertical": [6]},
+ 
+"mining": {"tag": [], "vertical": [11]},
+ 
+"mining technologies": {"tag": [], "vertical": [11]},
+ 
+"mining technology": {"tag": [], "vertical": [11]},
+ 
+"mobile payment": {"tag": [], "vertical": [5]},
+ 
+"mobile payments": {"tag": [], "vertical": [5]},
+ 
+"mobility": {"tag": [], "vertical": [15]},
+ 
+"mobility services": {"tag": [], "vertical": [15]},
+ 
+"money management": {"tag": [], "vertical": [5]},
+ 
+"money transfer": {"tag": [], "vertical": [5]},
+ 
+"mortgages & lending": {"tag": [], "vertical": [5]},
+ 
+"motor vehicles": {"tag": [], "vertical": [15]},
+ 
+"municipal/utility water": {"tag": [], "vertical": [16]},
+ 
+"non-alcoholic beverages": {"tag": [], "vertical": [6]},
+ 
+"non-food crops": {"tag": [], "vertical": [1]},
+ 
+"nursing and residential care": {"tag": [], "vertical": [8]},
+ 
+"oncology": {"tag": [], "vertical": [8]},
+ 
+"open banking": {"tag": [], "vertical": [5]},
+ 
+"organic food": {"tag": [], "vertical": [6]},
+ 
+"organs": {"tag": [], "vertical": [8]},
+ 
+"other agriculture": {"tag": [], "vertical": [1]},
+ 
+"other energy services": {"tag": [], "vertical": [4]},
+ 
+"other insurance": {"tag": [], "vertical": [5]},
+ 
+"other power types": {"tag": [], "vertical": [4]},
+ 
+"other renewables": {"tag": [], "vertical": [4]},
+ 
+"other transportation": {"tag": [], "vertical": [15]},
+ 
+"p2p lending": {"tag": [], "vertical": [5]},
+ 
+"parts manufacturing & distribution": {"tag": [], "vertical": [10]},
+ 
+"patient care": {"tag": [], "vertical": [8]},
+ 
+"patient monitoring": {"tag": [], "vertical": [8]},
+ 
+"peanuts": {"tag": [], "vertical": [6]},
+ 
+"peas": {"tag": [], "vertical": [6]},
+ 
+"pecan": {"tag": [], "vertical": [6]},
+ 
+"personal e-wallet": {"tag": [], "vertical": [5]},
+ 
+"personal finance": {"tag": [], "vertical": [5]},
+ 
+"personal finance management": {"tag": [], "vertical": [5]},
+ 
+"personal health": {"tag": [], "vertical": [8]},
+ 
+"personal transport": {"tag": [], "vertical": [15]},
+ 
+"plug-in hybrid": {"tag": [], "vertical": [15]},
+ 
+"pollination": {"tag": [], "vertical": [1]},
+ 
+"pop-up farming": {"tag": [], "vertical": [1]},
+ 
+"power to gas": {"tag": [], "vertical": [4]},
+ 
+"ppa": {"tag": [], "vertical": [4, 5]},
+ 
+"private equity": {"tag": [], "vertical": [5]},
+ 
+"project finance": {"tag": [], "vertical": [5]},
+ 
+"public transportation": {"tag": [], "vertical": [15]},
+ 
+"real estate investment": {"tag": [], "vertical": [5]},
+ 
+"regenerative agriculture": {"tag": [], "vertical": [1]},
+ 
+"regenerative medicine": {"tag": [], "vertical": [8]},
+ 
+"regtech & compliance": {"tag": [], "vertical": [13]},
+ 
+"regtech compliance": {"tag": [], "vertical": [13]},
+ 
+"renewable energy": {"tag": [], "vertical": [4]},
+ 
+"renewables": {"tag": [], "vertical": [4]},
+ 
+"renewables integration": {"tag": [], "vertical": [4]},
+ 
+"restaurant": {"tag": [], "vertical": [6]},
+ 
+"restaurant operations": {"tag": [], "vertical": [6]},
+ 
+"restaurant tech": {"tag": [], "vertical": [6]},
+ 
+"restaurants": {"tag": [], "vertical": [6]},
+ 
+"retail banking": {"tag": [], "vertical": [5]},
+ 
+"route optimization": {"tag": [], "vertical": [15]},
+ 
+"seed treatments": {"tag": [], "vertical": [1]},
+ 
+"ship & submarine manufacturing": {"tag": [], "vertical": [10]},
+ 
+"smart building": {"tag": [], "vertical": [2]},
+ 
+"smart buildings": {"tag": [], "vertical": [2]},
+ 
+"agriculture software": {"tag": [], "vertical": [1]},
+ 
+"soybean": {"tag": [], "vertical": [6]},
+ 
+"specialty crops": {"tag": [], "vertical": [1]},
+ 
+"specialty restaurants": {"tag": [], "vertical": [6]},
+ 
+"superfood": {"tag": [], "vertical": [6]},
+ 
+"surgery": {"tag": [], "vertical": [8]},
+ 
+"surgical devices": {"tag": [], "vertical": [8]},
+ 
+"sustainable agriculture": {"tag": [], "vertical": [1]},
+ 
+"sustainable energy": {"tag": [], "vertical": [4]},
+ 
+"sustainable food": {"tag": [], "vertical": [6]},
+ 
+"sustainable forestry": {"tag": [], "vertical": [7]},
+ 
+"telecom": {"tag": [], "vertical": [14]},
+ 
+"telecom devices & equipment": {"tag": [], "vertical": [14]},
+ 
+"telecom services": {"tag": [], "vertical": [14]},
+ 
+"telecommunication": {"tag": [], "vertical": [14]},
+ 
+"telecommunications": {"tag": [], "vertical": [14]},
+ 
+"telemedicine": {"tag": [], "vertical": [8]},
+ 
+"therapeutics": {"tag": [], "vertical": [8]},
+ 
+"thermoelectric generator": {"tag": [], "vertical": [4]},
+ 
+"thermolectrics": {"tag": [], "vertical": [4]},
+ 
+"transportation & logistics": {"tag": [], "vertical": [15, 9]},
+ 
+"transportation infrastructure": {"tag": [], "vertical": [15]},
+ 
+"transportation services": {"tag": [], "vertical": [15]},
+ 
+"transportation software": {"tag": [], "vertical": [15]},
+ 
+"turbo generators": {"tag": [], "vertical": [4]},
+ 
+"utilities": {"tag": [], "vertical": [16]},
+ 
+"vc firms": {"tag": [], "vertical": [5]},
+ 
+"vehicle financing": {"tag": [], "vertical": [15, 5]},
+ 
+"vehicle maintenance": {"tag": [], "vertical": [15]},
+ 
+"venture capital": {"tag": [], "vertical": [5]},
+ 
+"water distribution": {"tag": [], "vertical": [16]},
+ 
+"wealth management": {"tag": [], "vertical": [5]},
+ 
+"wholesale energy services": {"tag": [], "vertical": [4]},
+ 
+"wholesale food distributors": {"tag": [], "vertical": [6]}}

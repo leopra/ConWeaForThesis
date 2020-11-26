@@ -66,12 +66,11 @@ def train_word2vec(strings):
 
     tokenizer = fit_get_tokenizer(strings, max_words=150000)
     print("Total number of words: ", len(tokenizer.word_index))
-    tagged_data = tokenizer.texts_to_sequences(df.sentence)
+    tagged_data = tokenizer.texts_to_sequences(strings)
     vocabulary_inv = {}
     for word in tokenizer.word_index:
         vocabulary_inv[tokenizer.word_index[word]] = word
     embedding_mat = get_embeddings(tagged_data, vocabulary_inv)
-    return embedding_mat
     pickle.dump(tokenizer, open(basepath + "tokenizer.pkl", "wb"))
     pickle.dump(embedding_mat, open(basepath + "embedding_matrix.pkl", "wb"))
 
@@ -192,7 +191,6 @@ def generate_pseudo_labels(strings, seedwordsdict):
 
     y = []
     X = []
-    y_true = []
 
     for line in strings:
         countvec = CountVectorizer(ngram_range=(1, 4))
@@ -268,7 +266,6 @@ def predictWithHAN(strings, word_vec):
     max_sentences = 15
     tokenizer = pickle.load(open(basepath + "tokenizer.pkl", "rb"))
 
-    strings = df.sentence.values
     strings = prep_data_for_HAN(texts=strings, max_sentences=max_sentences, max_sentence_length=max_sentence_length,
                       tokenizer=tokenizer)
 

@@ -130,11 +130,12 @@ def generate_pseudo_labelsTag(strings, labelsdict):
             y.append([-1])
 
     y = [item for sublist in y for item in sublist]
-    for k in y:
-        try:
-            print(idtotag[k])
-        except:
-            pass
+    y = [tg for tg in y if tg in idtotag.keys()]
+    # for k in y:
+    #     try:
+    #         print(idtotag[k])
+    #     except:
+    #         pass
     return X, y
 
 #company ids to be classified
@@ -154,9 +155,9 @@ def generate_pseudo_labelsTag(strings, labelsdict):
 #     descrlist = desc_client.description.apply(lambda x: clean_text(x))
 #     pitchlist = pitch_client.pitch_line.apply(lambda x: clean_text(x))
 
-    whole_text = ' '.join(descrlist.values.tolist() + pitchlist.values.tolist())
-
-    with open('PipelinePredictions/tag_data/tags_synonyms_dict.json') as fp:
-        tag_labels = json.load(fp)
-
-    print(generate_pseudo_labelsTag([whole_text], tag_labels))
+# whole_text = ' '.join(descrlist.values.tolist() + pitchlist.values.tolist())
+#
+# with open('PipelinePredictions/tag_data/tags_synonyms_dict.json') as fp:
+#     tag_labels = json.load(fp)
+#
+# print(generate_pseudo_labelsTag([whole_text], tag_labels))

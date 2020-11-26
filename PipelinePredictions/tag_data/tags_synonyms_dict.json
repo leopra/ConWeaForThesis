@@ -680,4 +680,18 @@
 "satellite imagery", "earth observation", "satellite data", "aerial satellite photography"],
 
 "renewable energy": [
-"clean energy", "sustainable energy", "green energy", "renewables", "renewable energy"]}
+"clean energy", "sustainable energy", "green energy", "renewables", "renewable energy"],
+
+"business to business (b2b)": [
+ "b2b", "business to business", "business-to-business", "btob", "b-to-b"],
+ 
+"business to consumer (b2c)": [
+ "b2c", "business to consumer", "business-to-consumer", "btoc", "b-to-c", "direct-to-consumer", "direct-to-consumer", "business to customer", "business-to-customer"],
+ 
+"software": [
+ "online platform", "mobile application", "web application", "mobile app", "mobile apps", "software"],
+
+ "hardware": ["hardware", "sensor", "device", "robot", "robotics", "machinery" ]
+
+
+}
