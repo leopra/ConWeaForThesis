@@ -435,7 +435,7 @@ def main(dataset_path, print_flag=True):
 
         dicttojson = {k: list(v) for k, v in label_term_dict.items()}
         dicttojson = json.dumps(dicttojson)
-        jso = json.dumps(label_term_dict)
+        jso = json.dumps(dicttojson)
         f = open(pkl_dump_dir  + "dictIteration"+ str(i) + ".json", "w")
         f.write(jso)
         f.close()
