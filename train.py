@@ -433,6 +433,13 @@ def main(dataset_path, print_flag=True):
         label_term_dict, components = expand_seeds(df, label_term_dict, pred_labels, label_to_index, index_to_label,
                                                    word_to_index, index_to_word, inv_docfreq, docfreq, i, n1=5)
 
+        dicttojson = {k: list(v) for k, v in label_term_dict.items()}
+        dicttojson = json.dumps(dicttojson)
+        jso = json.dumps(label_term_dict)
+        f = open(pkl_dump_dir  + "dictIteration"+ str(i) + ".json", "w")
+        f.write(jso)
+        f.close()
+
         if print_flag:
             print_label_term_dict(label_term_dict, components)
         print("#" * 80)
