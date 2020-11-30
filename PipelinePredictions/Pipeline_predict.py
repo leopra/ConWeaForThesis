@@ -193,9 +193,13 @@ def generate_pseudo_labels(strings, seedwordsdict):
     X = []
 
     for line in strings:
-        countvec = CountVectorizer(ngram_range=(1, 4))
-        countvec.fit_transform([line])
-        words = countvec.get_feature_names()
+        try:
+            countvec = CountVectorizer(ngram_range=(1, 4))
+            countvec.fit_transform([line])
+            words = countvec.get_feature_names()
+        except:
+            #if there are some errors in fit transform just skip the line
+            continue
         count_dict = {}
         flag = 0
         for l in labels:

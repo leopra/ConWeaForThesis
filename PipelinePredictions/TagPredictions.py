@@ -20,37 +20,6 @@ from SQLServer import DATABASE_CONFIG_NEW, sql_cnnt
 from AzureStorage import blob_download
 
 basepath = './PipelinePredictions/models/'
-#
-# data = pd.read_sql_query("select top(10000) client_id from co_aggregations where client_id not in "
-#                          "(select client_id from co_verticals) ", #TODO add " and vertical_id is not null"
-#                          sql_cnnt("cnnt", DATABASE_CONFIG_NEW))
-#
-#
-# qry_desc = """select client_id, [description], source, acq_date from
-# (select client_id, [description], source, acq_date,row_number()
-# over(partition by client_id, source order by acq_date desc) as rn
-# from co_descriptions) as T
-# where rn = 1"""
-#
-# qry_pitch = """select client_id, pitch_line, source, acq_date from
-# (select client_id, pitch_line, source, acq_date,row_number()
-# over(partition by client_id, source order by acq_date desc) as rn
-# from co_pitch_lines) as T
-# where rn = 1"""
-#
-# priority_pitch = ['cbinsights', 'owler','i3', 'dealroom','crunchbase','old_db','linkedin']
-#
-# priority_desc = ['cbinsights', 'crunchbase', 'dealroom', 'linkedin', 'old_db', 'wb_text_nlp', 'wb_html_position']
-#
-#
-# desc = pd.read_sql_query(qry_desc, sql_cnnt("cnnt", DATABASE_CONFIG_NEW))
-# pitch = pd.read_sql_query(qry_pitch, sql_cnnt("cnnt", DATABASE_CONFIG_NEW))
-#
-#
-# def clean_text(text):
-#         return re.sub(r'[;,\.!\?\(\)]', ' ', text.lower()).replace('\n', '').replace('[\s+]', ' ')
-
-
 
 tagtoidmap = pd.read_sql_query("""SELECT [id],[tag],[edited_date] FROM [dbo].[tb_tags]""", sql_cnnt("cnnt", DATABASE_CONFIG_NEW))
 idtotag = dict(zip(tagtoidmap.id, tagtoidmap.tag.apply(lambda x : x.lower())))
@@ -90,11 +59,15 @@ def generate_pseudo_labelsTag(strings, labelsdict):
     X = []
 
     for line in strings:
-        count_dict = {}
+        count_dict= {}
         flag = 0
-        countvec = CountVectorizer(ngram_range=(1, 4))
-        countvec.fit_transform([line])
-        words = countvec.get_feature_names()
+        try:
+            countvec = CountVectorizer(ngram_range=(1, 4))
+            countvec.fit_transform([line])
+            words = countvec.get_feature_names()
+        except:
+            # if there are some errors in fit transform just skip the line
+            continue
 
         for l in labels:
             seed_words = set()
@@ -131,33 +104,4 @@ def generate_pseudo_labelsTag(strings, labelsdict):
 
     y = [item for sublist in y for item in sublist]
     y = [tg for tg in y if tg in idtotag.keys()]
-    # for k in y:
-    #     try:
-    #         print(idtotag[k])
-    #     except:
-    #         pass
     return X, y
-
-#company ids to be classified
-# ids =data.client_id.values
-# predictionssql = {}
-# countforoutput = 0
-# for index in ids:
-#     #group all descritption of same company together
-#     desc_client = desc[desc.client_id == index]
-#     desc_client["source"] = pd.Categorical(desc_client["source"], categories=priority_desc, ordered=True)
-#     desc_client = desc_client.sort_values('source')
-#
-#     pitch_client = pitch[pitch.client_id == index]
-#     pitch_client["source"] = pd.Categorical(pitch_client["source"], categories=priority_pitch, ordered=True)
-#     pitch_client = pitch_client.sort_values('source')
-#
-#     descrlist = desc_client.description.apply(lambda x: clean_text(x))
-#     pitchlist = pitch_client.pitch_line.apply(lambda x: clean_text(x))
-
-# whole_text = ' '.join(descrlist.values.tolist() + pitchlist.values.tolist())
-#
-# with open('PipelinePredictions/tag_data/tags_synonyms_dict.json') as fp:
-#     tag_labels = json.load(fp)
-#
-# print(generate_pseudo_labelsTag([whole_text], tag_labels))

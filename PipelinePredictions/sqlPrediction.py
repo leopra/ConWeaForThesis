@@ -31,7 +31,7 @@ sys.path.append(os.path.join(PATH, 'Libraries-GP'))
 
 #eutop Libraries
 from SQLServer import DATABASE_CONFIG_NEW, sql_cnnt
-from AzureStorage import blob_download
+from AzureStorage import blob_download, blob_upload
 
 data = pd.read_sql_query("select client_id from co_aggregations where client_id not in "
                          "(select client_id from co_verticals) and is_platform = 1", #TODO add " and vertical_id is not null"
@@ -62,6 +62,8 @@ pitch = pd.read_sql_query(qry_pitch, sql_cnnt("cnnt", DATABASE_CONFIG_NEW))
 #model to classify description and pitch , download if needed
 #blob_download('verticals-ml', 'fasttext-descr', basepath + 'fasttext-descr.bin') #86% top1 accuracy
 #blob_download('verticals-ml', 'fasttext-pitch', basepath +'fasttext-pitch.bin') #62% top1 accuracy
+#blob_download('verticals-ml', 'bert-superv-descr', 'PipelinePredictions/models/bert_weigths.pt')
+
 
 modeldescr = fasttext.load_model(basepath +'fasttex_pitch_model_ova_18_11_2020.bin')
 
@@ -248,12 +250,12 @@ for index in ids:
     tagsql = pd.DataFrame(data=[[clientid, x, timestamp] for x in tags], columns=["client_id", "tag_id", "acq_date"])
     print(tagsql)
 
-    insert_into_sql_auto_incr(conn_str=DATABASE_CONFIG_NEW, table_name="co_tags", db=tagsql, ex_man=True)
+   # insert_into_sql_auto_incr(conn_str=DATABASE_CONFIG_NEW, table_name="co_tags", db=tagsql, ex_man=True)
 
     vertsql = pd.DataFrame(data=[[clientid, x, timestamp] for x in verticals], columns=["client_id", "vertical_id", "acq_date"])
     print(vertsql)
 
-    insert_into_sql_auto_incr(conn_str=DATABASE_CONFIG_NEW, table_name="co_verticals", db=vertsql, ex_man=True)
+    #insert_into_sql_auto_incr(conn_str=DATABASE_CONFIG_NEW, table_name="co_verticals", db=vertsql, ex_man=True)
 
     countforoutput += 1
     if countforoutput %100 ==0:
