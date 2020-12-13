@@ -18,7 +18,6 @@ import pandas as pd
 from keras.metrics import TopKCategoricalAccuracy
 import matplotlib.pyplot as plt
 import sys
-import psutil
 
 def main(dataset_path, print_flag=True):
     #dataset_path = './data/eutopiaverttest/'

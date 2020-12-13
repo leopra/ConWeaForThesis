@@ -1,67 +1,14 @@
 import pickle
-from flair.embeddings import BertEmbeddings
-from nltk import sent_tokenize
-# from flair.data import Sentence
-# from pytorch_pretrained_bert import BertTokenizer
-# tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
-# embedding = BertEmbeddings('bert-base-uncased')
-import pickle
 import json
 import numpy as np
 import pandas as pd
 
-# with open('./data/eutopiavertzz/df.pkl', 'rb') as handle:
-#     df = pickle.load(handle)
-#
-# len(df.iloc[14].sentence)
-#
-# for index, row in df[14:15].iterrows():
-#     if index % 100 == 0:
-#         print("Finished sentences: " + str(index) + " out of " + str(len(df)))
-#     # all sentences are undercase now
-#     line = row["sentence"].lower()
-#     sentences = sent_tokenize(line)
-#     for sentence_ind, sent in enumerate(sentences):
-#         tokenized_text = tokenizer.tokenize(sent)
-#         if len(tokenized_text) > 512:
-#             print('sentence too long for Bert: truncating')
-#             sentence = Sentence(' '.join(sent[:512]), use_tokenizer=True)
-#         else:
-#             sentence = Sentence(sent, use_tokenizer=True)
-#         try:
-#             embedding.embed(sentence)
-#         except Exception as e:
-#             print("Exception Counter while getting BERT: ", sentence_ind, index, e)
-#             print(sentence)
-#             print(index)
-#             continue
-
-#CODE USED TO SAVE FILES TO AZURE BLOB STORAGE
-#
-# import os
-# import sys
-# PATH = os.path.dirname(os.__file__)
-# sys.path.append(os.path.join(PATH, 'Libraries-GP'))
-#
-# from AzureStorage import blob_upload
-# blob_upload('verticals-ml', 'cluster-map1,8gb', './data/eutopiavert/word_cluster_map.pkl')
-
-dataset_path = './data/eutopiavert/'
-df = pickle.load(open(dataset_path + "df_contextualized.pkl", "rb"))
-tokenizer = pickle.load(open(dataset_path + "tokenizer.pkl", "rb"))
-with open(dataset_path + "seedwordsencoded.json") as fp:
-    label_term_dict = json.load(fp)
-
-labels = list(set(label_term_dict.keys()))
-
 def generate_pseudo_labels(df, labels, label_term_dict, tokenizer):
-    #TODO this is bad code, i must be sure that labels follows the one-hot-index order
     labels = sorted(labels)
     #this an implementation for multilabel, returns a one-hot-encoded array
-    def argmax_perfectmatch(count_dict, percentage=0.05):
-        print(count_dict)
+    def argmax_perfectmatch(count_dict, percentage=0.1):
         total = 0
-        labcounts = {}
+        labcounts = []
         for l in labels:
             count = 0
             try:
@@ -69,22 +16,30 @@ def generate_pseudo_labels(df, labels, label_term_dict, tokenizer):
                     count += count_dict[l][t]
             except:
                 pass
-            if count != 0:
-                labcounts[l] = count
+            labcounts.append((l, count))
             total += count
 
-        current = np.zeros(len(labels), dtype = int)
+        current = np.zeros(len(labels))
 
         # add 1 to labels over the threshold
-        for i,lbl in enumerate(labels):
+        for i in range(len(current)):
             # if i have only match of less than 3 classes assign all of them
-            try:
-                if labcounts[lbl] > percentage:
-                    current[i] = 1
-            except:
-                pass
-        return current
+            if len(labcounts) < 3:
+                if labcounts[i][1] != 0:
+                    current[i] = 1.0
 
+            # if they are more check for threshold
+            else:
+                if (labcounts[i][1] / total) >= percentage:
+                    current[i] = 1.0
+
+        # if there was no label over the threshold give the best one
+        if np.sum(current) == 0:
+            labcounts = [x[1] for x in labcounts]
+            index_max = max(range(len(labcounts)), key=labcounts.__getitem__)
+            current[index_max] = 1.0
+
+        return current
 
     y = []
     X = []
@@ -121,15 +76,20 @@ def generate_pseudo_labels(df, labels, label_term_dict, tokenizer):
                         count_dict[l][word] = 1
         if flag:
             lbl = argmax_perfectmatch(count_dict)
-            #TODO currently is impossible that there is no label, in the future maybe this should be possible
             if np.sum(lbl) == 0:
                 continue
             y.append(lbl)
             X.append(line)
             y_true.append(label)
-            lbl = argmax_perfectmatch(count_dict)
     return X, y, y_true
 
+dataset_path = './data/eutopiavert/'
 
-dfs = df
-X, y, y_true = generate_pseudo_labels(dfs, labels, label_term_dict, tokenizer)
+df = pickle.load(open(dataset_path + "df_contextualized.pkl", "rb"))
+
+tokenizer = pickle.load(open(dataset_path + "tokenizer.pkl", "rb"))
+
+with open(dataset_path + "dictIteration4.json") as fp:
+    label_term_dict = json.load(fp)
+
+labels = list(set(label_term_dict.keys()))
