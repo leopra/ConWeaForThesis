@@ -40,8 +40,12 @@ def generate_pseudo_labels(df, labels, label_term_dict, tokenizer):
         else:
             labcountsvalue = [x[1] for x in labcounts]
             orderbycount = sorted(range(len(labcounts)), key=labcountsvalue.__getitem__, reverse=True)
+            fortelem = orderbycount[:4]
             #get only 3 values not more
             for i in orderbycount[:3]:
+                #if the foruth element has the same value as one of the first 3 we cannot say anything
+                if labcounts[i][1] == fortelem:
+                    continue
                 # check for threshold from the max
                 if (labcounts[i][1] / MAX_COUNT) > percentage:
                     current[i] = 1
