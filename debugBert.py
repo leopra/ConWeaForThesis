@@ -10,7 +10,7 @@ def generate_pseudo_labels(df, labels, label_term_dict, tokenizer):
     labels = sorted(labels)
     #this an implementation for multilabel, returns a one-hot-encoded array
     # V1
-    def argmax_perfectmatch(count_dict, percentage=0.1):
+    def argmax_perfectmatch(count_dict, percentage=0.5):
         total = 0
         labcounts = []
         for l in labels:
@@ -23,18 +23,20 @@ def generate_pseudo_labels(df, labels, label_term_dict, tokenizer):
             labcounts.append((l, count))
             total += count
 
+        MAX_COUNT = max(labcounts,key=lambda item:item[1])[1]
+
         current = np.zeros(len(labels))
 
         # add 1 to labels over the threshold
         for i in range(len(current)):
-            # if i have only match of less than 3 classes assign all of them
-            if len(labcounts) < 3:
+            # if i have only match of less than 2 classes assign all of them
+            if len(labcounts) < 2:
                 if labcounts[i][1] != 0:
                     current[i] = 1.0
 
-            # if they are more check for threshold
+            # if they are more check for threshold from the max
             else:
-                if (labcounts[i][1] / total) >= percentage:
+                if labcounts[i][1] / MAX_COUNT > percentage:
                     current[i] = 1.0
 
         # if there was no label over the threshold give the best one
@@ -59,7 +61,15 @@ def generate_pseudo_labels(df, labels, label_term_dict, tokenizer):
             labcounts.append((l, count))
             total += count
 
-        current = np.zeros(len(labels))
+        current = np.zeros(len(labels), dtype=int)
+
+        labcounts = [x[1] for x in labcounts]
+        index_max = max(range(len(labcounts)), key=labcounts.__getitem__)
+        current[index_max] = 1
+        MAX_VALUE = labcounts[index_max][1]
+
+        #TODO finish
+
 
         # add 1 to labels over the threshold
         for i in range(len(current)):
@@ -67,17 +77,6 @@ def generate_pseudo_labels(df, labels, label_term_dict, tokenizer):
             if len(labcounts) < 3:
                 if labcounts[i][1] != 0:
                     current[i] = 1.0
-
-            # if they are more check for threshold
-            else:
-                if (labcounts[i][1] / total) >= percentage:
-                    current[i] = 1.0
-
-        # if there was no label over the threshold give the best one
-        if np.sum(current) == 0:
-            labcounts = [x[1] for x in labcounts]
-            index_max = max(range(len(labcounts)), key=labcounts.__getitem__)
-            current[index_max] = 1.0
 
         return current
 

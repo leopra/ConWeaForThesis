@@ -423,7 +423,7 @@ def main(dataset_path, print_flag=True):
     docfreq = calculate_df_doc_freq(df)
     inv_docfreq = calculate_inv_doc_freq(df, docfreq)
 
-    #train_word2vec(df, dataset_path)
+    train_word2vec(df, dataset_path)
 
     from sklearn.metrics import confusion_matrix
     for i in range(6):
