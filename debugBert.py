@@ -13,11 +13,14 @@ def generate_pseudo_labels(df, labels, label_term_dict, tokenizer):
     def argmax_perfectmatch(count_dict, percentage=0.5):
         total = 0
         labcounts = []
+        labfound=0
         for l in labels:
             count = 0
             try:
                 for t in count_dict[l]:
                     count += count_dict[l][t]
+                labfound += 1
+
             except:
                 pass
             labcounts.append((l, count))
@@ -25,25 +28,23 @@ def generate_pseudo_labels(df, labels, label_term_dict, tokenizer):
 
         MAX_COUNT = max(labcounts,key=lambda item:item[1])[1]
 
-        current = np.zeros(len(labels))
+        current = np.zeros(len(labels), dtype=int)
 
-        # add 1 to labels over the threshold
-        for i in range(len(current)):
-            # if i have only match of less than 2 classes assign all of them
-            if len(labcounts) < 2:
+        # if i have only match of less than 2 classes assign all of them
+        if labfound < 2:
+            for i in range(len(current)):
                 if labcounts[i][1] != 0:
-                    current[i] = 1.0
+                    current[i] = 1
 
-            # if they are more check for threshold from the max
-            else:
-                if labcounts[i][1] / MAX_COUNT > percentage:
-                    current[i] = 1.0
-
-        # if there was no label over the threshold give the best one
-        if np.sum(current) == 0:
-            labcounts = [x[1] for x in labcounts]
-            index_max = max(range(len(labcounts)), key=labcounts.__getitem__)
-            current[index_max] = 1.0
+        #TODO what if (man, 1)(health,1)(logistic,1)(agriculture,1)
+        else:
+            labcountsvalue = [x[1] for x in labcounts]
+            orderbycount = sorted(range(len(labcounts)), key=labcountsvalue.__getitem__, reverse=True)
+            #get only 3 values not more
+            for i in orderbycount[:3]:
+                # check for threshold from the max
+                if (labcounts[i][1] / MAX_COUNT) > percentage:
+                    current[i] = 1
 
         return current
 
@@ -122,13 +123,15 @@ def generate_pseudo_labels(df, labels, label_term_dict, tokenizer):
             y_true.append(label)
     return X, y, y_true
 
-# dataset_path = './data/eutopiavert/'
-#
-# df = pickle.load(open(dataset_path + "df_contextualized.pkl", "rb"))
-#
-# tokenizer = pickle.load(open(dataset_path + "tokenizer.pkl", "rb"))
-#
-# with open(dataset_path + "dictIteration4.json") as fp:
-#     label_term_dict = json.load(fp)
-#
-# labels = list(set(label_term_dict.keys()))
+dataset_path = './data/eutopiavert/'
+
+df = pickle.load(open(dataset_path + "df_contextualized.pkl", "rb"))
+
+tokenizer = pickle.load(open(dataset_path + "tokenizer.pkl", "rb"))
+
+with open("debugdata/seedwords.json") as fp:
+    label_term_dict = json.load(fp)
+
+labels = list(set(label_term_dict.keys()))
+
+generate_pseudo_labels(df[500:], labels, label_term_dict, tokenizer)

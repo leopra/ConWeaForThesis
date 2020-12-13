@@ -1,1 +1,1 @@
-empty
+removed metal from Mining
