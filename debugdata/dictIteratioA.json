@@ -13,7 +13,7 @@
     "public affairs",
     "legislation"
   ],
-  "Healthcare":  [
+  "Healthcare": [
     "health",
     "diseases",
     "blood",
@@ -24,9 +24,8 @@
     "cancer",
     "therapeutic",
     "medical"
-
   ],
-  "Food & Beverage":  [
+  "Food & Beverage": [
     "food",
     "beverages",
     "eat",
@@ -48,7 +47,7 @@
     "protein",
     "vegan"
   ],
-  "Buildings":  [
+  "Buildings": [
     "real estate",
     "properties",
     "rent",
@@ -84,8 +83,6 @@
     "micromobility",
     "scooter",
     "e-bike"
-
-
   ],
   "Constructions": [
     "construction",
@@ -100,7 +97,7 @@
     "building materials",
     "construction site"
   ],
-  "Manufacturing":  [
+  "Manufacturing": [
     "manufacturer",
     "manufacture",
     "fabrication",
@@ -108,9 +105,8 @@
     "manufacturing",
     "production process",
     "value chain"
-
   ],
-  "Utilities (electricity, water, waste)":  [
+  "Utilities (electricity, water, waste)": [
     "water",
     "electrical",
     "waste",
@@ -124,7 +120,7 @@
     "electricity",
     "wastewater"
   ],
-  "Energy":  [
+  "Energy": [
     "solar",
     "energy",
     "renewable",
@@ -143,7 +139,7 @@
     "offshore",
     "onshore"
   ],
-  "Mining":  [
+  "Mining": [
     "mining",
     "mineral",
     "excavation",
@@ -153,9 +149,8 @@
     "coalmining",
     "drilling",
     "mineral exploitation"
-
   ],
-  "Financial services":  [
+  "Financial services": [
     "asset",
     "finance",
     "invest",
@@ -168,7 +163,7 @@
     "financial",
     "cryptocurrency"
   ],
-  "Agriculture":  [
+  "Agriculture": [
     "agribusiness",
     "farm",
     "farming",
@@ -187,10 +182,8 @@
     "fertilizer",
     "smart agriculture",
     "algae cultivation"
-
-
   ],
-  "Logistics":  [
+  "Logistics": [
     "delivery",
     "shipping",
     "overhaul",

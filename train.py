@@ -359,14 +359,18 @@ def main(dataset_path, print_flag=True):
 
         def expand(E_LT, index_to_label, index_to_word, it, label_count, n1, old_label_term_dict, label_docs_dict):
             word_map = {}
+            #if no label is assigned for a specific class just use the old dictionary of seedwords
             zero_docs_labels = set()
             for l in range(label_count):
                 if not np.any(E_LT):
                     continue
+                #no docs for a label == use old dictionary
                 elif len(label_docs_dict[index_to_label[l]]) == 0:
                     zero_docs_labels.add(index_to_label[l])
                 else:
-                    n = min(n1 * (it), int(math.log(len(label_docs_dict[index_to_label[l]]), 1.5)))
+                    #n1 is the number of words per iteration it, decides how many words to add to the dictionary
+                    n = min(n1 * it, int(math.log(len(label_docs_dict[index_to_label[l]]), 1.5)))
+                    #sort and get the first n words
                     inds_popular = E_LT[l].argsort()[::-1][:n]
                     for word_ind in inds_popular:
                         word = index_to_word[word_ind]

@@ -130,7 +130,7 @@ def clean_text(text):
         return re.sub(r'[;,\.!\?\(\)]', ' ', text.lower()).replace('\n', '').replace('[\s+]', ' ')
 
 
-with open(basepath + 'seedwords.json') as fp:
+with open(basepath + 'dictIteratioA.json') as fp:
     seedwords = json.load(fp)
 
 #company ids to be classified

@@ -127,15 +127,3 @@ def generate_pseudo_labels(df, labels, label_term_dict, tokenizer):
             y_true.append(label)
     return X, y, y_true
 
-dataset_path = './data/eutopiavert/'
-
-df = pickle.load(open(dataset_path + "df_contextualized.pkl", "rb"))
-
-tokenizer = pickle.load(open(dataset_path + "tokenizer.pkl", "rb"))
-
-with open("debugdata/seedwords.json") as fp:
-    label_term_dict = json.load(fp)
-
-labels = list(set(label_term_dict.keys()))
-
-generate_pseudo_labels(df[500:], labels, label_term_dict, tokenizer)

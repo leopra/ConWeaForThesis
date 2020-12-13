@@ -209,7 +209,7 @@ def main(dataset_path, temp_dir):
     bert_dump_dir = temp_dir + "bert/"
     cluster_dump_dir = temp_dir + "clusters/"
     df = pickle.load(open(pkl_dump_dir + "df.pkl", "rb"))
-    with open(pkl_dump_dir + "seedwords.json") as fp:
+    with open(pkl_dump_dir + "dictIteratioA.json") as fp:
         label_seedwords_dict = json.load(fp)
 
     def smallclean(k):

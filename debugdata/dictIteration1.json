@@ -1,0 +1,93 @@
+{
+  "Agriculture": [
+    "crop",
+    "farmers",
+    "farming",
+    "farm",
+    "agricultural"
+  ],
+  "Buildings": [
+    "real$0",
+    "realestate",
+    "estate",
+    "property",
+    "properties$0"
+  ],
+  "Constructions": [
+    "concrete",
+    "construction",
+    "contractors",
+    "building$0",
+    "infrastructure"
+  ],
+  "Energy": [
+    "renewable",
+    "solar",
+    "wind",
+    "power$0",
+    "energy"
+  ],
+  "Financial services": [
+    "financial",
+    "banking",
+    "bank",
+    "insurance",
+    "credit"
+  ],
+  "Food & Beverage": [
+    "ingredients",
+    "restaurants",
+    "meat",
+    "food",
+    "foods"
+  ],
+  "Healthcare": [
+    "care$1",
+    "healthcare",
+    "medical",
+    "health",
+    "patients"
+  ],
+  "Logistics": [
+    "distribution",
+    "freight",
+    "delivery",
+    "logistics",
+    "shipping"
+  ],
+  "Manufacturing": [
+    "manufacture",
+    "manufacturing",
+    "printing",
+    "manufacturer",
+    "design"
+  ],
+  "Mining": [
+    "mine",
+    "exploration",
+    "gold",
+    "mining",
+    "mineral"
+  ],
+  "Public Administration": [
+    "education",
+    "governments",
+    "federal$1",
+    "administration$1",
+    "government"
+  ],
+  "Transportation": [
+    "travel",
+    "car",
+    "vehicle",
+    "bus",
+    "mobility"
+  ],
+  "Utilities (electricity, water, waste)": [
+    "electrical",
+    "waste",
+    "recycling",
+    "water",
+    "treatment$0"
+  ]
+}

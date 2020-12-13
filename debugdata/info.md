@@ -1,1 +1,0 @@
-removed metal from Mining
