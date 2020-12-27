@@ -1,5 +1,5 @@
 {
-  "Public Administration": [
+  "public administration": [
     "education",
     "government",
     "administration",
@@ -13,7 +13,7 @@
     "public affairs",
     "legislation"
   ],
-  "Healthcare":  [
+  "healthcare":  [
     "health",
     "diseases",
     "blood",
@@ -26,7 +26,7 @@
     "medical"
 
   ],
-  "Food & Beverage":  [
+  "food & beverage":  [
     "food",
     "beverages",
     "eat",
@@ -48,7 +48,7 @@
     "protein",
     "vegan"
   ],
-  "Buildings":  [
+  "building":  [
     "real estate",
     "properties",
     "rent",
@@ -65,7 +65,7 @@
     "indoor",
     "district heating"
   ],
-  "Transportation": [
+  "transportation": [
     "driving",
     "car",
     "bus",
@@ -87,7 +87,7 @@
 
 
   ],
-  "Constructions": [
+  "constructions": [
     "construction",
     "construction process",
     "demolition",
@@ -100,7 +100,7 @@
     "building materials",
     "construction site"
   ],
-  "Manufacturing":  [
+  "manufacturing":  [
     "manufacturer",
     "manufacture",
     "fabrication",
@@ -110,7 +110,7 @@
     "value chain"
 
   ],
-  "Utilities (electricity, water, waste)":  [
+  "utilities (electricity, water, waste)":  [
     "water",
     "electrical",
     "waste",
@@ -124,7 +124,7 @@
     "electricity",
     "wastewater"
   ],
-  "Energy":  [
+  "energy":  [
     "solar",
     "energy",
     "renewable",
@@ -143,7 +143,7 @@
     "offshore",
     "onshore"
   ],
-  "Mining":  [
+  "mining":  [
     "mining",
     "mineral",
     "excavation",
@@ -156,7 +156,7 @@
     "mineral exploitation"
 
   ],
-  "Financial services":  [
+  "financial services":  [
     "asset",
     "finance",
     "invest",
@@ -169,7 +169,7 @@
     "financial",
     "cryptocurrency"
   ],
-  "Agriculture":  [
+  "agriculture":  [
     "agribusiness",
     "farm",
     "farming",
@@ -191,7 +191,7 @@
 
 
   ],
-  "Logistics":  [
+  "logistics":  [
     "delivery",
     "shipping",
     "overhaul",
