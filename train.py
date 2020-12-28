@@ -301,11 +301,10 @@ def main(dataset_path, print_flag=True):
                 components[l] = {}
                 docs = label_docs_dict[l]
                 docfreq_local = calculate_doc_freq(docs)
-                #TODO here countVectorizer loads an array of 120000 for each element in docs resulting in OOM
                 vect = CountVectorizer(vocabulary=list(word_to_index.keys()), tokenizer=lambda x: x.split())
                 X = vect.fit_transform(docs)
-                X_arr = X.toarray()
-                rel_freq = np.sum(X_arr, axis=0) / len(docs)
+                rel_freq = X.sum(axis=0) / len(docs)
+                rel_freq = np.asarray(rel_freq).reshape(-1)
                 names = vect.get_feature_names()
 
                 for i, name in enumerate(names):
@@ -315,6 +314,10 @@ def main(dataset_path, print_flag=True):
                     except:
                         continue
 
+                    #docfreq local = count of document of specific label containing that word
+                    #docfreq = count of all document of that specific class
+                    #inv_doc_freq = log(number of documents, word frequency in all documents) to get unusual words
+                    #tanh(relative frequency of word in document of specific class)
                     E_LT[label_to_index[l]][word_to_index[name]] = (docfreq_local[name] / docfreq[name]) * inv_docfreq[
                         name] * np.tanh(rel_freq[i])
                     components[l][name] = {"reldocfreq": docfreq_local[name] / docfreq[name],
