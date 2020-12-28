@@ -8,6 +8,7 @@ from nltk import tokenize
 from sklearn.model_selection import train_test_split
 from keras.preprocessing.sequence import pad_sequences
 from keras.preprocessing.text import Tokenizer
+from nltk.util import ngrams
 
 
 def cosine_similarity(a, b):
@@ -136,12 +137,17 @@ def get_from_one_hot(pred, index_to_label):
     return ans
 
 
-def calculate_df_doc_freq(df):
+def calculate_df_doc_freq(df, ngramss=1):
     docfreq = {}
     docfreq["UNK"] = len(df)
-    for index, row in df.iterrows():
-        line = row["sentence"]
+    for row in df:
+        line = row
         words = line.strip().split()
+        if ngramss != 1:
+            for i in range(2, ngramss+1):
+                ngrmm = list(ngrams(words,i))
+                res = [' '.join(tups) for tups in ngrmm]
+                words= words + res
         temp_set = set(words)
         for w in temp_set:
             try:
@@ -150,11 +156,15 @@ def calculate_df_doc_freq(df):
                 docfreq[w] = 1
     return docfreq
 
-
-def calculate_doc_freq(docs):
+def calculate_doc_freq(docs, ngramss=1):
     docfreq = {}
     for doc in docs:
         words = doc.strip().split()
+        if ngramss != 1:
+            for i in range(2, ngramss+1):
+                ngrmm = list(ngrams(words,i))
+                res = [' '.join(tups) for tups in ngrmm]
+                words= words + res
         temp_set = set(words)
         for w in temp_set:
             try:
