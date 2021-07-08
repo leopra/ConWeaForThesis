@@ -3,10 +3,15 @@ import pickle
 import dill
 import matplotlib.pyplot as plt
 from DATAANALYSIS import wordsStatistics
+import numpy as np
+import seaborn as sns
+sns.set_theme(style="ticks")
 #this code should be more automatized
 
-#folder = 'perfectditcexpansion'
-folder = 'keepinginitial'
+#folder = 'better3wordexp'
+#folder = '3wordexpansion'
+folder = 'perfectditcexpansion'
+#folder = 'keepinginitial'
 #folder = 'standardrun'
 
 
@@ -68,7 +73,8 @@ def getCountDatasets(itacc):
         print(kk, itacc[kk]['support'])
 
 
-getCountDatasets(stats[0])
+#GET THE SUPPORTS VALUES, LABEL SAMPLE DIMENSIONS
+#getCountDatasets(stats[0])
 
 def plotIterations(label, yprec, yrec, yf1):
     fig = plt.figure()
@@ -79,15 +85,16 @@ def plotIterations(label, yprec, yrec, yf1):
     N = len(yprec['public administration'])
 
     ax.axis([0, len(dicts)+1, 0, max])
-    plt.title(label)
+    plt.title(label + '//' + folder)
     plt.plot(list(range(N)), yprec[label], label='prec')
     plt.plot(list(range(N)), yrec[label], label='rec')
     plt.plot(list(range(N)), yf1[label], label='f1')
 
     for i in range(len(dicts)):
       for n,word in enumerate(sorted(dicts[i][label])):
-        if word in dicts[i-1][label] and i != 0:
-          ax.text(i,n/div, word, color = 'black')
+        #UNCOMMENT TO SEE ALL WORDS
+        # if word in dicts[i-1][label] and i != 0:
+        #   ax.text(i,n/div, word, color = 'black')
 
         if word not in dicts[i - 1][label] and i != 0:
           ax.text(i,n/div, word, color = 'green')
@@ -109,11 +116,42 @@ def plotIterations(label, yprec, yrec, yf1):
         ax.text(len(dicts) + 1, h / div, ww, color='red')
 
     plt.legend()
+    plt.yticks(np.arange(0, 1, step=0.1))
+    plt.grid()
     plt.show()
     return
 
-for i in list(vertical_index.values()):
-    plotIterations(i, yprec, yrec, yf1)
+def plotOneLabel(lbl):
+    folders = ['perfectditcexpansion', 'keepinginitial', 'standardrun']
+    for folder in folders:
+        stats = dill.load(open('DATAANALYSIS/datalys/' + folder + '/accuracies.pkl', 'rb'))
+        dicts = dill.load(open('DATAANALYSIS/datalys/' + folder + '/dicts.pkl', 'rb'))
+
+        # NOT USED for now
+        # comps = dill.load(open('DATAANALYSIS/datalys/standardrun/components.pkl', 'rb'))
+
+        # 1 plot accuracy changes through iterations
+        def getAccs(stats, metric):
+            keys = list(stats[0].keys())
+            keys.remove('accuracy')
+            keys.remove('macro avg')
+            keys.remove('weighted avg')
+            alllabels = dict()
+            for j in keys:
+                alllabels[j] = []
+
+            for ky in keys:
+                for i in range(len(stats)):
+                    alllabels[ky].append(stats[i][ky][metric])
+
+            return alllabels
+
+        yprec = getAccs(stats, 'precision')
+        yrec = getAccs(stats, 'recall')
+        yf1 = getAccs(stats, 'f1-score')
+        plotIterations(lbl, yprec, yrec, yf1, dicts, folder)
+
+
 
 
 
@@ -127,13 +165,23 @@ def plotAverages(stats):
         weig.append(keys['weighted avg']['f1-score'])
 
     fig = plt.figure()
+    plt.title(folder)
     ax = fig.add_subplot(111)
     ax.axis([0, len(dicts) + 1, 0, 1])
     plt.plot(list(range(len(acc))), acc, label='acc')
     plt.plot(list(range(len(acc))), macro, label='macro')
     plt.plot(list(range(len(acc))), weig, label='weig')
+    plt.yticks(np.arange(0, 1, step=0.1))
+    plt.grid()
     plt.legend()
     return
+
+#
+for i in list(vertical_index.values()):
+    plotIterations(i, yprec, yrec, yf1)
+
+
+#plotOneLabel('manufacturing')
 
 plotAverages(stats)
 
