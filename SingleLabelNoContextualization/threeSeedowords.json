@@ -1,0 +1,67 @@
+{
+  "public administration": [
+    "education",
+    "government",
+    "administration"
+  ],
+  "healthcare":  [
+    "health",
+    "healthcare",
+    "pharmaceutical"
+  ],
+  "food & beverage":  [
+    "food",
+    "beverages",
+    "restaurant"
+  ],
+  "building":  [
+    "properties",
+    "rent",
+    "housing"
+  ],
+  "transportation": [
+    "transportation",
+    "transport",
+    "mobility"
+  ],
+  "constructions": [
+    "construction",
+    "demolition",
+    "architecture"
+  ],
+  "manufacturing":  [
+    "manufacturer",
+    "manufacture",
+    "fabrication"
+  ],
+  "utilities (electricity, water, waste)":  [
+    "water",
+    "electricity",
+    "waste"
+  ],
+  "energy":  [
+    "solar",
+    "energy",
+    "renewable"
+  ],
+  "mining":  [
+    "mining",
+    "excavation",
+    "ores"
+  ],
+  "financial services":  [
+    "financial",
+    "finance",
+    "bank"
+  ],
+  "agriculture":  [
+    "agriculture",
+    "farming",
+    "cultivation"
+  ],
+  "logistics":  [
+    "delivery",
+    "shipping",
+    "logistics"
+  ]
+}
